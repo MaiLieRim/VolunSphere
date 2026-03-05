@@ -7,13 +7,22 @@
   padding-left: 0;
   padding: 0.15rem !important;
 }
+
+.hover-link {
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.hover-link:hover {
+  background-color: rgba(0,0,0,0.075);
+}
 </style>
 <template>
   <div class="list-group list-group-flush ">
 
     <h2>{{ title }}</h2>
 
-    <RouterLink :to="{ name: 'task', params: { itemId: item.id } }" v-for="(item, index) in items" :key="index"
+    <RouterLink :to="{ name: 'task', params: { itemId: item.id } }" v-for="(item, index) in items" :key="item.id"
       class="list-group-item list-group-item-action align-content-stretch d-flex " aria-current="true">
       
       <div class="date-box col-3"> 
@@ -39,24 +48,26 @@
       </div>
     </RouterLink>
 
-    <a v-if="loadedItemsCount < allItems.length" class="list-group-item list-group-item-action"
-      @click.prevent="toggleLoadMore">
-      <div class="text-center nav-item text-secondary m-2 ">
-        mehr anzeigen
+    <div v-if="loadedItemsCount < allItems.length || loadedItemsCount > 3" class="list-group-item d-flex">
+      <div v-if="loadedItemsCount < allItems.length" class="flex-fill hover-link" @click.prevent="toggleLoadMore">
+        <div class="text-center nav-item text-secondary m-2">
+          mehr anzeigen
+        </div>
       </div>
-    </a>
-    <a v-if="loadedItemsCount > 3" class="list-group-item list-group-item-action" @click.prevent="showLess">
-      <div class="text-center nav-item text-secondary m-2">
-        weniger
+      <div v-if="loadedItemsCount > 3" class="flex-fill hover-link" @click.prevent="showLess">
+        <div class="text-center nav-item text-secondary m-2">
+          weniger
+        </div>
       </div>
-    </a>
+    </div>
+    
   </div>
 
 </template>
 
 <script setup>
-import { ref, onMounted, defineProps } from 'vue';
-import organizationData from '@/assets/data/tasklist.json';
+import { ref, computed, onMounted, watch, defineProps } from 'vue';
+import { useTasks } from '@/composables/useTasks';
 
 defineProps({
     title: {
@@ -65,9 +76,22 @@ defineProps({
     }
 });
 
+const { allTasks } = useTasks();
 const items = ref([]);
 const loadedItemsCount = ref(0);
-const allItems = ref([]);
+
+const allItems = computed(() => {
+    return allTasks.value.map(job => ({
+        club: job.club,
+        day: job.day,
+        month: job.month,
+        location: job.location,
+        title: job.title,
+        jobs: '0/' + job.jobs,
+        industry: job.industry,
+        id: job.id
+    }));
+});
 
 const toggleLoadMore = () => {
     const nextItems = allItems.value.slice(loadedItemsCount.value, loadedItemsCount.value + 3);
@@ -80,19 +104,11 @@ const showLess = () => {
     loadedItemsCount.value = 3;
 };
 
-onMounted(() => {
-    allItems.value = organizationData.itemListElement.map(job => ({
-        club: job.hiringOrganization.name,
-        day: new Date(job.datePosted).getDate(),
-        month: new Date(job.datePosted).toLocaleString('default', { month: 'long' }),
-        location: job.jobLocation.address.addressLocality,
-        title: job.title,
-        jobs: '0/' + job.totalJobOpenings,
-        industry: job.industry,
-        id: job.identifier.value
-    }));
+// Watch for changes in allItems and reset pagination
+watch(allItems, (newAllItems) => {
+    items.value = [];
+    loadedItemsCount.value = 0;
     toggleLoadMore();
-});
-
+}, { immediate: true });
 
 </script>

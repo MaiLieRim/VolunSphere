@@ -1,7 +1,8 @@
 <script setup>
 import CardCarousell from '@/components/CardCarousell.vue';
 import Footer from '@/components/Footer.vue';
-import Navbar from '@/components/Navbar.vue';
+import Navbar from '@/components/navbars/Navbar.vue';
+import { useTasks } from '@/composables/useTasks';
 </script>
 <style>
 .tags {
@@ -209,17 +210,6 @@ import Navbar from '@/components/Navbar.vue';
 
 </template>
 <script>
-import tasks from "@/assets/data/tasklist.json";
-const items = tasks.itemListElement.map(job => ({
-    title: job.title,
-    description: job.description,
-    industry: job.industry,
-    location: job.jobLocation.address.addressLocality,
-    club: job.hiringOrganization.name,
-    day: new Date(job.datePosted).getDate(),
-    month: new Date(job.datePosted).toLocaleString('default', { month: 'long' }),
-    jobs: job.totalJobOpenings,
-    image: job.hiringOrganization.logo,
-    id: job.identifier.value
-}));
+const { allTasks } = useTasks();
+const items = allTasks;
 </script>

@@ -1,7 +1,7 @@
 <script setup>
 import { formatDate } from '@/assets/js/formatDate.js'; 
 import Footer from '@/components/Footer.vue';
-import Navbar from '@/components/Navbar.vue';
+import Navbar from '@/components/navbars/Navbar.vue';
 
 import { ref, computed } from 'vue';
 import conversationsData from '@/assets/data/conversations.json';

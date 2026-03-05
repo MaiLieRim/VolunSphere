@@ -1,5 +1,5 @@
 <script setup>
-import Navbar from "@/components/Navbar.vue";
+import Navbar from "@/components/navbars/Navbar.vue";
 import Accordion from "@/components/Accordion.vue";
 import { ref, nextTick } from 'vue';
 import user from "@/assets/data/volunteer"

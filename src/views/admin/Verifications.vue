@@ -31,7 +31,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import Navbar from '@/components/Navbar.vue';
+import Navbar from '@/components/navbars/Navbar.vue';
 import Footer from '@/components/Footer.vue';
 import SwipeList from '@/components/SwipeList.vue';
 import verifications from '@/assets/data/verifications.json';

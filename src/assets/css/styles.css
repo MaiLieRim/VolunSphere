@@ -196,12 +196,5 @@ small {
   min-height: 2.5em;
 }
 
-/* Textarea */
-textarea.form-control {
-  background-color: var(--bs-card-color) !important;
-  padding: 0px;
-}
 
-textarea {
-  background-color: var(--bs-card-color) !important;
-}
+

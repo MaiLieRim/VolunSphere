@@ -1,9 +1,10 @@
 <script setup>
-import Navbar from '@/components/Navbar.vue';
-import StatisticNavbar from '@/components/StatisticNavbar.vue';
+import Navbar from '@/components/navbars/Navbar.vue';
+import StatisticNavbar from '@/components/navbars/StatisticNavbar.vue';
 import List from '@/components/List.vue';
 import CardCarousell from '@/components/CardCarousell.vue';
 import Footer from '@/components/Footer.vue';
+import { useTasks } from '@/composables/useTasks';
 </script>
 
 <template>
@@ -34,17 +35,12 @@ import Footer from '@/components/Footer.vue';
     <Footer></Footer>
 </template>
 <script>
-import activities from "@/assets/data/tasklist.json";
-const items = activities.itemListElement.map(job => ({
-    title: job.title,
-    description: job.description,
-    industry: job.industry,
-    location: job.jobLocation.address.addressLocality,
-    club: job.hiringOrganization.name,
-    day: new Date(job.datePosted).getDate(),
-    month: new Date(job.datePosted).toLocaleString('default', { month: 'long' }),
-    jobs: job.totalJobOpenings,
-    image: job.hiringOrganization.logo,
-    id: job.identifier.value
-}));
+import { computed } from 'vue';
+import { useTasks } from '@/composables/useTasks';
+
+const { allTasks } = useTasks();
+
+const items = computed(() => {
+    return allTasks.value;
+});
 </script>

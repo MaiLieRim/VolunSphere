@@ -14,7 +14,7 @@
 
         <h3>{{ title }}</h3>
 
-        <div v-for="(item, index) in props.items" :key="index" class="list-group-item text-decoration-none"
+        <div v-for="(item, index) in props.items" :key="item.id" class="list-group-item text-decoration-none"
             aria-current="true">
             <div class="list-group-item list-group-item-action align-content-stretch d-flex swipe-item"
                 :class="{ swiped: item.swiped }" @touchstart="startTouch($event, index)"

@@ -25,7 +25,7 @@
         </div>
 
     <!-- show overview by default -->
-    <div v-if="currentTab == 'Übersicht'">
+    <div v-if="currentTab === 'Übersicht'">
       <div class="cover bg-secondary">
           <div class="row">
               <div class="col-4 ">
@@ -162,7 +162,7 @@
         <div class="m-4">
             <h2 class="mb-3">Aufgaben der Organisation</h2>
             <div class="d-flex justify-content-end">
-                <button class="btn btn-primary">Neue Aufgabe erstellen</button>
+                <RouterLink to="/addtask" class="btn btn-primary">Neue Aufgabe erstellen</RouterLink>
             </div>
         </div>
 
@@ -186,15 +186,18 @@
 </template>
 
 <script setup>
-import Navbar from "@/components/Navbar.vue";
+import Navbar from "@/components/navbars/Navbar.vue";
 import org from "@/assets/data/organisation.json";
 import TableSearch from "@/components/TableSearch.vue";
-import tasks from "@/assets/data/firedeptasks.json";
 import CardCarousell from "@/components/CardCarousell.vue";
 import CardBody from "@/components/CardBody.vue";
 import List from "@/components/List.vue";
-import { ref } from 'vue';
-import { computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import { useTasks } from "@/composables/useTasks";
+
+const route = useRoute();
+const { allTasks } = useTasks();
 
 const profileLink = computed(() => {
   const role = localStorage.getItem('userRole');
@@ -203,23 +206,23 @@ const profileLink = computed(() => {
 const isEditable = ref(false);
 // tab state for Organisation view
 const currentTab = ref('Übersicht');
+
+onMounted(() => {
+  const tabParam = route.query.tab;
+  if (tabParam) {
+    currentTab.value = tabParam;
+  }
+});
+
 const selectTab = (tab) => { currentTab.value = tab; };
 
 const toggleEdit = () => {
     isEditable.value = !isEditable.value;
 };
 
-const items = tasks.itemListElement.map(job => ({
-    title: job.title,
-    description: job.description,
-    industry: job.industry,
-    location: job.jobLocation.address.addressLocality,
-    club: job.hiringOrganization.name,
-    day: new Date(job.datePosted).getDate(),
-    month: new Date(job.datePosted).toLocaleString('default', { month: 'long' }),
-    jobs: job.totalJobOpenings,
-    image: job.hiringOrganization.logo,
-    id: job.identifier.value
-}));
+const items = computed(() => {
+    return allTasks.value;
+});
 
 </script>
+

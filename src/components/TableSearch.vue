@@ -22,7 +22,7 @@
         <tr v-if="paginatedItems.length === 0">
           <td colspan="3" class="text-center text-muted">Keine Ergebnisse gefunden</td>
         </tr>
-        <tr v-for="(person, index) in paginatedItems" :key="index">
+        <tr v-for="(person, index) in paginatedItems" :key="person.name">
           <td class="text-break">{{ person.name }}</td>
           <td class="text-wrap">Volunteer</td>
           <td class="text-wrap">{{ person.address }}</td>

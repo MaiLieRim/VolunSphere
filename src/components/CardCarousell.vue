@@ -2,12 +2,12 @@
     <div id="carouselIndicators" class="space carousel slide" data-bs-ride="carousel">
         <h2>{{ title }}</h2>
         <div class="carousel-indicators">
-            <button v-for="(item, index) in items" :key="index" :data-bs-target="'#carouselIndicators'"
+            <button v-for="(item, index) in items" :key="item.id" :data-bs-target="'#carouselIndicators'"
                 :data-bs-slide-to="index" :class="{ 'active': index === 0 }" class="form-check-input"
                 :aria-label="'Slide ' + (index + 1)"></button>
         </div>
         <div class="carousel-inner">
-            <div v-for="(item, index) in items" :key="index" class="carousel-item"
+            <div v-for="(item, index) in items" :key="item.id" class="carousel-item"
                 :class="{ 'active': index === activeIndex }">
                 <RouterLink :to="{ name: 'task', params: { itemId: item.id } }" class="card text-decoration-none">
                     <div class="img-with-date">
@@ -58,7 +58,7 @@
 <script setup>
 import { Carousel } from "bootstrap";
 import { ref,onMounted } from "vue";
-import MatchBar from "@/components/MatchBar.vue"
+import MatchBar from "@/components/navbars/MatchBar.vue"
 
 defineProps({
     title: {

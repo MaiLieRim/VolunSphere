@@ -5,6 +5,7 @@ import Profile from '@/views/volunteer/Profile.vue';
 import Registry from '@/views/auth/Registry.vue';
 import QRcode from '@/views/shared/QRcode.vue';
 import Organisation from '@/views/admin/Organisation.vue';
+import AddTask from '@/views/admin/AddTask.vue';
 import Tasks from '@/views/volunteer/Tasks.vue';
 import Verifications from '@/views/admin/Verifications.vue';
 import Search from '@/views/shared/Search.vue';
@@ -31,6 +32,7 @@ const router = createRouter({
     { path: '/task/:itemId', name: 'task', component: Task, meta: { requiresAuth: true }, props: true },
     { path: '/verifications', name: 'verifications', component: Verifications, meta: { requiresAuth: true} },
     { path: '/organisation', name: 'organisation', component: Organisation, meta: { requiresAuth: true } },
+    { path: '/addtask', name: 'addtask', component: AddTask, meta: { requiresAuth: true } },
   ],
   scrollBehavior() {
     return { top: 0 };

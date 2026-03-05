@@ -29,10 +29,10 @@
 
 <script setup>
 import { ref, onMounted, nextTick } from 'vue';
-import MessageWithAction from "@/components/MessageWithAction.vue"
+import MessageWithAction from "./MessageWithAction.vue"
 const user = ref(localStorage.getItem('username')); // Get role
 import conversationsData from '@/assets/data/conversations.json'; // Update with the correct path
-import Message from '@/components/Message.vue';
+import Message from './Message.vue';
 import { formatDate } from '@/assets/js/formatDate.js'; 
 
 const props = defineProps({

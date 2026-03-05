@@ -1,12 +1,17 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed, defineProps } from 'vue';
 import { useRoute } from 'vue-router';
-import Navbar from '@/components/Navbar.vue';
-import tasklist from '@/assets/data/tasklist.json';
+import Navbar from '@/components/navbars/Navbar.vue';
 import Footer from '@/components/Footer.vue';
+import { useTasks } from '@/composables/useTasks';
+
+defineProps({
+  itemId: String
+});
 
 const route = useRoute();
-const jobPosting = tasklist.itemListElement.find(a => a.identifier.value === route.params.itemId);
+const { getTaskById } = useTasks();
+const jobPosting = computed(() => getTaskById(route.params.itemId));
 
 // Application form data
 const application = ref({
@@ -38,19 +43,19 @@ textarea.form-control {
       <h1>{{ jobPosting ? jobPosting.title : 'Aufgabe nicht gefunden' }} </h1>
       <p class="text-secondary d-flex flex-column">
         <small>
-          <i class="bi bi-geo-alt"></i> {{ jobPosting.jobLocation.address.streetAddress }}, {{
-            jobPosting.jobLocation.address.addressLocality }}
+          <i class="bi bi-geo-alt"></i> {{ jobPosting?.jobLocation?.address?.streetAddress }}, {{
+            jobPosting?.jobLocation?.address?.addressLocality }}
         </small>
 
         <small>
-          <i class="bi bi-clock-history"></i> {{ jobPosting.workHours }}
+          <i class="bi bi-clock-history"></i> {{ jobPosting?.workHours }}
         </small>
       </p>
 
       <!-- Job Description -->
       <p class="card-body">
       <h5 class="card-title text-secondary"><i class="bi bi-file-earmark-text"></i> Beschreibung</h5>
-      <p class="card-text">{{ jobPosting.description }}</p>
+      <p class="card-text">{{ jobPosting?.description }}</p>
       </p>
 
       <small class="text-secondary ">
@@ -72,7 +77,7 @@ textarea.form-control {
           <div id="collapseDuration" class="accordion-collapse collapse show" aria-labelledby="headingDuration"
             data-bs-parent="#jobDetailsAccordion">
             <div class="accordion-body">
-              {{ jobPosting.datePosted }} bis {{ jobPosting.validThrough }}
+              {{ jobPosting?.datePosted }} bis {{ jobPosting?.validThrough }}
             </div>
           </div>
         </div>
@@ -91,7 +96,7 @@ textarea.form-control {
           <div id="collapseWorkHours" class="accordion-collapse collapse" aria-labelledby="headingWorkHours"
             data-bs-parent="#jobDetailsAccordion">
             <div class="accordion-body">
-              {{ jobPosting.workHours }}
+              {{ jobPosting?.workHours }}
             </div>
           </div>
         </div>
@@ -110,7 +115,7 @@ textarea.form-control {
           <div id="collapseSkills" class="accordion-collapse collapse" aria-labelledby="headingSkills"
             data-bs-parent="#jobDetailsAccordion">
             <div class="accordion-body">
-              {{ jobPosting.skills }}
+              {{ jobPosting?.skills }}
             </div>
           </div>
         </div>
@@ -129,7 +134,7 @@ textarea.form-control {
           <div id="collapseQualifications" class="accordion-collapse collapse" aria-labelledby="headingQualifications"
             data-bs-parent="#jobDetailsAccordion">
             <div class="accordion-body">
-              {{ jobPosting.qualifications }}
+              {{ jobPosting?.qualifications }}
             </div>
           </div>
         </div>
@@ -167,7 +172,7 @@ textarea.form-control {
           <div id="collapseDatePosted" class="accordion-collapse collapse " aria-labelledby="headingDatePosted"
             data-bs-parent="#jobDetailsAccordion">
             <div class="accordion-body">
-              {{ jobPosting.datePosted }}
+              {{ jobPosting?.datePosted }}
             </div>
           </div>
         </div>
@@ -186,7 +191,7 @@ textarea.form-control {
           <div id="collapseExpirationDate" class="accordion-collapse collapse" aria-labelledby="headingExpirationDate"
             data-bs-parent="#jobDetailsAccordion">
             <div class="accordion-body">
-              {{ jobPosting.validThrough }}
+              {{ jobPosting?.validThrough }}
             </div>
           </div>
         </div>
@@ -229,12 +234,12 @@ textarea.form-control {
         <div class="card-body">
 
           <p class="card-text">
-            <strong>Aufgabe:</strong> {{ jobPosting.title }} <br>
-            <strong>Ort:</strong> {{ jobPosting.jobLocation.address.streetAddress }}, {{
-              jobPosting.jobLocation.address.addressLocality }} <br>
-            <strong>Veröffentlicht am:</strong> {{ jobPosting.datePosted }} <br>
-            <strong>Ablaufdatum:</strong> {{ jobPosting.validThrough }} <br>
-            <strong>Stundenausmaß:</strong> {{ jobPosting.workHours }}
+            <strong>Aufgabe:</strong> {{ jobPosting?.title }} <br>
+            <strong>Ort:</strong> {{ jobPosting?.jobLocation?.address?.streetAddress }}, {{
+              jobPosting?.jobLocation?.address?.addressLocality }} <br>
+            <strong>Veröffentlicht am:</strong> {{ jobPosting?.datePosted }} <br>
+            <strong>Ablaufdatum:</strong> {{ jobPosting?.validThrough }} <br>
+            <strong>Stundenausmaß:</strong> {{ jobPosting?.workHours }}
           </p>
         </div>
       </div>
@@ -244,13 +249,13 @@ textarea.form-control {
         </div>
         <div class="card-body">
           <p class="card-text">
-            <strong>Organisation:</strong> {{ jobPosting.hiringOrganization.name }} <br>
-            <strong>Website:</strong> <a :href="jobPosting.hiringOrganization.sameAs" target="_blank">{{
-              jobPosting.hiringOrganization.sameAs }}</a> <br>
+            <strong>Organisation:</strong> {{ jobPosting?.hiringOrganization?.name }} <br>
+            <strong>Website:</strong> <a :href="jobPosting?.hiringOrganization?.sameAs" target="_blank">{{
+              jobPosting?.hiringOrganization?.sameAs }}</a> <br>
 
 
-            <strong>Email:</strong> <a :href="'mailto:' + jobPosting.applicationContact.email">{{
-              jobPosting.applicationContact.email }}</a> <br>
+            <strong>Email:</strong> <a :href="'mailto:' + jobPosting?.applicationContact?.email">{{
+              jobPosting?.applicationContact?.email }}</a> <br>
             <strong>Telefon:</strong> {{ jobPosting.applicationContact.telephone }} <br>
           
           </p>
