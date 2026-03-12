@@ -14,6 +14,7 @@ import Community from '@/views/shared/Community.vue';
 import Task from '@/views/volunteer/Task.vue';
 import Onboarding from '@/views/auth/Onboarding.vue';
 import ChatArchiv from '@/views/shared/ChatArchiv.vue';
+import OrganisationDetail from './views/volunteer/OrganisationDetail.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.VITE_BASE_URL || '/'),
@@ -30,6 +31,8 @@ const router = createRouter({
     { path: '/profile', name: 'profile', component: Profile, meta: { requiresAuth: true } },
     { path: '/tasks', name: 'tasks', component: Tasks, meta: { requiresAuth: true} },
     { path: '/task/:itemId', name: 'task', component: Task, meta: { requiresAuth: true }, props: true },
+    {path: '/orgDetail/:organisationId', name: 'orgDetail', component: OrganisationDetail, meta: { requiresAuth: true }, props: true },
+   
     { path: '/verifications', name: 'verifications', component: Verifications, meta: { requiresAuth: true} },
     { path: '/organisation', name: 'organisation', component: Organisation, meta: { requiresAuth: true } },
     { path: '/addtask', name: 'addtask', component: AddTask, meta: { requiresAuth: true } },

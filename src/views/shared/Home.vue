@@ -1,5 +1,6 @@
 <template>
   <Navbar title="Home" />
+  
   <StatisticNavbar />
 
   <div class="content-container">
@@ -15,7 +16,7 @@
         <h1>Du warst diese Woche top engagiert!</h1>
         <img src="/src/assets/images/statistik.png" alt="statistic" class="mx-auto d-block img-fluid">
       </div>
-      <List title="Deine aktuellen Aufgaben" />
+      <TaskList title="Deine aktuellen Aufgaben" />
       <CardCarousell title="Deine aktuellen Aufgaben" :items="items" />
     </template>
   </div>
@@ -30,7 +31,7 @@ import StatisticNavbar from '@/components/navbars/StatisticNavbar.vue';
 import CardBody from '@/components/CardBody.vue';
 import CardBodyVolunteer from '@/components/CardBodyVolunteer.vue';
 import CardCarousell from '@/components/CardCarousell.vue';
-import List from '@/components/List.vue';
+import TaskList from '@/components/TaskList.vue';
 import SwipeList from '@/components/SwipeList.vue';
 import Footer from '@/components/Footer.vue';
 import verifications from '@/assets/data/verifications.json';

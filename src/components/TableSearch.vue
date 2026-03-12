@@ -24,8 +24,8 @@
         </tr>
         <tr v-for="(person, index) in paginatedItems" :key="person.name">
           <td class="text-break">{{ person.name }}</td>
-          <td class="text-wrap">Volunteer</td>
-          <td class="text-wrap">{{ person.address }}</td>
+          <td class="text-wrap">{{ person.jobTitle || 'Volunteer' }}</td>
+          <td class="text-wrap">{{ person.address || '-' }}</td>
         </tr>
       </tbody>
     </table>
@@ -38,7 +38,12 @@
     </div>
 
     <ul class="pagination justify-content-end">
-      <li v-for="page in totalPages" :key="page" class="page-item" :class="{ active: currentPage === page }">
+      <li
+        v-for="page in totalPages"
+        :key="page"
+        class="page-item"
+        :class="{ active: currentPage === page }"
+      >
         <button class="page-link" @click="changePage(page)">{{ page }}</button>
       </li>
     </ul>
@@ -46,46 +51,48 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, watch } from "vue";
+
+// Props
+const props = defineProps({
+  items: {
+    type: Array,
+    default: () => []
+  }
+});
 
 const searchQuery = ref("");
 const currentPage = ref(1);
-const itemsPerPage = 4; // Anzahl der Elemente pro Seite
+const itemsPerPage = 4;
 
-const people = ref([
-  { name: "Max Mustermann", address: "Musterstraße 1, Wien" },
-  { name: "Lena Pulver", address: "Hauptstraße 45, Wien" },
-  { name: "Johannes Becker", address: "Bahnhofstraße 23, Wien" },
-  { name: "Sophie Wagner", address: "Parkallee 78, Linz" },
-  { name: "Felix Neumann", address: "Goethestraße 12, St. Pölten" }
-]);
+// Watch searchQuery to reset page
+watch(searchQuery, () => {
+  currentPage.value = 1;
+});
 
-// Gefilterte Ergebnisse basierend auf der Suche
+// Filtered results based on search
 const filteredItems = computed(() => {
-  if (!searchQuery.value) {
-    return people.value;
-  }
-  return people.value.filter(person =>
-    Object.values(person).some(value =>
-      value.toString().toLowerCase().includes(searchQuery.value.toLowerCase())
+  if (!searchQuery.value) return props.items;
+  return props.items.filter(person =>
+    Object.values(person).some(
+      value =>
+        value &&
+        value.toString().toLowerCase().includes(searchQuery.value.toLowerCase())
     )
   );
 });
 
-// Gesamtanzahl der Seiten berechnen
+// Total pages
 const totalPages = computed(() => Math.ceil(filteredItems.value.length / itemsPerPage));
 
-// Berechnet die Elemente für die aktuelle Seite
+// Paginated items
 const paginatedItems = computed(() => {
   const start = (currentPage.value - 1) * itemsPerPage;
   return filteredItems.value.slice(start, start + itemsPerPage);
 });
 
-// Seitenwechsel
+// Change page
 const changePage = (page) => {
-  if (page > 0 && page <= totalPages.value) {
-    currentPage.value = page;
-  }
+  if (page > 0 && page <= totalPages.value) currentPage.value = page;
 };
 </script>
-

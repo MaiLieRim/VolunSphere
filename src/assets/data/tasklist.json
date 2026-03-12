@@ -31,7 +31,7 @@
                 "@type": "Organization",
                 "name": "FFOÖ",
                 "sameAs": "https://www.katastrophenschutz.at",
-                "logo": "/assets/images/imgPlaceholder.png"
+                "logo": "/imgPlaceholder.png"
             },
             "jobLocation": {
                 "@type": "Place",
@@ -78,7 +78,7 @@
                 "@type": "Organization",
                 "name": "Tierschutzverein Wien",
                 "sameAs": "https://www.tierschutzwien.at",
-                "logo": "/assets/images/imgPlaceholder.png"
+                "logo": "/imgPlaceholder.png"
             },
             "jobLocation": {
                 "@type": "Place",
@@ -125,7 +125,7 @@
                 "@type": "Organization",
                 "name": "Sprachhilfe Österreich",
                 "sameAs": "https://www.sprachhilfe.at",
-                "logo": "/assets/images/imgPlaceholder.png"
+                "logo": "/imgPlaceholder.png"
             },
             "jobLocation": {
                 "@type": "Place",
@@ -172,7 +172,7 @@
                 "@type": "Organization",
                 "name": "FFOÖ",
                 "sameAs": "https://www.example.com",
-                "logo": "/assets/images/imgPlaceholder.png"
+                "logo": "/imgPlaceholder.png"
             },
             "jobLocation": {
                 "@type": "Place",
@@ -243,7 +243,7 @@
               "@type": "Organization",
               "name": "FO Linz",
               "sameAs": "https://www.example-organization.com",
-             "logo": "/assets/images/imgPlaceholder.png"
+             "logo": "/imgPlaceholder.png"
             },
             "jobLocation": {
               "@type": "Place",
@@ -310,7 +310,7 @@
                 "@type": "Organization",
                 "name": "FB-Klub Mentator",
                 "sameAs": "https://www.fbklub-mentator.at",
-                "logo": "/assets/images/imgPlaceholder.png"
+                "logo": "/imgPlaceholder.png"
             },
             "jobLocation": {
                 "@type": "Place",

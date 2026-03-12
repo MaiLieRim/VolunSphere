@@ -17,6 +17,7 @@
   margin-left: auto;
   padding-bottom: 6rem;
   padding-top: 1.25rem;
+
 }
 
 
@@ -43,7 +44,11 @@
     max-width: 1140px;
   }
 }
-
+@media (min-width: 1400px) {
+   .content-container {
+        max-width: 1320px;
+    }
+}
 
 .bg-dark, .bg-primary, .btn-primary {
   color: var(--bs-light) !important; /* Weiß */
@@ -90,17 +95,7 @@ small {
   }
 }
 
-/* Search Navbar */
-.tab-navigation {
-  overflow-x: auto;
-  width: 100%;
-  white-space: nowrap;
-  --bs-gutter-x: 1.5rem;
-  --bs-gutter-y: 0;
-  width: 100%;
-  padding: 8px calc(var(--bs-gutter-x)* 0.5);
-  background-color:var(--bs-gray-200);
-}
+
 
 .nav {
   flex-wrap: unset !important;

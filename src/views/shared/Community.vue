@@ -4,7 +4,7 @@ import Footer from '@/components/Footer.vue';
 </script>
 
 <template>
-  <Navbar title="Community"></Navbar>
+  <Navbar title="Netzwerk"></Navbar>
 
   <Footer></Footer>
 </template>

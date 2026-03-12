@@ -1,10 +1,11 @@
 <script setup>
-import { formatDate } from '@/assets/js/formatDate.js'; 
+import { formatDate } from '@/assets/js/formatDate.js';
 import Footer from '@/components/Footer.vue';
 import Navbar from '@/components/navbars/Navbar.vue';
 
 import { ref, computed } from 'vue';
 import conversationsData from '@/assets/data/conversations.json';
+import TabNavigation from '@/components/navbars/TabNavigation.vue';
 
 // Simulated logged-in user (Replace with actual auth logic)
 const loggedInUser = ref(localStorage.getItem('username')).value; // Get role
@@ -14,7 +15,7 @@ const chats = computed(() => {
         .filter(conversation =>
             conversation.messages.some(msg => msg.sender.toLowerCase() === loggedInUser)
         )
-        
+
         .map(conversation => {
             const lastMessage = conversation.messages[conversation.messages.length - 1];
             const otherParticipant = conversation.messages.find(msg => msg.sender.toLowerCase() !== loggedInUser);
@@ -23,35 +24,25 @@ const chats = computed(() => {
                 name: otherParticipant.sender,
                 message: lastMessage.text,
                 time: lastMessage.date,
-                img: 'assets/images/'+otherParticipant.sender.split(" ")[0].toLowerCase()+'.png',
+                img: 'assets/images/' + otherParticipant.sender.split(" ")[0].toLowerCase() + '.png',
                 unread: 1 // Modify based on unread logic
             };
         });
 });
+
+const currentTab = ref('Übersicht');
 </script>
 
 <template>
     <Navbar title="Chat"></Navbar>
-    <div class="tab-navigation" >
-        <div class="nav nav-underline d-inline-flex">
-            <div class="d-flex align-items-center ">
-                <div class="position-relative ">
-                    <input type="text" class="form-control rounded-pill search-bar pe-5" placeholder="Search..."
-                        aria-label="Search">
-                    <button class="text-primary btn position-absolute top-50 end-0 translate-middle-y" type="button">
-                        <i class="bi bi-search"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="nav-item">
-                <a class="nav-link text-primary active" aria-current="page" href="#">Übersicht</a>
-            </div>
-            <div class="nav-item">
-                <a class="nav-link" href="#">Archiv</a>
-            </div>
-        </div>
-    </div>
-    <div class="chat-container">
+    <TabNavigation :tabs="[
+        { name: 'Übersicht', label: 'Übersicht' },
+        { name: 'Archiv', label: 'Archiv' }
+        ]" :currentTab="currentTab" @update:tab="currentTab = $event" :background-class="'bg-body-secondary'" :show-search="false"/>
+    
+    <div class="content-container">
+        <div v-if="currentTab === 'Übersicht'">
+            
         <div class="chat-scroll">
             <ul class="list-unstyled  mb-0">
                 <li v-for="chat in chats" :key="chat.name" class=" p-2 border-bottom"
@@ -60,7 +51,8 @@ const chats = computed(() => {
                         class=" text-decoration-none d-flex justify-content-between">
                         <div class="col-9 d-flex flex-row">
                             <img :src="chat.img" alt="avatar"
-                                class="rounded-circle d-flex align-self-center me-2 shadow-1-strong" width="60" height="60">
+                                class="rounded-circle d-flex align-self-center me-2 shadow-1-strong" width="60"
+                                height="60">
                             <div class="col-8 pt-1">
                                 <p class="text-truncate fw-bold mb-0">{{ chat.name }}</p>
                                 <p class="text-truncate  small text-muted">{{ chat.message }}</p>
@@ -74,28 +66,25 @@ const chats = computed(() => {
                 </li>
             </ul>
         </div>
+        </div>
     </div>
 
     <Footer></Footer>
 </template>
 
 <style scoped>
-
-.chat-container {
+.content-container {
     height: calc(100vh - 170px);
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * 0.5);
+    padding-left: calc(var(--bs-gutter-x) * 0.5);
+    margin-right: auto;
+    margin-left: auto;
+    padding-bottom: unset !important;
+    padding-top: unset !important;
 }
 
-.search-bar {
-    transition: width 0.3s ease-in-out;
-    width: 0px;
-    background-color: transparent;
-    z-index: 100 !important;
-    position: relative;
-    border: 0;
-}
-
-.search-bar:focus {
-    width: 250px !important;
-}
 
 </style>

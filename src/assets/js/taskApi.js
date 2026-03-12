@@ -21,7 +21,7 @@ export function useTaskApi() {
                 "hiringOrganization": {
                     "@type": "Organization",
                     "name": "Soccer Club Linz United",
-                    "logo": "/assets/images/imgPlaceholder.png"
+                    "logo": "/imgPlaceholder.png"
                 },
                 "jobLocation": {
                     "@type": "Place",

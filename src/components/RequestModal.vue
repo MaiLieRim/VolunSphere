@@ -28,7 +28,7 @@
 </template>
 
 <script setup>
-import { ref, defineExpose, defineEmits } from "vue";
+import { ref } from "vue";
 const userRole = ref(localStorage.getItem('userRole')); // Get role
 const emit = defineEmits(['confirm']);
 

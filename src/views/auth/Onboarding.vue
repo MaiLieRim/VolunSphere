@@ -1,6 +1,6 @@
 <template>
     <div class="bg-primary-subtle container p-3 vh-100 ">
-        <img src="/src/assets/images/logo.png " class="w-50">
+        <img src="/src/assets/images/logo/logo.png " class="w-50">
         <h1 class="mt-5">Onboarding</h1>
         <p>Schön, dass sie sich freiwillig Engagieren möchten. Verfeinern Sie Ihr Profil, damit wir Sie über Sie über
             ein passendes Engagement informieren können, </p>

@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar bg-dark fixed-bottom">
+  <nav class="navbar bg-dark fixed-bottom ">
     <div class="container align-items-center">
       <router-link to="/" class="navbar-brand text-center position-relative" active-class="active-link">
         <i class="bi bi-house-door">
@@ -22,7 +22,7 @@
      
       <router-link to="/community" class="navbar-brand text-center position-relative" active-class="active-link">
         <i class="bi bi-emoji-sunglasses">
-          <div class="fs-4">Community</div>
+          <div class="fs-4">Netzwerk</div>
         </i>
       </router-link>
       <router-link 

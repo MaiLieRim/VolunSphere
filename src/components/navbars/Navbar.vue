@@ -2,7 +2,7 @@
 .picture {
   position: absolute;
   top: 0;
-  right: 0.75rem;
+
   display: flex;
   align-content: flex-end;
   padding: 0.75rem 0;
@@ -18,7 +18,7 @@
     <div class="container">
 
       <template v-if="!isHomePage">
-        <router-link class="navbar-brand d-flex align-items-center " to="/">
+        <router-link class="navbar-brand d-flex align-items-center " :to="backRoute || '/'">
           <i class="bi bi-arrow-left me-2"></i>
           {{ title }}
         </router-link>
@@ -29,11 +29,11 @@
             {{ title }}
           </div>
         </div>
-        <div class="d-flex justify-content-between w-100 mt-2">
+        <div class="d-flex justify-content-between  w-100 mt-2">
           <router-link to="/qrCode">
             <img src="/src/assets/images/qrCode.png" width="59" height="59" class="bg-light mb-1" alt="QRCode">
           </router-link>
-          <div class="d-flex align-items-end">
+          <div class="d-flex align-items-end justify-content-end">
 
             <router-link class="navbar-brand picture" :to="profileLink">
               <img :src="user.image" width="60" height="60" class="d-inline-block align-top rounded-circle mb-1"
@@ -53,9 +53,7 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                   <li><a class="dropdown-item disabled" href="#">Einstellungen</a></li>
-                  <li><a class="dropdown-item disabled" href="#">Another action</a></li>
-                  <li><a class="dropdown-item disabled" href="#">Something else here</a></li>
-                  <li>
+                   <li>
                     <hr class="dropdown-divider">
                   </li>
                   <li> <button class="dropdown-item" @click="handleLogout">Abmelden <i
@@ -67,7 +65,6 @@
           </div>
         </div>
       </template>
-
     </div>
   </nav>
 </template>
@@ -79,6 +76,10 @@ defineProps({
   title: {
     type: String,
     required: true
+  },
+   backRoute: {   // NEW
+    type: [String, Object],
+    default: null
   }
 });
 // Dynamic user data

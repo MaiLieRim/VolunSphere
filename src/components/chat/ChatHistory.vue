@@ -1,5 +1,4 @@
 <template>
-
     <div class="chat-container">
         <div class="chat-scroll">
             <div v-if="messages.length === 0" class="text-muted text-center">
@@ -21,10 +20,13 @@
     </div>
 
     <div class="message-box">
-        <input v-model="newMessage" type="text" class="form-control" placeholder="Nachricht eingeben..."
-            @keyup.enter="sendMessage">
-        <button class="btn btn-primary" @click="sendMessage">Senden</button>
+        <div class="d-flex container justify-content-between">
+            <input v-model="newMessage" type="text" class="form-control" placeholder="Nachricht eingeben..."
+                @keyup.enter="sendMessage">
+            <button class="btn btn-primary" @click="sendMessage">Senden</button>
+        </div>
     </div>
+
 </template>
 
 <script setup>
@@ -33,7 +35,7 @@ import MessageWithAction from "./MessageWithAction.vue"
 const user = ref(localStorage.getItem('username')); // Get role
 import conversationsData from '@/assets/data/conversations.json'; // Update with the correct path
 import Message from './Message.vue';
-import { formatDate } from '@/assets/js/formatDate.js'; 
+import { formatDate } from '@/assets/js/formatDate.js';
 
 const props = defineProps({
     name: {

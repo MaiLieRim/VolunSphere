@@ -39,7 +39,7 @@
 
         <div bottom class="d-flex align-items-center pt-2 pb-2 text-muted gap-6">
           <small class="col-3">
-            <img src="/src/assets/images/liselotte.png" alt="twbs" width="20" height="20"
+            <img src="/src/assets/images/profile-pictures/liselotte.png" alt="twbs" width="20" height="20"
               class="rounded-circle flex-shrink-0">
             {{ item.jobs }}
           </small>
@@ -66,14 +66,18 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, watch, defineProps } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { useTasks } from '@/composables/useTasks';
 
 defineProps({
     title: {
         type: String,
         required: true
+    },
+    items: {
+        type: Array
     }
+
 });
 
 const { allTasks } = useTasks();

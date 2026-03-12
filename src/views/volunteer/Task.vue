@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, defineProps } from 'vue';
+import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import Navbar from '@/components/navbars/Navbar.vue';
 import Footer from '@/components/Footer.vue';
@@ -55,7 +55,7 @@ textarea.form-control {
       <!-- Job Description -->
       <p class="card-body">
       <h5 class="card-title text-secondary"><i class="bi bi-file-earmark-text"></i> Beschreibung</h5>
-      <p class="card-text">{{ jobPosting?.description }}</p>
+      <div class="card-text">{{ jobPosting?.description }}</div>
       </p>
 
       <small class="text-secondary ">
