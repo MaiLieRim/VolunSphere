@@ -57,7 +57,7 @@ const sendMessage = () => {
             text: newMessage.value,
             time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
             date: new Date(),
-            avatar: "/assets/images/liselotte.png",
+            avatar: "/assets/images/profile-pictures/liselotte.png",
             sender: user.value,
         });
         newMessage.value = "";

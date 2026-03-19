@@ -6,106 +6,68 @@ import firedeptasks from '@/assets/data/firedeptasks.json';
 export function useTasks() {
     const { getTasks } = useTaskApi();
 
+    // Generic mapper for task objects
+    const mapTask = (job) => ({
+        title: job.title,
+        description: job.description,
+        occupationalCategory: job.occupationalCategory,
+        industry: job.industry,
+        location: job.jobLocation?.address?.addressLocality || '',
+        club: job.hiringOrganization?.name || '',
+        day: job.datePosted ? new Date(job.datePosted).getDate() : null,
+        month: job.datePosted ? new Date(job.datePosted).toLocaleString('default', { month: 'long' }) : '',
+        jobs: job.totalJobOpenings || 0,
+        image: job.hiringOrganization?.logo || '',
+        id: job.identifier?.value || '',
+        datePosted: job.datePosted || '',
+        validThrough: job.validThrough || '',
+        address: job.jobLocation?.address || {},
+        hiringOrganization: job.hiringOrganization || {},
+        applicationContact: job.applicationContact || {},
+        baseSalary: job.baseSalary || null,
+        skills: job.skills || [],
+        requirements: job.requirements || [],
+        startDate: job.startDate || '',
+        startTime: job.startTime || '',
+        workHours: job.workHours || '',
+        employmentType: job.employmentType || '',
+        responsibilities: job.responsibilities || [],
+        qualifications: job.qualifications || [],
+        isFullDay: job.isFullDay || false
+    });
+
+    // Combine all tasks into a single array
     const allTasks = computed(() => {
-        // Static tasks from tasklist.json
-        const staticTasks = tasklist.itemListElement.map(job => ({
-            title: job.title,
-            description: job.description,
-            occupationalCategory: job.occupationalCategory,
-            industry: job.industry,
-            location: job.jobLocation.address.addressLocality,
-            club: job.hiringOrganization.name,
-            day: new Date(job.datePosted).getDate(),
-            month: new Date(job.datePosted).toLocaleString('default', { month: 'long' }),
-            jobs: job.totalJobOpenings,
-            image: job.hiringOrganization.logo,
-            id: job.identifier.value,
-            datePosted: job.datePosted,
-            validThrough: job.validThrough,
-            address: job.jobLocation.address,
-            hiringOrganization: job.hiringOrganization,
-            applicationContact: job.applicationContact,
-            baseSalary: job.baseSalary,
-            skills: job.skills,
-            requirements: job.requirements,
-            startDate: job.startDate,
-            startTime: job.startTime,
-            workHours: job.workHours,
-            employmentType: job.employmentType,
-            responsibilities: job.responsibilities,
-            qualifications: job.qualifications,
-            isFullDay: job.isFullDay
-        }));
-
-        // Static tasks from firedeptasks.json
-        const fireDeptTasks = firedeptasks.itemListElement.map(job => ({
-            title: job.title,
-            description: job.description,
-            occupationalCategory: job.occupationalCategory,
-            industry: job.industry,
-            location: job.jobLocation.address.addressLocality,
-            club: job.hiringOrganization.name,
-            day: new Date(job.datePosted).getDate(),
-            month: new Date(job.datePosted).toLocaleString('default', { month: 'long' }),
-            jobs: job.totalJobOpenings,
-            image: job.hiringOrganization.logo,
-            id: job.identifier.value,
-            datePosted: job.datePosted,
-            validThrough: job.validThrough,
-            address: job.jobLocation.address,
-            hiringOrganization: job.hiringOrganization,
-            applicationContact: job.applicationContact,
-            baseSalary: job.baseSalary,
-            skills: job.skills,
-            requirements: job.requirements,
-            startDate: job.startDate,
-            startTime: job.startTime,
-            workHours: job.workHours,
-            employmentType: job.employmentType,
-            responsibilities: job.responsibilities,
-            qualifications: job.qualifications,
-            isFullDay: job.isFullDay
-        }));
-
-        // Custom tasks from localStorage
-        const customTasks = getTasks().map(job => ({
-            title: job.title,
-            description: job.description,
-            occupationalCategory: job.occupationalCategory,
-            industry: job.industry,
-            location: job.jobLocation.address.addressLocality,
-            club: job.hiringOrganization.name,
-            day: new Date(job.datePosted).getDate(),
-            month: new Date(job.datePosted).toLocaleString('default', { month: 'long' }),
-            jobs: job.totalJobOpenings,
-            image: job.hiringOrganization.logo,
-            id: job.identifier.value,
-            datePosted: job.datePosted,
-            validThrough: job.validThrough,
-            address: job.jobLocation.address,
-            hiringOrganization: job.hiringOrganization,
-            applicationContact: job.applicationContact,
-            baseSalary: job.baseSalary,
-            skills: job.skills,
-            requirements: job.requirements,
-            startDate: job.startDate,
-            startTime: job.startTime,
-            workHours: job.workHours,
-            employmentType: job.employmentType,
-            responsibilities: job.responsibilities,
-            qualifications: job.qualifications,
-            isFullDay: job.isFullDay
-        }));
+        const staticTasks = tasklist.itemListElement.map(mapTask);
+        const fireDeptTasks = firedeptasks.itemListElement.map(mapTask);
+        const customTasks = getTasks().map(mapTask);
 
         return [...staticTasks, ...fireDeptTasks, ...customTasks];
     });
 
+    // Get task by ID
     const getTaskById = (id) => {
         return allTasks.value.find(task => task.id === id);
     };
 
+    // Get all tasks for a specific organization
+    const getTasksByOrganization = (orgName) => {
+        return allTasks.value.filter(task => task.club === orgName);
+    };
+
+    // Get all tasks grouped by organization
+    const getAllTasksByOrganizations = () => {
+        return allTasks.value.reduce((acc, task) => {
+            if (!acc[task.club]) acc[task.club] = [];
+            acc[task.club].push(task);
+            return acc;
+        }, {});
+    };
+
     return {
         allTasks,
-        getTaskById
+        getTaskById,
+        getTasksByOrganization,
+        getAllTasksByOrganizations
     };
 }

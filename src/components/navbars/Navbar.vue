@@ -18,7 +18,7 @@
     <div class="container">
 
       <template v-if="!isHomePage">
-        <router-link class="navbar-brand d-flex align-items-center " :to="backRoute || '/'">
+        <router-link class="navbar-brand d-flex align-items-center text-truncate" :to="backRoute || '/'">
           <i class="bi bi-arrow-left me-2"></i>
           {{ title }}
         </router-link>

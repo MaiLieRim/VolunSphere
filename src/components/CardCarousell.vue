@@ -11,7 +11,7 @@
                 :class="{ 'active': index === activeIndex }">
                 <RouterLink :to="{ name: 'task', params: { itemId: item.id } }" class="card text-decoration-none">
                     <div class="img-with-date">
-                        <img :src="'src/assets/images/tasks/' + item.image" class="card-img-top img-fluid" height="215">
+                        <img :src="`/assets/images/tasks/${item.image}`" class="card-img-top img-fluid" height="215">
                         <div class="date date-box col-3">
                             <small>{{ item.club }}</small>
                             <h1>{{ item.day }}</h1>

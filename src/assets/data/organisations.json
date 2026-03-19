@@ -1,8 +1,67 @@
 [
   {
     "@context": "https://schema.org",
+    "@type": "SportsOrganization",
+    "identifier": "UID-AT5001-01",
+    "name": "Soccer Club Linz United",
+    "description": "Soccer Club Linz United is a community-focused football club based in Linz, Austria. The club promotes youth development, competitive football, and community engagement, offering training and matches for all age groups.",
+    "url": "https://www.linzeunited.at",
+    "logo": "soccerLogo.png",
+    "foundingDate": "2001-06-15",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Sportplatzstraße 10",
+      "addressLocality": "Linz",
+      "postalCode": "4020",
+      "addressCountry": "AT"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+43 650 1122334",
+      "contactType": "general",
+      "email": "info@linzunited.at"
+    },
+    "memberOf": {
+      "@type": "SportsOrganization",
+      "name": "Österreichischer Fußball-Bund"
+    },
+    "areaServed": {
+      "@type": "Place",
+      "name": "Linz, Österreich"
+    },
+    "member": [
+      {
+        "@type": "Person",
+        "name": "Michael Huber",
+        "jobTitle": "Vereinspräsident",
+        "email": "m.huber@linzunited.at"
+      },
+      {
+        "@type": "Person",
+        "name": "Sabine Mayer",
+        "jobTitle": "Trainerin Jugendmannschaft",
+        "email": "s.mayer@linzunited.at"
+      },
+      {
+        "@type": "Person",
+        "name": "Daniel Schmidt",
+        "jobTitle": "Kapitäner Herrenmannschaft"
+      },
+      {
+        "@type": "Person",
+        "name": "Liselotte Pulver",
+        "jobTitle": "Gerätewart"
+      }
+    ],
+    "sameAs": [
+      "https://www.facebook.com/linzunited",
+      "https://www.instagram.com/linzunited"
+    ]
+  },
+  {
+    "@context": "https://schema.org",
     "@type": "Organization",
-    "identifier": "UID-AT1710-28",
+    "identifier": "UID-AT17320-28",
     "name": "Freiwillige Feuerwehr Fakehausen",
     "description": "Die Freiwillige Feuerwehr Fakehausen wurde 1952 gegründet und ist seitdem ein verlässlicher Partner für die Sicherheit der Stadt. Mit moderner Technik und fundiertem Wissen stehen die Mitglieder rund um die Uhr bereit, um Brände zu löschen, Menschen zu retten und Gefahren zu beseitigen.",
     "url": "https://www.feuerwehr-fakehausen.at",
@@ -46,7 +105,8 @@
         "@type": "Person",
         "name": "Lukas Huber",
         "jobTitle": "Atemschutzwart"
-      },{
+      },
+      {
         "@type": "Person",
         "name": "Liselotte Pulver",
         "jobTitle": "Gerätewart"
@@ -57,14 +117,14 @@
       "https://www.twitter.com/ff_fakehausen"
     ]
   },
-
   {
     "@context": "https://schema.org",
     "@type": "Organization",
     "identifier": "UID-AT2844-19",
-    "name": "Freiwillige Feuerwehr Musterstadt",
-    "description": "Die Freiwillige Feuerwehr Musterstadt wurde 1965 gegründet und ist seitdem ein verlässlicher Partner für die Sicherheit der Stadt. Mit moderner Technik und fundiertem Wissen stehen die Mitglieder rund um die Uhr bereit, um Brände zu löschen, Menschen zu retten und Gefahren zu beseitigen.",
-    "url": "https://www.feuerwehr-musterstadt.at",
+    "name": "Müllsammeln an der Donau",
+    "description": "Eine freiwillige Umweltinitiative, die sich der regelmäßigen Reinigung der Donauufer widmet. Wir setzen uns aktiv für den Naturschutz und die Plastikvermeidung in unserer Region ein.",
+    "url": "https://www.muellsammeln-donau.at",
+    "logo": "müllsammelnLogo.png",
     "foundingDate": "1965-04-12",
     "address": {
       "@type": "PostalAddress",
@@ -77,11 +137,11 @@
       "@type": "ContactPoint",
       "telephone": "+43 650 1234567",
       "contactType": "emergency",
-      "email": "info@feuerwehr-musterstadt.at"
+      "email": "info@muellsammeln-donau.at"
     },
     "memberOf": {
       "@type": "NGO",
-      "name": "Feuerwehr"
+      "name": "Umwelt"
     },
     "member": [
       {
@@ -94,21 +154,21 @@
         "name": "Julia Maier",
         "jobTitle": "Schriftführerin"
       },
-       {
+      {
         "@type": "Person",
         "name": "Herbert Mayer",
         "jobTitle": "Administrator"
       }
-      
     ]
   },
   {
     "@context": "https://schema.org",
     "@type": "Organization",
     "identifier": "UID-AT3321-55",
-    "name": "Technische Rettungseinheit Neustadt",
-    "description": "Die Technische Rettungseinheit Neustadt wurde 1978 gegründet und ist seitdem ein verlässlicher Partner für die Sicherheit der Stadt. Mit moderner Technik und fundiertem Wissen stehen die Mitglieder rund um die Uhr bereit, um Notfälle zu bewältigen und Menschen zu retten.",
-    "url": "https://www.rettung-neustadt.at",
+    "name": "Wiener Lerndreieck",
+    "description": "Das Wiener Lerndreieck bietet pädagogische Unterstützung und Nachhilfe für Schüler. Unser Ziel ist die Förderung individueller Talente und der Ausgleich von Bildungschancen durch qualifizierte Lernbegleitung.",
+    "url": "https://www.lerndreieck-wien.at",
+    "logo": "wienerLerndreieckLogo.png",
     "foundingDate": "1978-09-05",
     "address": {
       "@type": "PostalAddress",
@@ -121,22 +181,22 @@
       "@type": "ContactPoint",
       "telephone": "+43 650 9876543",
       "contactType": "support",
-      "email": "kontakt@rettung-neustadt.at"
+      "email": "kontakt@lerndreieck.at"
     },
     "memberOf": {
       "@type": "NGO",
-      "name": "Österreichischer Zivilschutzverband"
+      "name": "Bildung"
     },
     "member": [
       {
         "@type": "Person",
         "name": "Thomas Aigner",
-        "jobTitle": "Einsatzleiter"
+        "jobTitle": "Pädagogischer Leiter"
       },
       {
         "@type": "Person",
         "name": "Eva Koller",
-        "jobTitle": "Rettungssanitäterin"
+        "jobTitle": "Lernbetreuerin"
       },
       {
         "@type": "Person",
@@ -153,6 +213,7 @@
     "description": "Die Bergrettung Alpenblick wurde 1984 gegründet und ist seitdem ein verlässlicher Partner für die Sicherheit der Stadt. Mit moderner Technik und fundiertem Wissen stehen die Mitglieder rund um die Uhr bereit, um Bergungsfälle zu bewältigen und Menschen zu retten.",
     "url": "https://www.bergrettung-alpenblick.at",
     "foundingDate": "1984-02-18",
+    "logo": "bergrettungLogo.png",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Alpenweg 9",

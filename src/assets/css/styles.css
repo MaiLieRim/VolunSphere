@@ -45,9 +45,9 @@
   }
 }
 @media (min-width: 1400px) {
-   .content-container {
-        max-width: 1320px;
-    }
+  .content-container {
+    max-width: 1320px;
+  }
 }
 
 .bg-dark, .bg-primary, .btn-primary {

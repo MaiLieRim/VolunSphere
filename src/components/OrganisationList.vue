@@ -27,21 +27,18 @@
             class="list-group-item list-group-item-action align-content-stretch d-flex " aria-current="true">
 
             <div class="date-box col-3">
-                <img v-if="item.logo" :src="`/src/assets/images/logo/${item.logo}`" class="img-fluid w-100" alt="logo"/>
+                <img v-if="item.logo" :src="`/assets/images/logo/${item.logo}`" class="img-fluid w-100"
+                    alt="logo" />
             </div>
-            <div class="container col-9 content h-100">
+            <div class="container col-9 content d-flex flex-column my-1">
                 <div>
                     <small class="opacity-50">{{ item.type }}</small>
-                    <h4>{{ item.title }}</h4>
+                    <h4 class="mb-0">{{ item.title }}</h4>
                 </div>
 
-                <div bottom class="d-flex align-items-center pt-2 pb-2 text-muted gap-6">
-                    <small class="col-3">
-                        <i class="bi bi-person-circle"></i>
-                        {{ item.members }}
-                    </small>
-
-                </div>
+                <small class="mt-auto">
+                    <i class="bi bi-person-circle"></i> {{ item.members }}
+                </small>
             </div>
         </RouterLink>
 

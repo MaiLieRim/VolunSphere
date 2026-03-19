@@ -31,13 +31,13 @@
         <small>{{ item.month }}</small>
       </div>
 
-      <div class="container col-9 content h-100">
+      <div class="container col-9 content d-flex flex-column my-2">
         <div>
           <small class="opacity-50">{{ item.location }}, {{ item.industry }}</small>
           <h4>{{ item.title }}</h4>
         </div>
 
-        <div bottom class="d-flex align-items-center pt-2 pb-2 text-muted gap-6">
+        <div  class="mt-auto d-flex align-items-center text-muted gap-6">
           <small class="col-3">
             <img src="/src/assets/images/profile-pictures/liselotte.png" alt="twbs" width="20" height="20"
               class="rounded-circle flex-shrink-0">
