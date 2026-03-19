@@ -1,10 +1,20 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import L from 'leaflet'
+
+import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
+import markerIcon from 'leaflet/dist/images/marker-icon.png';
+import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 import data from '@/assets/data/tasklist.json'
 const map = ref(null)
 const selectedTask = ref(null) // <-- controls bottom card
+delete L.Icon.Default.prototype._getIconUrl;
 
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: markerIcon2x,
+  iconUrl: markerIcon,
+  shadowUrl: markerShadow,
+});
 const cityCoordinates = {
     Linz: [48.3069, 14.2858],
     Wien: [48.2082, 16.3738],
