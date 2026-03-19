@@ -77,16 +77,15 @@ defineProps({
     type: String,
     required: true
   },
-   backRoute: {   // NEW
+   backRoute: {  
     type: [String, Object],
-    default: null
+    default: null 
   }
 });
+
 // Dynamic user data
 const user = ref({});
-const route = useRoute();
-const router = useRouter();
-const isHomePage = computed(() => route.path === '/');
+const isHomePage = computed(() => useRoute().path === '/');
 
 // Load user data dynamically
 const loadUserData = async () => {
@@ -109,6 +108,6 @@ const profileLink = computed(() => {
 const handleLogout = () => {
   localStorage.removeItem('authToken');
   localStorage.removeItem('userRole');
-  router.push('/login');
+  useRouter().push('/login');
 };
 </script>

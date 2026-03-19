@@ -12,7 +12,7 @@ defineProps({
 const route = useRoute();
 const { getTaskById } = useTasks();
 const jobPosting = computed(() => getTaskById(route.params.itemId));
-
+const backRoute = computed(() => route.query.backRoute || '/');
 // Application form data
 const application = ref({
   name: 'Liselotte Pulver',
@@ -24,6 +24,7 @@ const application = ref({
 const submitApplication = () => {
   alert('Bewerbung erfolgreich eingereicht!'); // Handle the actual submission logic here
 };
+
 </script>
 <style scoped>
 textarea.form-control {
@@ -36,7 +37,7 @@ textarea.form-control {
 </style>
 
 <template>
-  <Navbar title="Aufgabe"></Navbar>
+  <Navbar title="Aufgabe" :backRoute="backRoute"></Navbar>
   <div class="content-container">
     <div v-if="jobPosting">
       <!-- Job Title -->

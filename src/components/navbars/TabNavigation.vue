@@ -32,7 +32,7 @@
 
                         <!-- Optional search button -->
                         <div v-if="showSearch" class="nav-item">
-                            <RouterLink class="nav-link" to="/search">
+                            <RouterLink class="nav-link" to="/task-search">
                                 <i class="bi bi-search"></i>
                             </RouterLink>
                         </div>

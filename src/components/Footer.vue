@@ -47,7 +47,7 @@ import {computed} from 'vue';
 
 const route = useRoute();
 const isChatActive = computed(() => route.path.startsWith("/chat"));
-const isTaskRelated = computed(() => route.path.startsWith("/task") || route.path.startsWith("/tasks") || route.path.startsWith("/search"));
+const isTaskRelated = computed(() => route.path.startsWith("/task") || route.path.startsWith("/tasks") || route.path.startsWith("/task-search"));
 </script>
 
 <style >

@@ -8,7 +8,7 @@ import Organisation from '@/views/admin/Organisation.vue';
 import AddTask from '@/views/admin/AddTask.vue';
 import Tasks from '@/views/volunteer/Tasks.vue';
 import Verifications from '@/views/admin/Verifications.vue';
-import Search from '@/views/shared/Search.vue';
+import TaskSearch from '@/views/shared/TaskSearch.vue';
 import Chat from '@/views/shared/Chat.vue';
 import Community from '@/views/shared/Community.vue';
 import Task from '@/views/volunteer/Task.vue';
@@ -21,7 +21,7 @@ const router = createRouter({
   routes: [
     { path: '/', name: 'home', component: Home, meta: { requiresAuth: true } },
     { path: '/qrcode', name: 'qrcode', component: QRcode, meta: { requiresAuth: true } },
-    { path: '/search', name: 'search', component: Search, meta: { requiresAuth: true } },
+    { path: '/task-search', name: 'tasksearch', component: TaskSearch, meta: { requiresAuth: true } },
     { path: '/chat/:name', name: 'chat', component: Chat, meta: { requiresAuth: true } },
     { path: '/chatarchiv', name: 'chatarchiv', component: ChatArchiv, meta: { requiresAuth: true } },
     { path: '/community', name: 'community', component: Community, meta: { requiresAuth: true } },

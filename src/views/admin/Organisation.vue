@@ -17,7 +17,7 @@
         <div class="cover bg-secondary">
             <div class="row">
                 <div class="col-4 ">
-                    <img src="/src/assets/images/tasks/firedepartment/fireflyVolunteer.png" alt="profile picture" width="118" height="121"
+                    <img src="/assets/images/tasks/firedepartment/fireflyVolunteer.png" alt="profile picture" width="118" height="121"
                         class="profile-img rounded-circle">
                 </div>
                 <div class="col-8 ps-0 text-light">
@@ -49,9 +49,6 @@
                 </div>
             </div>
         </div>
-
-
-
 
         <div class="card cover-subtext bg-secondary-subtle shadow-sm">
             <div class="card-body ">
@@ -143,7 +140,7 @@
         </div>
     </div>
     <!-- Task View -->
-    <div v-if="currentTab === 'Aufgaben'">
+    <div v-if="currentTab === 'Aufgaben'" class="content-container">
         <div class="m-4">
             <h2 class="mb-3">Aufgaben der Organisation</h2>
             <div class="d-flex justify-content-end">
@@ -160,14 +157,14 @@
         <TaskList :items="items" :title="'Abgeschlossene Aufgaben'" class="mt-4"></TaskList>
     </div>
 
-    <div v-if="currentTab === 'Nachweise'">
+    <div v-if="currentTab === 'Nachweise'" class="content-container">
         <h2 class="mt-4">Nachweise der Organisation</h2>
         <CardBody :message="`Sie haben ${items.length} neue Nachweisanfragen, bitte geben Sie diese frei.`"
             class="mt-2">
         </CardBody>
         <TaskList :items="items" :title="'Offene Nachweise'" class="mt-4"></TaskList>
     </div>
-    <div v-if="currentTab === 'Mitglieder'">
+    <div v-if="currentTab === 'Mitglieder'" class="content-container">
         <div class="mt-4">
             <h2 class="mb-3">Mitglieder der Organisation</h2>
             <TableSearch :items="org.member" />
