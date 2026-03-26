@@ -27,7 +27,7 @@ export function useTasks() {
         baseSalary: job.baseSalary || null,
         skills: job.skills || [],
         requirements: job.requirements || [],
-        startDate: job.startDate || '',
+        jobStartDate: job.jobStartDate || '',
         startTime: job.startTime || '',
         workHours: job.workHours || '',
         employmentType: job.employmentType || '',

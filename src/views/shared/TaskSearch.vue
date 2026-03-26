@@ -1,12 +1,13 @@
 <script setup>
-import { ref, computed ,onMounted} from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import Footer from '@/components/Footer.vue'
 import Navbar from '@/components/navbars/Navbar.vue'
 import TaskList from '@/components/TaskList.vue'
 import FilterModal from '@/components/popup/Filter.vue'
 import { useTasks } from '@/composables/useTasks'
 import MapView from '@/components/TaskSearch/MapView.vue'
-import {useRoute} from "vue-router";
+import CalendarView from '@/components/TaskSearch/CalendarView.vue'
+import { useRoute } from "vue-router";
 const route = useRoute()
 const { allTasks } = useTasks()
 const items = allTasks
@@ -25,10 +26,10 @@ const filters = ref({
     to: ''
 })
 onMounted(() => {
-  const tab = route.query.tab
-  if (tab === 'MapView' || tab === 'ListView' || tab === 'CalendarView') {
-    currentView.value = tab
-  }
+    const tab = route.query.tab
+    if (tab === 'MapView' || tab === 'ListView' || tab === 'CalendarView') {
+        currentView.value = tab
+    }
 })
 // Open modal
 const openFilter = () => filterModalRef.value.open()
@@ -97,21 +98,17 @@ const updateFilters = (newFilters) => {
             </button>
 
             <!-- Filter modal -->
-            <FilterModal
-                ref="filterModalRef"
-                :initialFilters="filters"
-                @applyFilters="updateFilters"
-            />
+            <FilterModal ref="filterModalRef" :initialFilters="filters" @applyFilters="updateFilters" />
 
             <!-- View switch -->
             <div class="d-flex align-items-center gap-2">
-                <button class="btn btn-link p-1" @click="setView('list')" :class="buttonClass('list')">
+                <button class="btn btn-link p-1" @click="setView('ListView')" :class="buttonClass('ListView')">
                     <i class="bi bi-list-ul"></i>
                 </button>
-                <button class="btn btn-link p-1" @click="setView('calendar')" :class="buttonClass('calendar')">
+                <button class="btn btn-link p-1" @click="setView('CalendarView')" :class="buttonClass('CalendarView')">
                     <i class="bi bi-calendar4-week"></i>
                 </button>
-                <button class="btn btn-link p-1" @click="setView('map')" :class="buttonClass('map')">
+                <button class="btn btn-link p-1" @click="setView('MapView')" :class="buttonClass('MapView')">
                     <i class="bi bi-map"></i>
                 </button>
             </div>
@@ -119,31 +116,47 @@ const updateFilters = (newFilters) => {
     </nav>
 
 
-        <div class="content-container" v-if="currentView === 'list'">
-            <div class="d-flex justify-content-between align-items-center">
-                <h2 >Suchergebnisse</h2>
-                <ul class="mb-3 tags gap-2 d-flex flex-wrap">
-                    <li
-                        v-for="filter in activeFilters"
-                        :key="filter.key"
-                        class="btn badge bg-light text-dark"
-                        @click="removeFilter(filter.key)"
-                    >
-                        {{ filter.label }}
-                    </li>
-                </ul>
-            </div>
-
-            <TaskList title="" :tasks="items" />
+    <div class="content-container" v-if="currentView === 'ListView'">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Suchergebnisse</h2>
+            <ul class="mb-3 tags gap-2 d-flex flex-wrap">
+                <li v-for="filter in activeFilters" :key="filter.key" class="btn badge bg-light text-dark shadow-sm border"
+                    @click="removeFilter(filter.key)">
+                    {{ filter.label }} &times;
+                </li>
+            </ul>
         </div>
 
-        <div v-else-if="currentView === 'calendar'">
-            <p>Calendar View</p>
-        </div>
+        <TaskList title="" :tasks="items" />
+    </div>
 
-        <div v-else>
-            <MapView />
+    <div v-else-if="currentView === 'CalendarView'" class="content-container">
+        <div class="d-flex justify-content-end  ">
+            <ul class=" tags gap-2 d-flex flex-wrap">
+                <li v-for="filter in activeFilters" :key="filter.key" class="btn badge bg-light text-dark shadow-sm border"
+                    @click="removeFilter(filter.key)">
+                    {{ filter.label }} &times;
+                </li>
+            </ul>
         </div>
+        
+        <CalendarView :tasks="items" @taskClicked="handleTaskClick" />
+    </div>
+
+   <div v-else class="position-relative w-100 h-100">
+        <div class="position-absolute top-0 end-0 p-3" style="z-index: 1000; pointer-events: none;">
+            <ul class="mb-0 me-4 mt-2 tags gap-2 d-flex justify-content-end flex-wrap">
+                <li v-for="filter in activeFilters" :key="filter.key" 
+                    class="btn badge bg-light text-dark shadow-sm border"
+                    style="pointer-events: auto;"
+                    @click="removeFilter(filter.key)">
+                    {{ filter.label }} &times;
+                </li>
+            </ul>
+        </div>
+        
+        <MapView />
+    </div>
 
 
     <Footer />

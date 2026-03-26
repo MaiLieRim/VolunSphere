@@ -12,6 +12,7 @@ export function useTaskApi() {
                 "occupationalCategory": taskData.category,
                 "validThrough": new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0],
                 "datePosted": new Date().toISOString().split('T')[0],
+                "jobStartDate": taskData.startDate,
                 "industry": taskData.category,
                 "identifier": {
                     "@type": "PropertyValue",
@@ -46,7 +47,6 @@ export function useTaskApi() {
                 "totalJobOpenings": 1,
                 "skills": taskData.skills,
                 "requirements": taskData.requirements,
-                "startDate": taskData.startDate,
                 "startTime": taskData.startTime,
                 "isFullDay": taskData.recurring
             };

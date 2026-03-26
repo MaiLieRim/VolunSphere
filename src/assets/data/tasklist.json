@@ -8,7 +8,7 @@
     "logo": "https://www.mima.at/assets/images/8/Logo%20mima%20ohne%20Sonne%20rgb-a8022249.png",
     "identifier": {
         "@type": "PropertyValue",
-        "value": "2024-05-13T00:00",
+        "value": "2026-05-13T00:00",
         "name": "updatedAt"
     },
     "numberOfItems": 5,
@@ -19,12 +19,13 @@
             "title": "Ehrenamtlicher Helfer für Katastrophenschutz (m/w/d)",
             "description": "Unterstützen Sie die Einsatzkräfte bei der Organisation und Durchführung von Einsätzen im Katastrophenschutz. Aufgaben umfassen Logistik, Erste Hilfe und Kommunikation.",
             "occupationalCategory": "Katastrophenschutz",
-            "validThrough": "2025-12-31",
-            "datePosted": "2025-01-10",
+            "validThrough": "2026-12-31",
+            "datePosted": "2026-01-10",
+            "jobStartDate": "2026-03-28",
             "industry": "Rettungsdienst",
             "identifier": {
                 "@type": "PropertyValue",
-                "value": "KATA2025-001",
+                "value": "KATA2026-001",
                 "name": "Gemeinde Graz"
             },
             "hiringOrganization": {
@@ -66,12 +67,13 @@
             "title": "Ehrenamtlicher Unterstützer im Tierheim (m/w/d)",
             "description": "Pflege und Betreuung von Tieren im Tierheim, Unterstützung bei Reinigungsarbeiten und Organisation von Adoptionstagen.",
             "occupationalCategory": "Tierschutz",
-            "validThrough": "2025-12-31",
-            "datePosted": "2025-01-15",
+            "validThrough": "2026-12-31",
+            "datePosted": "2026-01-15",
+            "jobStartDate": "2026-03-28",
             "industry": "Tierschutz",
             "identifier": {
                 "@type": "PropertyValue",
-                "value": "TIER2025-002",
+                "value": "TIER2026-002",
                 "name": "Tierschutzverein Wien"
             },
             "hiringOrganization": {
@@ -113,12 +115,13 @@
             "title": "Ehrenamtlicher Sprachlehrer für Geflüchtete (m/w/d)",
             "description": "Helfen Sie geflüchteten Menschen, Deutsch zu lernen. Unterstützung bei der Sprachförderung in kleinen Gruppen oder Einzelunterricht.",
             "occupationalCategory": "Bildung",
-            "validThrough": "2025-12-31",
-            "datePosted": "2025-01-18",
+            "validThrough": "2026-12-31",
+            "datePosted": "2026-05-18",
+            "jobStartDate": "2026-03-28",
             "industry": "Sozialarbeit",
             "identifier": {
                 "@type": "PropertyValue",
-                "value": "SPRACH2025-003",
+                "value": "SPRACH2026-003",
                 "name": "Sprachhilfe Österreich"
             },
             "hiringOrganization": {
@@ -160,8 +163,9 @@
             "title": "Feuerwehrübung Überschwemmung",
             "description": "Feuerwehrübung im Rahmen der Katastrophenhilfe bei Überschwemmung in Linz.",
             "occupationalCategory": "Test Kategorie",
-            "validThrough": "2024-11-11",
-            "datePosted": "2024-05-13",
+            "validThrough": "2026-11-11",
+            "datePosted": "2026-05-13",
+            "jobStartDate": "2026-11-11",
             "industry": "Feuerwehr",
             "identifier": {
                 "@type": "PropertyValue",
@@ -231,12 +235,13 @@
             "title": "Essensauslieferung in Lasberg",
             "description": "Wir suchen eine Person, die Montags von 13:00 bis 15:00 Uhr Essenslieferungen in Lasberg durchführen kann.",
             "occupationalCategory": "Freiwilligenarbeit",
-            "validThrough": "2024-12-31",
-            "datePosted": "2024-01-23",
+            "validThrough": "2026-12-31",
+            "datePosted": "2026-01-23",
+            "jobStartDate": "2026-03-28",
             "industry": "Freiwilligenarbeit",
             "identifier": {
               "@type": "PropertyValue",
-              "value": "Essensauslieferung-2024-01",
+              "value": "Essensauslieferung-2026-01",
               "name": "FA Lasberg"
             },
             "hiringOrganization": {
@@ -298,12 +303,13 @@
             "title": "Event Organisation Unterstützung",
             "description": "Bestätigung über die Unterstützung bei der Organisation eines Benefiz-Events.",
             "occupationalCategory": "Eventmanagement",
-            "validThrough": "2025-12-31",
-            "datePosted": "2024-05-14",
+            "validThrough": "2026-12-31",
+            "datePosted": "2026-05-14",
+            "jobStartDate": "2026-06-01",
             "industry": "Soziales Engagement",
             "identifier": {
                 "@type": "PropertyValue",
-                "value": "NACH2024-002",
+                "value": "NACH2026-002",
                 "name": "Gemeinde"
             },
             "hiringOrganization": {
