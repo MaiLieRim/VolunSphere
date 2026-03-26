@@ -10,10 +10,8 @@
 
     </template>
     <template v-if="userRole === 'volunteer'">
-      <h1>Ihre Nachweise auf einem Blick</h1>
       <SwipeList title="Offene Anfragen" :items="requested"></SwipeList>
-      <SwipeList title="Zertifizierte Nachweise" :items="certified"></SwipeList>
-      <SwipeList title="Bestätigten Nachweise" :items="confirmed"></SwipeList>
+      <TaskList title="Nachweise" :items="certified"></TaskList>
       <div class="justify-content-center gap-1 d-flex space">
         <button class="btn btn-lg btn-outline-primary">
           <i class="fs-1 bi bi-printer"></i>
@@ -34,6 +32,7 @@ import { ref, onMounted } from 'vue';
 import Navbar from '@/components/navbars/Navbar.vue';
 import Footer from '@/components/Footer.vue';
 import SwipeList from '@/components/SwipeList.vue';
+import TaskList from '@/components/TaskList.vue';
 import verifications from '@/assets/data/verifications.json';
 import CardBody from '@/components/CardBody.vue';
 

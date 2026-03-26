@@ -2,6 +2,7 @@ import { computed } from 'vue';
 import { useTaskApi } from '@/assets/js/taskApi';
 import tasklist from '@/assets/data/tasklist.json';
 import firedeptasks from '@/assets/data/firedeptasks.json';
+import Logo from '@/components/Logo.vue';
 
 export function useTasks() {
     const { getTasks } = useTaskApi();
@@ -17,7 +18,8 @@ export function useTasks() {
         day: job.datePosted ? new Date(job.datePosted).getDate() : null,
         month: job.datePosted ? new Date(job.datePosted).toLocaleString('default', { month: 'long' }) : '',
         jobs: job.totalJobOpenings || 0,
-        image: job.hiringOrganization?.logo || '',
+        image: job.image || '/placeholder.png',
+        logo: job.hiringOrganization?.logo || '/placeholder.png',
         id: job.identifier?.value || '',
         datePosted: job.datePosted || '',
         validThrough: job.validThrough || '',

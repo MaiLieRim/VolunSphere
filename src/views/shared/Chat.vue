@@ -1,5 +1,4 @@
 <script setup>
-import { ref } from 'vue';
 import { useRoute } from 'vue-router';
 import ChatHistory from '@/components/chat/ChatHistory.vue';
 import ChatNavbar from '@/components/chat/ChatNavbar.vue';
@@ -15,7 +14,6 @@ const route = useRoute();
   <div class="content-container">
     <ChatHistory :name="route.params.name"></ChatHistory>
   </div>
-  <Footer></Footer>
 </template>
 
 <style></style>

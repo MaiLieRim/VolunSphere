@@ -24,7 +24,7 @@ const chats = computed(() => {
                 name: otherParticipant.sender,
                 message: lastMessage.text,
                 time: lastMessage.date,
-                img: 'assets/images/' + otherParticipant.sender.split(" ")[0].toLowerCase() + '.png',
+                img: 'assets/images/profile-pictures/' + otherParticipant.sender.split(" ")[0].toLowerCase() + '.png' || 'assets/images/profile-pictures/default.png',
                 unread: 1 // Modify based on unread logic
             };
         });
@@ -52,7 +52,7 @@ const currentTab = ref('Übersicht');
                         <div class="col-9 d-flex flex-row">
                             <img :src="chat.img" alt="avatar"
                                 class="rounded-circle d-flex align-self-center me-2 shadow-1-strong" width="60"
-                                height="60">
+                                height="60" @error="$event.target.src = '/assets/images/profile-pictures/default.png'">
                             <div class="col-8 pt-1">
                                 <p class="text-truncate fw-bold mb-0">{{ chat.name }}</p>
                                 <p class="text-truncate  small text-muted">{{ chat.message }}</p>

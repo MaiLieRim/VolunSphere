@@ -23,6 +23,7 @@
             "datePosted": "2026-01-10",
             "jobStartDate": "2026-03-28",
             "industry": "Rettungsdienst",
+            "image": "imgPlaceholder.png",
             "identifier": {
                 "@type": "PropertyValue",
                 "value": "KATA2026-001",
@@ -58,7 +59,7 @@
             "responsibilities": "Unterstützung der Einsatzleitung, Logistikkoordination, Erste Hilfe.",
             "skills": "Teamarbeit, Organisationstalent, Grundkenntnisse in Erster Hilfe",
             "qualifications": "Keine besonderen Anforderungen, Schulungen werden bereitgestellt.",
-            "directApply": true,   
+            "directApply": true,
             "totalJobOpenings": 2
         },
         {
@@ -71,6 +72,7 @@
             "datePosted": "2026-01-15",
             "jobStartDate": "2026-03-28",
             "industry": "Tierschutz",
+            "image": "imgPlaceholder.png",
             "identifier": {
                 "@type": "PropertyValue",
                 "value": "TIER2026-002",
@@ -119,6 +121,7 @@
             "datePosted": "2026-05-18",
             "jobStartDate": "2026-03-28",
             "industry": "Sozialarbeit",
+            "image":  "/imgPlaceholder.png",
             "identifier": {
                 "@type": "PropertyValue",
                 "value": "SPRACH2026-003",
@@ -128,7 +131,7 @@
                 "@type": "Organization",
                 "name": "Sprachhilfe Österreich",
                 "sameAs": "https://www.sprachhilfe.at",
-                "logo": "/firedepartment/firedepPlaceholder.png"
+                "logo": "wienerLerndreieckLogo.png"
             },
             "jobLocation": {
                 "@type": "Place",
@@ -167,6 +170,7 @@
             "datePosted": "2026-05-13",
             "jobStartDate": "2026-11-11",
             "industry": "Feuerwehr",
+            "image": "firedepartment/firedepimgPlaceholder.png",
             "identifier": {
                 "@type": "PropertyValue",
                 "value": "Test Identifier Id",
@@ -176,7 +180,7 @@
                 "@type": "Organization",
                 "name": "Freiwillige Feuerwehr Fakehausen",
                 "sameAs": "https://www.example.com",
-                "logo": "/imgPlaceholder.png"
+                "logo": "/feuerwehrLogo.png"
             },
             "jobLocation": {
                 "@type": "Place",
@@ -239,65 +243,66 @@
             "datePosted": "2026-01-23",
             "jobStartDate": "2026-03-28",
             "industry": "Freiwilligenarbeit",
+            "image": "imgPlaceholder.png",
             "identifier": {
-              "@type": "PropertyValue",
-              "value": "Essensauslieferung-2026-01",
-              "name": "FA Lasberg"
+                "@type": "PropertyValue",
+                "value": "Essensauslieferung-2026-01",
+                "name": "FA Lasberg"
             },
             "hiringOrganization": {
-              "@type": "Organization",
-              "name": "FO Linz",
-              "sameAs": "https://www.example-organization.com",
-              "logo": "/imgPlaceholder.png"
+                "@type": "Organization",
+                "name": "FO Linz",
+                "sameAs": "https://www.example-organization.com",
+                "logo": "/imgPlaceholder.png"
             },
             "jobLocation": {
-              "@type": "Place",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "Essensauslieferungsweg 1",
-                "addressLocality": "Lasberg",
-                "postalCode": "4192",
-                "addressCountry": "Österreich",
-                "addressRegion": "Oberösterreich"
-              }
+                "@type": "Place",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Essensauslieferungsweg 1",
+                    "addressLocality": "Lasberg",
+                    "postalCode": "4192",
+                    "addressCountry": "Österreich",
+                    "addressRegion": "Oberösterreich"
+                }
             },
             "applicationContact": {
-              "@type": "ContactPoint",
-              "email": "info@example-organization.com",
-              "telephone": "+43-664-1234567",
-              "url": "https://www.example-organization.com/application"
+                "@type": "ContactPoint",
+                "email": "info@example-organization.com",
+                "telephone": "+43-664-1234567",
+                "url": "https://www.example-organization.com/application"
             },
             "baseSalary": {
-              "@type": "MonetaryAmount",
-              "value": {
-                "@type": "QuantitativeValue",
-                "unitText": "HOUR",
-                "minValue": 10,
-                "maxValue": 15
-              },
-              "currency": "EUR"
+                "@type": "MonetaryAmount",
+                "value": {
+                    "@type": "QuantitativeValue",
+                    "unitText": "HOUR",
+                    "minValue": 10,
+                    "maxValue": 15
+                },
+                "currency": "EUR"
             },
             "employmentType": [
-              "VOLUNTEER"
+                "VOLUNTEER"
             ],
             "workHours": "Mo 13:00 - 15:00",
             "responsibilities": "Durchführung der Essensauslieferung in Lasberg.",
             "skills": "Fahrerlaubnis, Zuverlässigkeit, Teamarbeit",
             "qualifications": "Keine spezifischen Qualifikationen erforderlich.",
             "educationRequirements": [
-              {
-                "@type": "EducationalOccupationalCredential",
-                "credentialCategory": "None"
-              }
+                {
+                    "@type": "EducationalOccupationalCredential",
+                    "credentialCategory": "None"
+                }
             ],
             "experienceRequirements": {
-              "@type": "OccupationalExperienceRequirements",
-              "monthsOfExperience": "0"
+                "@type": "OccupationalExperienceRequirements",
+                "monthsOfExperience": "0"
             },
             "directApply": true,
             "totalJobOpenings": 5
-          },
-          {
+        },
+        {
             "@context": "https://schema.org/",
             "@type": "JobPosting",
             "title": "Event Organisation Unterstützung",
@@ -307,6 +312,7 @@
             "datePosted": "2026-05-14",
             "jobStartDate": "2026-06-01",
             "industry": "Soziales Engagement",
+            "image": "wienerLerndreieckLogo.png",
             "identifier": {
                 "@type": "PropertyValue",
                 "value": "NACH2026-002",
@@ -345,7 +351,9 @@
                 },
                 "currency": "EUR"
             },
-            "employmentType": ["VOLUNTEER"],
+            "employmentType": [
+                "VOLUNTEER"
+            ],
             "workHours": "flexibel",
             "responsibilities": "Unterstützung bei der Planung und Organisation eines Benefiz-Events.",
             "skills": "Organisationstalent, Kommunikation, Teamarbeit",
@@ -362,8 +370,75 @@
             },
             "directApply": true,
             "totalJobOpenings": 1
+        },
+        {
+            "@context": "https://schema.org/",
+            "@type": "JobPosting",
+            "title": "Fahrdienste und Krankentransporte",
+            "description": "Bestätigung über die Unterstützung bei Krankentransporten.",
+            "occupationalCategory": "Samariterbund",
+            "validThrough": "2026-12-31",
+            "datePosted": "2026-05-14",
+            "jobStartDate": "2026-06-01",
+            "industry": "Samariterbund",
+            "image": "imgPlaceholder.png",
+            "identifier": {
+                "@type": "PropertyValue",
+                "value": "NACH2026-007",
+                "name": "Gemeinde"
+            },
+            "hiringOrganization": {
+                "@type": "Organization",
+                "name": "Samariterbund Linz",
+                "sameAs": "https://www.fbklub-mentator.at",
+                "logo": "/imgPlaceholder.png"
+            },
+            "jobLocation": {
+                "@type": "Place",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Eventstraße 5",
+                    "addressLocality": "Österreich",
+                    "postalCode": "1010",
+                    "addressCountry": "Österreich",
+                    "addressRegion": "Wien"
+                }
+            },
+            "applicationContact": {
+                "@type": "ContactPoint",
+                "email": "kontakt@fbklub-mentator.at",
+                "telephone": "+43-660-9876543",
+                "url": "https://www.fbklub-mentator.at/bewerbung"
+            },
+            "baseSalary": {
+                "@type": "MonetaryAmount",
+                "value": {
+                    "@type": "QuantitativeValue",
+                    "unitText": "HOUR",
+                    "minValue": 10,
+                    "maxValue": 15
+                },
+                "currency": "EUR"
+            },
+            "employmentType": [
+                "VOLUNTEER"
+            ],
+            "workHours": "flexibel",
+            "responsibilities": "Unterstützung bei Krankentransporten.",
+            "skills": "Organisationstalent, Kommunikation, Teamarbeit, Zuverlässigkeit",
+            "qualifications": "Führerschein der Klasse B, Erfahrung in der medizinischen Versorgung.",
+            "educationRequirements": [
+                {
+                    "@type": "EducationalOccupationalCredential",
+                    "credentialCategory": "None"
+                }
+            ],
+            "experienceRequirements": {
+                "@type": "OccupationalExperienceRequirements",
+                "monthsOfExperience": "0"
+            },
+            "directApply": true,
+            "totalJobOpenings": 4
         }
-        
-          
     ]
 }

@@ -18,10 +18,10 @@
     <div class="container">
 
       <template v-if="!isHomePage">
-        <router-link class="navbar-brand d-flex align-items-center text-truncate" :to="backRoute || '/'">
+        <a class="navbar-brand d-flex align-items-center text-truncate" @click="goBack()">
           <i class="bi bi-arrow-left me-2"></i>
           {{ title }}
-        </router-link>
+        </a>
       </template>
       <template v-if="isHomePage">
         <div class="row w-100">
@@ -53,7 +53,7 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                   <li><a class="dropdown-item disabled" href="#">Einstellungen</a></li>
-                   <li>
+                  <li>
                     <hr class="dropdown-divider">
                   </li>
                   <li> <button class="dropdown-item" @click="handleLogout">Abmelden <i
@@ -72,20 +72,23 @@
 <script setup>
 import { useRoute, useRouter } from 'vue-router';
 import { ref, computed, onMounted } from 'vue';
-defineProps({
+const props = defineProps({
   title: {
     type: String,
     required: true
   },
-   backRoute: {  
+  backRoute: {
     type: [String, Object],
-    default: null 
+    default: null
   }
 });
 
 // Dynamic user data
 const user = ref({});
-const isHomePage = computed(() => useRoute().path === '/');
+const route = useRoute();
+
+// 2. Use the reactive route object inside the computed property
+const isHomePage = computed(() => route.path === '/');
 
 // Load user data dynamically
 const loadUserData = async () => {
@@ -104,10 +107,22 @@ const profileLink = computed(() => {
   const role = localStorage.getItem('userRole');
   return role === 'admin' ? '/organisation' : '/profile';
 });
-
+const router = useRouter();
 const handleLogout = () => {
   localStorage.removeItem('authToken');
   localStorage.removeItem('userRole');
-  useRouter().push('/login');
+  router.push('/login');
 };
+
+const goBack = () => {
+  if (props.title == "Details") {
+    router.back()
+  }
+  else if (props.backRoute == null) {
+    router.push("/")
+  }
+  else {
+    router.push(props.backRoute)
+  }
+}
 </script>

@@ -58,7 +58,7 @@
 <script setup>
 import { Carousel } from "bootstrap";
 import { ref,onMounted } from "vue";
-import MatchBar from "@/components/navbars/MatchBar.vue"
+import MatchBar from "@/components/MatchBar.vue"
 
 defineProps({
     title: {

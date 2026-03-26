@@ -115,7 +115,6 @@ const messageBubbleClass = computed(() => {
     border-top: 1px solid #ddd;
     position: fixed;
     bottom: 0;
-    padding-bottom: 6rem;
     left: 0;
     right: 0;
     width: 100%;

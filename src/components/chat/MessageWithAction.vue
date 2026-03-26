@@ -45,7 +45,7 @@ const sendConfirmMessage = () => {
         type: "confirm", // Mark as a confirmation message
         text: "Nachweis erfolgreich bestätigt.",
         sender: user.value,
-        avatar: "/assets/images/" + user.value.split(" ")[0] + ".png",
+        avatar: "/assets/images/profile-pictures/" + user.value.split(" ")[0] + ".png",
         time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
         date: new Date()
     };

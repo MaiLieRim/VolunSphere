@@ -88,7 +88,7 @@
 
         </div>
 
-        <div v-if="currentTab === 'Organisation'">
+        <div v-if="currentTab === 'Organisation'" class="mx-2">
             <OrganisationList :items="myOrganizations" title="Meine Organisationen"></OrganisationList>
             <OrganisationList :items="organizations.filter(org => !myOrganizations.includes(org))"
                 title="Empfehlungen" />
