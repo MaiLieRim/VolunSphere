@@ -104,7 +104,7 @@
             "description": "Bestätigung über die Unterstützung bei der Organisation eines Events.",
             "identifier": {
                 "@type": "PropertyValue",
-                "value": "NACH2026-006",
+                "value": "NACH2026-002",
                 "name": "Gemeinde"
             },
             "requester": {
