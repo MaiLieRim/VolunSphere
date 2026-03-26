@@ -9,7 +9,7 @@
     >
       <img
         class="m-3 bg-light"
-        :src="items.qrCode"
+        src="/assets/images/qrCode.png"
         alt="QRCode"
         width="72"
       >
@@ -23,6 +23,8 @@
 </template>
 
 <script setup>
+import QRcode from '@/views/shared/QRcode.vue';
+
 defineProps({
   title: {
     type: String,

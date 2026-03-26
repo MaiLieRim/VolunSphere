@@ -121,7 +121,7 @@
             "datePosted": "2026-05-18",
             "jobStartDate": "2026-03-28",
             "industry": "Sozialarbeit",
-            "image":  "/imgPlaceholder.png",
+            "image":  "imgPlaceholder.png",
             "identifier": {
                 "@type": "PropertyValue",
                 "value": "SPRACH2026-003",
@@ -170,7 +170,7 @@
             "datePosted": "2026-05-13",
             "jobStartDate": "2026-11-11",
             "industry": "Feuerwehr",
-            "image": "firedepartment/firedepimgPlaceholder.png",
+            "image": "firedepartment/firedepPlaceholder.png",
             "identifier": {
                 "@type": "PropertyValue",
                 "value": "Test Identifier Id",
@@ -312,7 +312,7 @@
             "datePosted": "2026-05-14",
             "jobStartDate": "2026-06-01",
             "industry": "Soziales Engagement",
-            "image": "wienerLerndreieckLogo.png",
+            "image": "imgPlaceholder.png",
             "identifier": {
                 "@type": "PropertyValue",
                 "value": "NACH2026-002",
@@ -322,7 +322,7 @@
                 "@type": "Organization",
                 "name": "FB-Klub Mentator",
                 "sameAs": "https://www.fbklub-mentator.at",
-                "logo": "/imgPlaceholder.png"
+                "logo": "/wienerLerndreieckLogo.png"
             },
             "jobLocation": {
                 "@type": "Place",
