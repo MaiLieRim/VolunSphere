@@ -38,7 +38,7 @@ const currentTab = ref('Übersicht');
     <TabNavigation :tabs="[
         { name: 'Übersicht', label: 'Übersicht' },
         { name: 'Archiv', label: 'Archiv' }
-        ]" :currentTab="currentTab" @update:tab="currentTab = $event" :background-class="'bg-body-secondary'" :show-search="false"/>
+        ]" :currentTab="currentTab" @update:tab="currentTab = $event" :background-class="'bg-light'" :activity-search="false" :show-search="true"/>
     
     <div class="content-container">
         <div v-if="currentTab === 'Übersicht'">

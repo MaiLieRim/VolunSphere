@@ -15,8 +15,15 @@
   "email": "pipi@musterfrau.at",
   "telephone": "123456789",
   "gender": "weiblich",
-  "insuranceNumber": "1710" ,
-  "awards": ["test award 1", "test award 2"],
+  "insuranceNumber": "1710",
+  "awards": [
+    "test award 1",
+    "test award 2"
+  ],
+  "interests": [
+    "Tierrettung",
+    "Organisationstalent"
+  ],
   "sameAs": [
     "https://www.facebook.com",
     "https://www.twitter.com",
@@ -27,20 +34,33 @@
     "@type": "Organization",
     "name": "Nachbarschaftshilfe"
   },
-  "knowsAbout": ["Brandschutz", "erste Hilfe"],
-  "knowsLanguage": ["Deutsch", "Englisch", "Spanisch"],
+  "knowsAbout": [
+    "Brandschutz",
+    "erste Hilfe"
+  ],
+  "knowsLanguage": [
+    "Deutsch",
+    "Englisch",
+    "Spanisch"
+  ],
   "hasCredential": [
     {
       "@context": "https://schema.org",
       "@type": "EducationalOccupationalCredential",
       "@id": "EducationalOccupationalCredential",
-      "educationalLevel": ["Englisch A2", "https://www.tirol.wifi.at/kurs/20113x-englisch-a2-fortgeschrittene"]
+      "educationalLevel": [
+        "Englisch A2",
+        "https://www.tirol.wifi.at/kurs/20113x-englisch-a2-fortgeschrittene"
+      ]
     },
     {
       "@context": "https://schema.org",
       "@type": "EducationalOccupationalCredential",
       "@id": "EducationalOccupationalCredential1",
-      "educationalLevel": ["Erste Hilfe", "https://www.roteskreuz.at/aktuelle-kurse/detail/307714"]
+      "educationalLevel": [
+        "Erste Hilfe",
+        "https://www.roteskreuz.at/aktuelle-kurse/detail/307714"
+      ]
     }
   ],
   "hasOccupation": {
@@ -54,9 +74,44 @@
       "Wundmanagement und Stomaversorgung",
       "Pflege in Krisensituationen",
       "Führungsaufgaben"
-    ],
-    "skills": ["Flexibilität", "Eigeninitiative", "soziale Kompetenz"]
+    ]
   },
+  "skills": [
+    {
+      "name": "Lernbereitschaft",
+      "score": 3
+    },
+    {
+      "name": "Anpassungsfähigkeit",
+      "score": 3
+    },
+    {
+      "name": "Organisationsstärke",
+      "score": 2
+    },
+    {
+      "name": "Selbstmanagement",
+      "score": 2
+    },
+    {
+      "name": "Teamfähigkeit",
+      "score": 1
+    },
+    {
+      "name": "Fleiß",
+      "score": 0
+    }
+  ],
+  "availability": [
+    {
+      "day": "Dienstag",
+      "time": "16:00 - 18:00 Uhr"
+    },
+    {
+      "day": "Donnerstag",
+      "time": "18:30 - 21:00 Uhr"
+    }
+  ],
   "address": {
     "@context": "https://schema.org",
     "@type": "PostalAddress",

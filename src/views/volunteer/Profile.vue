@@ -3,14 +3,16 @@
     padding: unset;
 }
 </style>
+
 <template>
     <Navbar title="Profil"></Navbar>
+
     <TabNavigation :tabs="[
         { name: 'Übersicht', label: 'Übersicht' },
-        { name: 'Nachweise', label: 'Nachweise' },
+        { name: 'Ziele', label: 'Ziele' },
         { name: 'Organisation', label: 'Organisation' },
         { name: 'Community', label: 'Community' }
-    ]" :currentTab="currentTab" :showSearch="false" @update:tab="currentTab = $event" />
+    ]" :currentTab="currentTab" :showSearch="false" :activitySearch="false" @update:tab="currentTab = $event" />
 
     <div class="content-container">
         <div v-if="currentTab === 'Übersicht'">
@@ -48,22 +50,21 @@
                 </div>
             </div>
 
-
             <div class="card cover-subtext bg-primary-subtle shadow-sm">
                 <div class="card-body ">
-                    <div class="d-flex justify-content-between  align-items-center ">
+                    <div class="d-flex justify-content-between align-items-center ">
                         <h3>Über mich</h3>
-                        <button class="btn text-primary" @click="toggleEdit">
-                            <template v-if="isEditable">
+                        <button class="btn text-primary" @click="toggleAboutEdit">
+                            <template v-if="isAboutEditable">
                                 <i class="bi bi-check fs-3"></i>
                             </template>
                             <template v-else>
                                 <i class="bi bi-pen fs-3"></i>
                             </template>
-
                         </button>
                     </div>
-                    <template v-if="isEditable">
+
+                    <template v-if="isAboutEditable">
                         <textarea v-model="user.description" class="form-control" id="descriptionArea"
                             rows="6"></textarea>
                     </template>
@@ -71,9 +72,43 @@
                         <p class="mb-5">{{ user.description }}</p>
                     </template>
 
-                    <small>
-                        #Feuerwehr #Tierrettung #Organisationstalent
-                    </small>
+                    <div class="d-flex flex-wrap align-items-center gap-2 mt-3">
+                        <span v-for="tag in user.interests" :key="tag"
+                            class="btn rounded-pill badge text-bg-light shadow-sm border d-flex align-items-center"
+                            @click="removeTag(tag)">
+                            #{{ tag }}
+                            <i class="bi bi-x ms-1 fs-6"></i>
+                        </span>
+
+                        <span class="btn rounded-pill badge text-bg-light shadow-sm border" @click="addTag">
+                            <i class="bi bi-plus fs-6"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-2 mt-3">
+                <div class="d-flex justify-content-between align-items-center ">
+                    <h3>Wünsche</h3>
+                    <button class="btn text-primary" @click="toggleWishesEdit">
+                        <template v-if="isWishesEditable">
+                            <i class="bi bi-check fs-3"></i>
+                        </template>
+                        <template v-else>
+                            <i class="bi bi-pen fs-3"></i>
+                        </template>
+                    </button>
+                </div>
+
+                <div class="card bg-light shadow border-0">
+                    <div class="card-body">
+                        <template v-if="isWishesEditable">
+                            <textarea v-model="user.wishes" class="form-control" id="wishesArea" rows="6"></textarea>
+                        </template>
+                        <template v-else>
+                            {{ user.wishes }}
+                        </template>
+                    </div>
                 </div>
             </div>
 
@@ -81,40 +116,62 @@
 
             <Accordion> </Accordion>
 
-            <QualificationList :title="qualifications.title" :items="qualifications.qualifications" />
+        
         </div>
 
-        <div v-if="currentTab === 'Nachweise'">
-
+        <div v-if="currentTab === 'Ziele'">
+            <MyGoals></MyGoals>
         </div>
 
-        <div v-if="currentTab === 'Organisation'" class="mx-2">
+        <div v-if="currentTab === 'Organisation'" class=" px-2">
             <OrganisationList :items="myOrganizations" title="Meine Organisationen"></OrganisationList>
-            <OrganisationList :items="organizations.filter(org => !myOrganizations.includes(org))"
+            <OrganisationList class="mt-3" :items="organizations.filter(org => !myOrganizations.includes(org))"
                 title="Empfehlungen" />
         </div>
     </div>
 </template>
 
-
 <script setup>
 import Navbar from "@/components/navbars/Navbar.vue";
 import Accordion from "@/components/Accordion.vue";
+import MyGoals from "@/components/Goalification/MyGoals.vue";
 import { ref, nextTick, computed } from 'vue';
 import { useRoute } from "vue-router";
-import user from "@/assets/data/volunteer"
+
+// Import raw data
+import rawUser from "@/assets/data/volunteer"
 import organizations from "@/assets/data/organisations.json";
 import OrganisationList from "@/components/OrganisationList.vue";
 import TabNavigation from "@/components/navbars/TabNavigation.vue";
 import QualificationList from "@/components/ListWithImage.vue";
 import qualifications from "@/assets/data/qualifications.json";
-const isEditable = ref(false);
-const toggleEdit = () => {
-    isEditable.value = !isEditable.value;
+
+// Deep clone the object so nested arrays become fully reactive!
+const user = ref(JSON.parse(JSON.stringify(rawUser)));
+
+// Add a default "wishes" field if it doesn't exist in your raw JSON yet
+if (!user.value.wishes) {
+    user.value.wishes = "Abwechslung in der Nachbarschaft, neue Leute kennenlernen, mich engagieren, etwas zurückgeben, Spaß haben, neue Erfahrungen sammeln.";
+}
+
+// 1. Separate State for "Über mich"
+const isAboutEditable = ref(false);
+const toggleAboutEdit = () => {
+    isAboutEditable.value = !isAboutEditable.value;
     nextTick(() => {
-        if (isEditable) {
-            const descriptionArea = document.getElementById('descriptionArea');
-            descriptionArea.focus();
+        if (isAboutEditable.value) {
+            document.getElementById('descriptionArea')?.focus();
+        }
+    });
+};
+
+// 2. Separate State for "Wünsche"
+const isWishesEditable = ref(false);
+const toggleWishesEdit = () => {
+    isWishesEditable.value = !isWishesEditable.value;
+    nextTick(() => {
+        if (isWishesEditable.value) {
+            document.getElementById('wishesArea')?.focus();
         }
     });
 };
@@ -124,7 +181,23 @@ const currentTab = ref(route.query.tab || 'Übersicht')
 
 const myOrganizations = computed(() => {
     return organizations.filter(org =>
-        org.member?.some(m => m.name === user.name)
+        org.member?.some(m => m.name === user.value.name)
     )
 })
+
+// Tag Logic
+const removeTag = (tagToRemove) => {
+    user.value.interests = user.value.interests.filter(tag => tag !== tagToRemove);
+};
+
+const addTag = () => {
+    const newTag = prompt("Neuen Tag eingeben (ohne #):");
+
+    if (newTag && newTag.trim() !== "") {
+        const cleanedTag = newTag.trim();
+        if (!user.value.interests.includes(cleanedTag)) {
+            user.value.interests.push(cleanedTag);
+        }
+    }
+};
 </script>

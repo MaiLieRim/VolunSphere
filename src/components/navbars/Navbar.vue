@@ -52,7 +52,7 @@
                   <i class="bi bi-chevron-down fs-2"></i> <!--Pfeil größer button kleiner-->
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
-                  <li><a class="dropdown-item disabled" href="#">Einstellungen</a></li>
+                  <li><a class="dropdown-item" href="/settings">Einstellungen</a></li>
                   <li>
                     <hr class="dropdown-divider">
                   </li>

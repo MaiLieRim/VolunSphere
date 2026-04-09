@@ -68,7 +68,7 @@ const applyFilters = () => {
                         <div class="col-12">
                             <label class="form-label">Bereiche</label>
                             <select class="form-select   rounded-pill" v-model="localFilters.area">
-                                <option value="">...</option>
+                                <option value="">alle Bereiche</option>
                                 <option>Soziales</option>
                                 <option>Sport</option>
                                 <option>Musik</option>
@@ -78,7 +78,7 @@ const applyFilters = () => {
                         <div class="col-12 mt-3">
                             <label class="form-label">Organisationen</label>
                             <select class="form-select rounded-pill" v-model="localFilters.organization">
-                                <option value="">...</option>
+                                <option value="">alle Organisationen</option>
                                 <option>Organisation A</option>
                                 <option>Organisation B</option>
                             </select>

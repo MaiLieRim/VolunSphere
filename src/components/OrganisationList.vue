@@ -19,9 +19,7 @@
 </style>
 <template>
     <div class="list-group list-group-flush ">
-
         <h2>{{ title }}</h2>
-
         <RouterLink :to="{ name: 'orgDetail', params: { organisationId: item.id } }"
             v-for="(item, index) in displayItems" :key="item.id"
             class="list-group-item list-group-item-action align-content-stretch d-flex " aria-current="true">

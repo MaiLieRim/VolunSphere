@@ -111,11 +111,6 @@ small {
   margin: 0;
 }
 
-/* Accordion Coloring */
-.accordion-button:not(.collapsed) {
-  background-color: var(--bs-primary);
-  color: var(--bs-light);
-}
 
 /* Form Gruppen */
 .form-group {
@@ -184,6 +179,16 @@ small {
   overflow: hidden;
   min-height: 2.5em;
 }
+.accordion{
+ --bs-accordion-border-radius: 0rem  !important;
+}
 
 
-
+.accordion-button {
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+.accordion-item:first-of-type>.accordion-header .accordion-button {
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}

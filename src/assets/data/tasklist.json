@@ -148,7 +148,8 @@
                 "@type": "ContactPoint",
                 "email": "info@sprachhilfe.at",
                 "telephone": "+43-732-654321",
-                "url": "https://www.sprachhilfe.at/apply"
+                "url": "https://www.sprachhilfe.at/apply",
+                "name": "Sprachhilfe Österreich"
             },
             "employmentType": [
                 "VOLUNTEER"
@@ -197,7 +198,8 @@
                 "@type": "ContactPoint",
                 "email": "info@example.com",
                 "telephone": "+43-664-1234567",
-                "url": "https://www.example.com/application"
+                "url": "https://www.example.com/application",
+                "name": "Herbert Mayer"
             },
             "baseSalary": {
                 "@type": "MonetaryAmount",
@@ -270,7 +272,8 @@
                 "@type": "ContactPoint",
                 "email": "info@example-organization.com",
                 "telephone": "+43-664-1234567",
-                "url": "https://www.example-organization.com/application"
+                "url": "https://www.example-organization.com/application",
+                "name": "FO Linz"
             },
             "baseSalary": {
                 "@type": "MonetaryAmount",
@@ -339,7 +342,8 @@
                 "@type": "ContactPoint",
                 "email": "kontakt@fbklub-mentator.at",
                 "telephone": "+43-660-9876543",
-                "url": "https://www.fbklub-mentator.at/bewerbung"
+                "url": "https://www.fbklub-mentator.at/bewerbung",
+                "name": "Herbert Mayer"
             },
             "baseSalary": {
                 "@type": "MonetaryAmount",
@@ -408,7 +412,8 @@
                 "@type": "ContactPoint",
                 "email": "kontakt@fbklub-mentator.at",
                 "telephone": "+43-660-9876543",
-                "url": "https://www.fbklub-mentator.at/bewerbung"
+                "url": "https://www.fbklub-mentator.at/bewerbung",
+                "name": "Herbert Mayer"
             },
             "baseSalary": {
                 "@type": "MonetaryAmount",

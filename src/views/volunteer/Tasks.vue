@@ -1,11 +1,11 @@
 <template>
     <Navbar title="Aufgaben"></Navbar>
-    <div class="bg-body-secondary">
+    <div class="bg-light">
         <TabNavigation :tabs="[
         { name: 'Meine Aufgaben', label: 'Meine Aufgaben' },
         { name: 'Empfehlungen', label: 'Empfehlungen' },
         { name: 'Abgeschlossen', label: 'Abgeschlossen' },
-    ]" :currentTab="currentTab" @update:tab="currentTab = $event" :background-class="bg-body-secondary" />
+    ]" :currentTab="currentTab" @update:tab="currentTab = $event" :background-class="bg-light" :activity-search="true" />
     </div>
     <StatisticNavbar></StatisticNavbar>
     <div class="content-container">

@@ -98,7 +98,7 @@ const requestTask = () => {
             </div>
 
             <div class="flex-grow-1 overflow-auto bg-light">
-               <ChatHistory :name="route.params.name" />
+               <ChatHistory :name="jobPosting.applicationContact?.name" />
             </div>
             
           </div>

@@ -35,7 +35,7 @@
             "description": "Bestätigung über die Unterstützung bei der Organisation eines Benefiz-Events.",
             "identifier": {
                 "@type": "PropertyValue",
-                "value": "NACH2026-002",
+                "value": "NACH2026-001",
                 "name": "Gemeinde"
             },
             "requester": {
@@ -58,7 +58,7 @@
             "description": "Bestätigung über die Unterstützung in der sozialen Betreuung für ältere Menschen.",
             "identifier": {
                 "@type": "PropertyValue",
-                "value": "SPRACH2026-003",
+                "value": "SPRACH2026-004",
                 "name": "Gemeinde"
             },
             "requester": {
@@ -104,7 +104,7 @@
             "description": "Bestätigung über die Unterstützung bei der Organisation eines Events.",
             "identifier": {
                 "@type": "PropertyValue",
-                "value": "NACH2026-002",
+                "value": "NACH2026-006",
                 "name": "Gemeinde"
             },
             "requester": {
@@ -118,7 +118,7 @@
                 "sameAs": "https://www.fbklub-mentator.at"
             },
             "dateRequested": "2024-05-16",
-            "status": "Certified",
+            "status": "Declined",
             "hours": 14
         },
         {

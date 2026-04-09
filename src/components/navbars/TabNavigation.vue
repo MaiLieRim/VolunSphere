@@ -8,6 +8,7 @@
     --bs-gutter-y: 0;
     width: 100%;
     padding: 8px calc(var(--bs-gutter-x)* 0.5);
+    padding-left:0px
 }
 .search-bar {
     transition: width 0.3s ease-in-out;
@@ -31,7 +32,7 @@
                     <div class="nav nav-underline d-inline-flex">
 
                         <!-- Optional search button -->
-                        <div v-if="showSearch" class="nav-item">
+                        <div v-if="activitySearch" class="nav-item">
                             <RouterLink class="nav-link" to="/task-search">
                                 <i class="bi bi-search"></i>
                             </RouterLink>
@@ -47,7 +48,7 @@
                             </a>
                         </div>
                     </div>
-                     <div v-if="!showSearch" class="d-flex align-items-center ">
+                     <div v-if="showSearch" class="d-flex align-items-center ">
                         <div class="position-relative ">
                             <input type="text" class="form-control rounded-pill search-bar pe-5" placeholder="Search..."
                                 aria-label="Search">
@@ -75,12 +76,17 @@ const props = defineProps({
     },
     showSearch: {
         type: Boolean,
-        default: true
+        default: false
     },
     backgroundClass: {
         type: String,
         default: "bg-white"
+    },
+    activitySearch: {
+        type: Boolean,
+        default: true
     }
+
 })
 
 const emit = defineEmits(['update:tab'])

@@ -7,7 +7,8 @@
 
     <template v-if="userRole === 'admin'">
       <CardBody :message="`Sie haben ${requested.length} neue Nachweisanfragen, bitte geben Sie diese frei.`" />
-      <SwipeList title="Anfragen Nachweise" :items="requested"></SwipeList>
+      <h2 class="mt-4">Anfragen Nachweise</h2>
+      <RequestsOverview :items="requested" />
     </template>
 
     <template v-if="userRole === 'volunteer'">
@@ -36,6 +37,7 @@ import SwipeList from '@/components/SwipeList.vue';
 import Footer from '@/components/Footer.vue';
 import verifications from '@/assets/data/verifications.json';
 import { useTasks } from '@/composables/useTasks';
+import RequestsOverview from '@/components/admin/RequestsOverview.vue';
 const userRole = ref(localStorage.getItem('userRole')); // Get role
 const certified = ref([]);
 const requested = ref([]);

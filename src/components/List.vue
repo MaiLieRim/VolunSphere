@@ -16,30 +16,29 @@
 .hover-link:hover {
   background-color: rgba(0,0,0,0.075);
 }
-
-
 </style>
+
 <template>
   <div class="list-group list-group-flush ">
 
-    <h2>{{ title }}</h2>
+    <h2 v-if="title">{{ title }}</h2>
 
-    <RouterLink :to="{ name: 'task', params: { itemId: item.id } }" v-for="(item, index) in items" :key="item.id"
+    <RouterLink :to="{ name: 'verification', params: { itemId: item.id } }" v-for="(item, index) in displayedItems" :key="item.id"
       class="list-group-item list-group-item-action align-content-stretch d-flex " aria-current="true">
       
       <div class="date-box col-3"> 
         <small>{{ item.club }}</small>
-        <h1>{{ item.day }}</h1>
-        <small>{{ item.month }}</small>
+        <h1>{{ item.hours }}</h1>
+        <small>Stunden</small>
       </div>
 
       <div class="container col-9 content d-flex flex-column my-2">
         <div>
-          <small class="opacity-50">{{ item.location }}, {{ item.industry }}</small>
+          <small class="opacity-50">{{ item.club }} <span v-if="item.industry">, {{ item.industry }}</span></small>
           <h4>{{ item.title }}</h4>
         </div>
 
-        <div  class="mt-auto d-flex align-items-center text-muted gap-6">
+        <div class="mt-auto d-flex align-items-center text-muted gap-6">
           <small class="col-3">
             <img src="/src/assets/images/profile-pictures/liselotte.png" alt="twbs" width="20" height="20"
               class="rounded-circle flex-shrink-0">
@@ -64,59 +63,57 @@
     </div>
     
   </div>
-
 </template>
 
 <script setup>
 import { ref, computed, watch } from 'vue';
-import { useTasks } from '@/composables/useTasks';
+// Removed useTasks import as it was unused in this file
 
 const props = defineProps({
     title: {
         type: String,
-        required: true
+        required: false // Changed to false so you don't get warnings if you omit it
     },
     items: {
-        type: Array
+        type: Array,
+        default: () => [] // Always provide a default empty array for safety
     },
     loadItemsCount: {
         type: Number,
         default: 3
     }
-
 });
 
-const { allTasks } = useTasks();
-const items = ref([]);
+
+const displayedItems = ref([]);
 const loadedItemsCount = ref(0);
 
 const allItems = computed(() => {
-    return allTasks.value.map(job => ({
-        club: job.club,
-        day: job.day,
-        month: job.month,
-        location: job.location,
-        title: job.title,
-        jobs: '0/' + job.jobs,
-        industry: job.industry,
-        id: job.id
-    }));
+    return props.items  .map(job => ({
+            id: job.identifier.value,
+            title: job.name,
+            club: job.organization.name,
+            hours: job.hours,
+            requester: job.requester.name,
+            status: job.status || STATUS.PENDING, // Fallback safely to pending
+            swiped: false,
+        }));
 });
 
 const toggleLoadMore = () => {
     const nextItems = allItems.value.slice(loadedItemsCount.value, loadedItemsCount.value + props.loadItemsCount);
-    items.value.push(...nextItems);
+    displayedItems.value.push(...nextItems);
     loadedItemsCount.value += nextItems.length;
 };
 
 const showLess = () => {
-    items.value = allItems.value.slice(0, props.loadItemsCount);
+    displayedItems.value = allItems.value.slice(0, props.loadItemsCount);
     loadedItemsCount.value = props.loadItemsCount;
 };
 
 // Watch for changes in allItems and reset pagination
-watch(allItems, (newAllItems) => {
-    items.value = [];
+watch(allItems, () => {
+    displayedItems.value = [];
     loadedItemsCount.value = 0;
     toggleLoadMore();
 }, { immediate: true });

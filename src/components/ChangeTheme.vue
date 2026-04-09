@@ -1,6 +1,4 @@
 <template>
-    <div class="mt-3">
-        Farbschema
         <div class="d-flex justify-content-between border rounded-3 p-2">
             <div v-for="theme in themes" :key="theme.name">
                 <div class="card theme-card" :class="{ 'active': selectedTheme === theme.name }"
@@ -13,7 +11,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    
 </template>
 
 <script setup>

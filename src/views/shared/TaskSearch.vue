@@ -144,14 +144,14 @@ const activeFilters = computed(() => {
             </ul>
         </div>
 
-        <TaskList title="" :tasks="allTasks" />
+        <TaskList :load-items-count="4" title="" :tasks="allTasks" />
     </div>
 
     <div v-else-if="currentView === 'CalendarView'" class="content-container">
         <div class="d-flex justify-content-end  ">
             <ul class=" tags gap-2 d-flex flex-wrap">
                 <li v-for="filter in activeFilters" :key="filter.key"
-                    class="btn badge bg-light text-dark shadow-sm border" @click="removeFilter(filter.key)">
+                    class="btn badge bg-light text-dark shadow-sm border"  @click="removeFilter(filter.key)">
                     {{ filter.label }} &times;
                 </li>
             </ul>

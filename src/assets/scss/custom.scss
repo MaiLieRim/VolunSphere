@@ -52,7 +52,7 @@ $font-sizes: (
   --mint: $mint;
   --dark-mint: $dark-mint;
   --bs-primary: #6eb19e !important;
-  
+  --bs-accordion-active-bg: lighten($mint, 30%)!important;
   .card {
     background-color: lighten($mint, 30%)!important;
   }
@@ -81,6 +81,16 @@ $font-sizes: (
   .btn-outline-primary {
     color: $mint !important;
   }}
-
+[data-bs-theme="dark"] {
+  .bg-light {
+    background-color: #314c5a !important;
+  }
+  .text-dark {
+    color: $light !important;
+  }
+  .bg-white {
+    background-color: $dark !important;
+  }
+}
 // 3. Include remainder of required Bootstrap stylesheets
 @import "../../../node_modules/bootstrap/scss/bootstrap";
