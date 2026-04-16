@@ -1,4 +1,5 @@
 <template>
+    <div class="bg-primary-subtle"> 
     <div class="bg-primary-subtle container p-3 vh-100 ">
         <img src="/src/assets/images/logo/logo.png " class="w-50">
         <h1 class="mt-5">Onboarding</h1>
@@ -132,10 +133,11 @@
             </div>
         </div>
     </div>
-
-    <nav class="position-fixed bottom-0 start-0 end-0 ">
-        <div class="container p-3 col-lg-3 d-flex justify-content-between ">
-            <ul class="pagination" id="activityTabs" role="tablist">
+    <ChatBot></ChatBot>
+   <nav class="position-fixed bottom-0 start-0 end-0 ">
+        <div class="container p-3 col-lg-3 d-flex justify-content-between align-items-center">
+            
+            <ul class="pagination mb-0" id="activityTabs" role="tablist">
                 <li class="page-item " aria-current="page">
                     <button class="page-link rounded active " id="interests-page" data-bs-toggle="tab"
                         @click="updateCurrentIndex(0)" data-bs-target="#interests" type="button" role="tab"
@@ -143,7 +145,7 @@
                         1
                     </button>
                 </li>
-                <li class="page-item  mx-4">
+                <li class="page-item mx-4">
                     <button class="page-link rounded" id="competences-page" data-bs-toggle="tab"
                         data-bs-target="#competences" type="button" role="tab" aria-controls="competences"
                         @click="updateCurrentIndex(1)" aria-selected="false">
@@ -159,21 +161,29 @@
                 </li>
             </ul>
 
-            <div>
-                <button v-if="!isReady" @click="goNext" id="goNextBtn" class="btn btn-primary text-light"
+            <div class="d-flex align-items-center gap-3">
+                
+                <router-link to="/" class="text-muted text-decoration-none fw-medium" @click="login()">
+                    Überspringen
+                </router-link>
+
+                <button v-if="!isReady" @click="goNext" id="goNextBtn" class="btn btn-primary text-light px-4"
                     type="button">Weiter</button>
                 <template v-else>
-                    <router-link to="/" class="btn btn-primary text-light" @click="login()"
+                    <router-link to="/" class="btn btn-primary text-light px-4" @click="login()"
                         type="submit">Fertig</router-link>
                 </template>
+                
             </div>
 
         </div>
     </nav>
+    </div>
 </template>
 <script setup>
 import { ref } from "vue";
 import { useAuth } from '@/assets/js/auth';
+import ChatBot from "@/components/ChatBot.vue";
 const { login } = useAuth();
 const tabOrder = ["interests-page", "competences-page", "availability-page"];
 const currentIndex = ref(0);

@@ -11,7 +11,7 @@ import MyCommunity from './views/volunteer/MyCommunity.vue';
 import OrgCommunity from './views/admin/OrgCommunity.vue';
 import ReviewRequests from '@/views/admin/ReviewRequests.vue';
 import MyVerifications from '@/views/volunteer/MyVerifications.vue';
-
+import OrgRegistration from '@/views/auth/OrgRegistry.vue';
 import TaskSearch from '@/views/shared/TaskSearch.vue';
 import Chat from '@/views/shared/Chat.vue';
 import Community from '@/views/shared/Community.vue';
@@ -46,7 +46,12 @@ const router = createRouter({
     { path: '/addtask', name: 'addtask', component: AddTask, meta: { requiresAuth: true } },
     { path: '/my-community', name: 'mycommunity', component: MyCommunity, meta: { requiresAuth: true, role: 'volunteer' } },
     { path: '/org-community', name: 'orgcommunity', component: OrgCommunity, meta: { requiresAuth: true, role: 'admin' } },
-    { path: '/settings', name: 'settings', component: () => import('@/views/volunteer/Settings.vue'), meta: { requiresAuth: true, role: 'volunteer' } }
+    { path: '/settings', name: 'settings', component: () => import('@/views/volunteer/Settings.vue'), meta: { requiresAuth: true, role: 'volunteer' } },
+    {
+        path: '/registry-org',
+        name: 'registry-org',
+        component: OrgRegistration
+    }
   ],
   scrollBehavior() {
     return { top: 0 };
