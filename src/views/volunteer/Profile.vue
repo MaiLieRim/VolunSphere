@@ -8,14 +8,15 @@
     <Navbar title="Profil"></Navbar>
 
     <TabNavigation :tabs="[
-        { name: 'Übersicht', label: 'Übersicht' },
-        { name: 'Ziele', label: 'Ziele' },
-        { name: 'Organisation', label: 'Organisation' },
-        { name: 'Community', label: 'Community' }
+        { name: 'overview', label: 'Übersicht' },
+        { name: 'goals', label: 'Ziele' },
+        { name: 'statistic', label: 'Statistik' },
+        { name: 'org', label: 'Organisation' },
+        { name: 'community', label: 'Community' }
     ]" :currentTab="currentTab" :showSearch="false" :activitySearch="false" @update:tab="currentTab = $event" />
 
     <div class="content-container">
-        <div v-if="currentTab === 'Übersicht'">
+        <div v-if="currentTab === 'overview'">
             <div class="cover bg-primary">
                 <div class="row">
                     <div class="col-4 ">
@@ -116,14 +117,16 @@
 
             <Accordion> </Accordion>
 
-        
+
         </div>
 
-        <div v-if="currentTab === 'Ziele'">
+        <div v-if="currentTab === 'goals'">
             <MyGoals></MyGoals>
         </div>
-
-        <div v-if="currentTab === 'Organisation'" class=" px-2">
+        <div v-if="currentTab === 'statistic'">
+            <Statistics></Statistics>
+        </div>
+        <div v-if="currentTab === 'org'" class=" px-2">
             <OrganisationList :items="myOrganizations" title="Meine Organisationen"></OrganisationList>
             <OrganisationList class="mt-3" :items="organizations.filter(org => !myOrganizations.includes(org))"
                 title="Empfehlungen" />
@@ -135,16 +138,16 @@
 import Navbar from "@/components/navbars/Navbar.vue";
 import Accordion from "@/components/Accordion.vue";
 import MyGoals from "@/components/Goalification/MyGoals.vue";
-import { ref, nextTick, computed } from 'vue';
-import { useRoute } from "vue-router";
+import { ref, nextTick, computed, watch } from 'vue'; 
+import { useRoute, useRouter } from "vue-router";     
 
 // Import raw data
 import rawUser from "@/assets/data/volunteer"
 import organizations from "@/assets/data/organisations.json";
 import OrganisationList from "@/components/OrganisationList.vue";
 import TabNavigation from "@/components/navbars/TabNavigation.vue";
-import QualificationList from "@/components/ListWithImage.vue";
-import qualifications from "@/assets/data/qualifications.json";
+import Statistics from "@/components/Statistics.vue";
+
 
 // Deep clone the object so nested arrays become fully reactive!
 const user = ref(JSON.parse(JSON.stringify(rawUser)));
@@ -177,8 +180,16 @@ const toggleWishesEdit = () => {
 };
 
 const route = useRoute()
-const currentTab = ref(route.query.tab || 'Übersicht')
+const currentTab = ref(route.query.tab || 'overview')
+const router = useRouter(); // Initialize the router
 
+
+// WATCHER: Automatically update the URL when currentTab changes
+watch(currentTab, (newTab) => {
+    router.replace({ 
+        query: { ...route.query, tab: newTab } 
+    });
+});
 const myOrganizations = computed(() => {
     return organizations.filter(org =>
         org.member?.some(m => m.name === user.value.name)

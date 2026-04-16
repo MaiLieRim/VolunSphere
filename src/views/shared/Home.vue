@@ -1,6 +1,6 @@
 <template>
   <Navbar title="Home" />
-  
+
   <StatisticNavbar />
 
   <div class="content-container">
@@ -15,7 +15,10 @@
       <CardBodyVolunteer />
       <div class="space">
         <h1>Du warst diese Woche top engagiert!</h1>
-        <img src="/src/assets/images/statistik.png" alt="statistic" class="mx-auto d-block img-fluid">
+        <router-link :to="{ path: '/profile', query: { tab: 'statistic' } }">
+          <img src="/src/assets/images/statistik.png" alt="statistic" class="mx-auto d-block img-fluid">
+        </router-link>
+
       </div>
       <TaskList title="Deine aktuellen Aufgaben" />
       <CardCarousell title="Deine aktuellen Aufgaben" :items="items" />
@@ -38,6 +41,7 @@ import Footer from '@/components/Footer.vue';
 import verifications from '@/assets/data/verifications.json';
 import { useTasks } from '@/composables/useTasks';
 import RequestsOverview from '@/components/admin/RequestsOverview.vue';
+import router from '@/router';
 const userRole = ref(localStorage.getItem('userRole')); // Get role
 const certified = ref([]);
 const requested = ref([]);
