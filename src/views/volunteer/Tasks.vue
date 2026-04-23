@@ -35,9 +35,7 @@
                 <p class="text-muted small">Einsätze, für die du dich gemeldet hast.</p>
             </div>
 
-            <div class="list-group list-group-flush gap-2">
-                <List :items="applications"></List>
-            </div>
+            <TaskList :items="applications" :title="''"></TaskList>
         </div>
 
         <div v-if="currentTab === 'completed'" class="fade-in">
