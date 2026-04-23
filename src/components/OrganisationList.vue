@@ -19,14 +19,19 @@
 </style>
 <template>
     <div class="list-group list-group-flush ">
-        <h2>{{ title }}</h2>
-        <RouterLink :to="{ name: 'orgDetail', params: { organisationId: item.id } }"
+        <div v-if="title" class="d-flex justify-content-between align-items-center mx-2 mt-2 mb-3">
+            <h2 class="m-0">{{ title }}</h2>
+            <router-link v-if="showSearchButton" to="/organisation-search"
+                class="btn btn-sm btn-outline-primary rounded-pill px-3 shadow-sm fw-medium">
+                <i class="bi bi-search me-1"></i> Suchen
+            </router-link>
+        </div>
+        <RouterLink :to="{ name: 'orgDetail', params: { organisationId: item.id }, query: { search: props.search } }"
             v-for="(item, index) in displayItems" :key="item.id"
             class="list-group-item list-group-item-action align-content-stretch d-flex " aria-current="true">
 
             <div class="date-box col-3">
-                <img v-if="item.logo" :src="`/assets/images/logo/${item.logo}`" class="img-fluid w-100"
-                    alt="logo" />
+                <img v-if="item.logo" :src="`/assets/images/logo/${item.logo}`" class="img-fluid w-100" alt="logo" />
             </div>
             <div class="container col-9 content d-flex flex-column my-1">
                 <div>
@@ -68,6 +73,14 @@ const props = defineProps({
     items: {
         type: Array,
         default: () => []
+    },
+    showSearchButton: {
+        type: Boolean,
+        default: false
+    },
+    search: {
+        type: Boolean,
+        default: false
     }
 });
 

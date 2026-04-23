@@ -128,8 +128,12 @@
         </div>
         <div v-if="currentTab === 'org'" class=" px-2">
             <OrganisationList :items="myOrganizations" title="Meine Organisationen"></OrganisationList>
-            <OrganisationList class="mt-3" :items="organizations.filter(org => !myOrganizations.includes(org))"
-                title="Empfehlungen" />
+           <OrganisationList 
+                class="mt-4" 
+                :items="organizations.filter(org => !myOrganizations.includes(org))"
+                title="Empfehlungen" 
+                :showSearchButton="true" 
+            />
         </div>
     </div>
 </template>

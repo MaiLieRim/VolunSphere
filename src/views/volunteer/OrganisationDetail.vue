@@ -6,7 +6,7 @@
 <template>
 
   <!-- Back Button -->
-  <Navbar :title="org.name" :backRoute="{ name: 'profile', query: { tab: 'Organisation' } }" />
+  <Navbar :title="org.name" :backRoute="cameFromSearch ? { name: 'OrganisationSearch' } : { name: 'profile', query: { tab: 'org' } }" />
 
   <div class="content-container">
     <!-- Organisation Header -->
@@ -133,13 +133,17 @@ import { useTasks } from "@/composables/useTasks"
 import CardCarousell from "@/components/CardCarousell.vue"
 import { computed } from "vue"
 import { useRoute } from "vue-router"
+import { defineQueryParamParser } from "vue-router/dist/experimental/index.mjs"
 const props = defineProps({
   organisationId: {
     type: String,
     required: true
   }
 })
-
+const route = useRoute();
+const cameFromSearch = computed(() => {
+    return route.query.search === 'true'; 
+});
 const { getTasksByOrganization } = useTasks()
 
 const org = computed(() => {

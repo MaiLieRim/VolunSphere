@@ -21,6 +21,7 @@ import ChatArchiv from '@/views/shared/ChatArchiv.vue';
 import OrganisationDetail from './views/volunteer/OrganisationDetail.vue';
 import VerificationDetail from './views/volunteer/VerificationDetail.vue';
 import ReviewVerification from './views/admin/ReviewVerification.vue';
+import OrganisationSearch from './views/volunteer/OrganisationSearch.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.VITE_BASE_URL || '/'),
@@ -51,7 +52,13 @@ const router = createRouter({
         path: '/registry-org',
         name: 'registry-org',
         component: OrgRegistration
+    },
+    {
+        path: '/organisation-search',
+        name: 'OrganisationSearch',
+        component: OrganisationSearch
     }
+
   ],
   scrollBehavior() {
     return { top: 0 };

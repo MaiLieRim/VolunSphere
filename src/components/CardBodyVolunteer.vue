@@ -7,7 +7,7 @@
             </h2>
             <div class="d-flex justify-content-end gap-2">
                 <button class="btn btn-primary" @click="visible = false">OK</button>
-                <router-link to="/my-verifications" href="#" class="btn btn-primary">Jetzt Nachweis
+                <router-link :to="{ name: 'tasks', query: { tab: 'completed' } }" href="#" class="btn btn-primary">Jetzt Nachweis
                     Anfordern!</router-link>
             </div>
         </div>

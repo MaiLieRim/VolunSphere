@@ -1,0 +1,33 @@
+{
+    "@context": "https://schema.org/",
+    "@type": "ItemList",
+    "name": "Volunteer Applications",
+    "description": "List of task applications by volunteers",
+    "numberOfItems": 3,
+    "itemListElement": [
+        {
+            "@type": "Application",
+            "volunteerName": "Liselotte Pulver",
+            "taskId": "KATA2026-001",
+            "status": "PENDING",
+            "appliedDate": "2026-04-10",
+            "notes": "Interested in Katastrophenschutz"
+        },
+        {
+            "@type": "Application",
+            "volunteerName": "Liselotte Pulver",
+            "taskId": "TIER2026-002",
+            "status": "APPROVED",
+            "appliedDate": "2026-04-12",
+            "notes": ""
+        },
+        {
+            "@type": "Application",
+            "volunteerName": "Liselotte Pulver",
+            "taskId": "SPRACH2026-003",
+            "status": "PENDING",
+            "appliedDate": "2026-04-15",
+            "notes": "Have teaching experience"
+        }
+    ]
+}
