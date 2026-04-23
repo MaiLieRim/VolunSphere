@@ -1,0 +1,765 @@
+[
+    {
+        "@context": "https://schema.org/",
+        "@type": "JobPosting",
+        "title": "Ehrenamtlicher Helfer für Katastrophenschutz (m/w/d)",
+        "description": "Unterstützen Sie die Einsatzkräfte bei der Organisation und Durchführung von Einsätzen im Katastrophenschutz. Aufgaben umfassen Logistik, Erste Hilfe und Kommunikation.",
+        "occupationalCategory": "Katastrophenschutz",
+        "validThrough": "2026-12-31",
+        "datePosted": "2026-01-10",
+        "jobStartDate": "2026-03-28",
+        "industry": "Rettungsdienst",
+        "image": "imgPlaceholder.png",
+        "identifier": {
+            "@type": "PropertyValue",
+            "value": "KATA2026-001",
+            "name": "Gemeinde Graz"
+        },
+        "hiringOrganization": {
+            "@type": "Organization",
+            "name": "Freiwillige Feuerwehr Fakehausen",
+            "sameAs": "https://www.katastrophenschutz.at",
+            "logo": "imgPlaceholder.png"
+        },
+        "jobLocation": {
+            "@type": "Place",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Hauptplatz 1",
+                "addressLocality": "Graz",
+                "postalCode": "8010",
+                "addressCountry": "Österreich",
+                "addressRegion": "Steiermark"
+            }
+        },
+        "applicationContact": {
+            "@type": "ContactPoint",
+            "email": "info@katastrophenschutz.at",
+            "telephone": "+43-316-123456",
+            "url": "https://www.katastrophenschutz.at/apply"
+        },
+        "employmentType": [
+            "VOLUNTEER"
+        ],
+        "workHours": "flexible Einsatzzeiten",
+        "responsibilities": "Unterstützung der Einsatzleitung, Logistikkoordination, Erste Hilfe.",
+        "skills": "Teamarbeit, Organisationstalent, Grundkenntnisse in Erster Hilfe",
+        "qualifications": "Keine besonderen Anforderungen, Schulungen werden bereitgestellt.",
+        "directApply": true,
+        "totalJobOpenings": 2
+    },
+    {
+        "@context": "https://schema.org/",
+        "@type": "JobPosting",
+        "title": "Ehrenamtlicher Unterstützer im Tierheim (m/w/d)",
+        "description": "Pflege und Betreuung von Tieren im Tierheim, Unterstützung bei Reinigungsarbeiten und Organisation von Adoptionstagen.",
+        "occupationalCategory": "Tierschutz",
+        "validThrough": "2026-12-31",
+        "datePosted": "2026-01-15",
+        "jobStartDate": "2026-03-28",
+        "industry": "Tierschutz",
+        "image": "imgPlaceholder.png",
+        "identifier": {
+            "@type": "PropertyValue",
+            "value": "TIER2026-002",
+            "name": "Tierschutzverein Wien"
+        },
+        "hiringOrganization": {
+            "@type": "Organization",
+            "name": "Tierschutzverein Wien",
+            "sameAs": "https://www.tierschutzwien.at",
+            "logo": "imgPlaceholder.png"
+        },
+        "jobLocation": {
+            "@type": "Place",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Tierheimstraße 7",
+                "addressLocality": "Wien",
+                "postalCode": "1230",
+                "addressCountry": "Österreich",
+                "addressRegion": "Wien"
+            }
+        },
+        "applicationContact": {
+            "@type": "ContactPoint",
+            "email": "info@tierschutzwien.at",
+            "telephone": "+43-1-7654321",
+            "url": "https://www.tierschutzwien.at/apply"
+        },
+        "employmentType": [
+            "VOLUNTEER"
+        ],
+        "workHours": "flexible Einsatzzeiten, mindestens 4 Stunden pro Woche",
+        "responsibilities": "Betreuung von Tieren, Reinigung der Gehege, Unterstützung bei Veranstaltungen.",
+        "skills": "Tierliebe, Geduld, Teamfähigkeit",
+        "qualifications": "Mindestalter 18 Jahre, Bereitschaft zur Arbeit mit Tieren.",
+        "directApply": true,
+        "totalJobOpenings": 2
+    },
+    {
+        "@context": "https://schema.org/",
+        "@type": "JobPosting",
+        "title": "Ehrenamtlicher Sprachlehrer für Geflüchtete (m/w/d)",
+        "description": "Helfen Sie geflüchteten Menschen, Deutsch zu lernen. Unterstützung bei der Sprachförderung in kleinen Gruppen oder Einzelunterricht.",
+        "occupationalCategory": "Bildung",
+        "validThrough": "2026-12-31",
+        "datePosted": "2026-05-18",
+        "jobStartDate": "2026-03-28",
+        "industry": "Sozialarbeit",
+        "image": "imgPlaceholder.png",
+        "identifier": {
+            "@type": "PropertyValue",
+            "value": "SPRACH2026-003",
+            "name": "Sprachhilfe Österreich"
+        },
+        "hiringOrganization": {
+            "@type": "Organization",
+            "name": "Sprachhilfe Österreich",
+            "sameAs": "https://www.sprachhilfe.at",
+            "logo": "wienerLerndreieckLogo.png"
+        },
+        "jobLocation": {
+            "@type": "Place",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Lernstraße 10",
+                "addressLocality": "Linz",
+                "postalCode": "4020",
+                "addressCountry": "Österreich",
+                "addressRegion": "Oberösterreich"
+            }
+        },
+        "applicationContact": {
+            "@type": "ContactPoint",
+            "email": "info@sprachhilfe.at",
+            "telephone": "+43-732-654321",
+            "url": "https://www.sprachhilfe.at/apply",
+            "name": "Sprachhilfe Österreich"
+        },
+        "employmentType": [
+            "VOLUNTEER"
+        ],
+        "workHours": "nach Vereinbarung, 2-6 Stunden pro Woche",
+        "responsibilities": "Unterrichtsgestaltung, Unterstützung beim Spracherwerb, Motivation und Begleitung der Teilnehmenden.",
+        "skills": "Kommunikationsfähigkeit, Geduld, pädagogisches Geschick",
+        "qualifications": "Deutschkenntnisse auf Muttersprachenniveau, Erfahrung im Unterrichten von Vorteil.",
+        "directApply": true,
+        "totalJobOpenings": 1
+    },
+    {
+        "@context": "https://schema.org/",
+        "@type": "JobPosting",
+        "title": "Feuerwehrübung Überschwemmung",
+        "description": "Feuerwehrübung im Rahmen der Katastrophenhilfe bei Überschwemmung in Linz.",
+        "occupationalCategory": "Test Kategorie",
+        "validThrough": "2026-11-11",
+        "datePosted": "2026-05-13",
+        "jobStartDate": "2026-11-11",
+        "industry": "Feuerwehr",
+        "image": "firedepartment/firedepPlaceholder.png",
+        "identifier": {
+            "@type": "PropertyValue",
+            "value": "Test Identifier Id",
+            "name": "FFOÖ"
+        },
+        "hiringOrganization": {
+            "@type": "Organization",
+            "name": "Freiwillige Feuerwehr Fakehausen",
+            "sameAs": "https://www.example.com",
+            "logo": "/feuerwehrLogo.png"
+        },
+        "jobLocation": {
+            "@type": "Place",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Firmenstraße 2",
+                "addressLocality": "Linz",
+                "postalCode": "4020",
+                "addressCountry": "Österreich",
+                "addressRegion": "Oberösterreich"
+            }
+        },
+        "applicationContact": {
+            "@type": "ContactPoint",
+            "email": "info@example.com",
+            "telephone": "+43-664-1234567",
+            "url": "https://www.example.com/application",
+            "name": "Herbert Mayer"
+        },
+        "baseSalary": {
+            "@type": "MonetaryAmount",
+            "value": {
+                "@type": "QuantitativeValue",
+                "unitText": "HOUR",
+                "minValue": 10,
+                "maxValue": 20
+            },
+            "currency": "EUR"
+        },
+        "employmentType": [
+            "VOLUNTEER"
+        ],
+        "workHours": "Mo-Fr 08:00-12:00",
+        "responsibilities": "Test Zuständigkeiten",
+        "skills": "Skill1, Skill2, Skill3",
+        "qualifications": "Qualifikation1, Qualifikation2, Qualifikation3",
+        "educationRequirements": [
+            {
+                "@type": "EducationalOccupationalCredential",
+                "credentialCategory": "bachelor degree"
+            },
+            {
+                "@type": "EducationalOccupationalCredential",
+                "credentialCategory": "postgraduate degree"
+            }
+        ],
+        "experienceRequirements": {
+            "@type": "OccupationalExperienceRequirements",
+            "monthsOfExperience": "36"
+        },
+        "directApply": false,
+        "totalJobOpenings": 3
+    },
+    {
+        "@context": "https://schema.org/",
+        "@type": "JobPosting",
+        "title": "Essensauslieferung in Lasberg",
+        "description": "Wir suchen eine Person, die Montags von 13:00 bis 15:00 Uhr Essenslieferungen in Lasberg durchführen kann.",
+        "occupationalCategory": "Freiwilligenarbeit",
+        "validThrough": "2026-12-31",
+        "datePosted": "2026-01-23",
+        "jobStartDate": "2026-03-28",
+        "industry": "Freiwilligenarbeit",
+        "image": "imgPlaceholder.png",
+        "identifier": {
+            "@type": "PropertyValue",
+            "value": "Essensauslieferung-2026-01",
+            "name": "FA Lasberg"
+        },
+        "hiringOrganization": {
+            "@type": "Organization",
+            "name": "FO Linz",
+            "sameAs": "https://www.example-organization.com",
+            "logo": "/imgPlaceholder.png"
+        },
+        "jobLocation": {
+            "@type": "Place",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Essensauslieferungsweg 1",
+                "addressLocality": "Lasberg",
+                "postalCode": "4192",
+                "addressCountry": "Österreich",
+                "addressRegion": "Oberösterreich"
+            }
+        },
+        "applicationContact": {
+            "@type": "ContactPoint",
+            "email": "info@example-organization.com",
+            "telephone": "+43-664-1234567",
+            "url": "https://www.example-organization.com/application",
+            "name": "FO Linz"
+        },
+        "baseSalary": {
+            "@type": "MonetaryAmount",
+            "value": {
+                "@type": "QuantitativeValue",
+                "unitText": "HOUR",
+                "minValue": 10,
+                "maxValue": 15
+            },
+            "currency": "EUR"
+        },
+        "employmentType": [
+            "VOLUNTEER"
+        ],
+        "workHours": "Mo 13:00 - 15:00",
+        "responsibilities": "Durchführung der Essensauslieferung in Lasberg.",
+        "skills": "Fahrerlaubnis, Zuverlässigkeit, Teamarbeit",
+        "qualifications": "Keine spezifischen Qualifikationen erforderlich.",
+        "educationRequirements": [
+            {
+                "@type": "EducationalOccupationalCredential",
+                "credentialCategory": "None"
+            }
+        ],
+        "experienceRequirements": {
+            "@type": "OccupationalExperienceRequirements",
+            "monthsOfExperience": "0"
+        },
+        "directApply": true,
+        "totalJobOpenings": 5
+    },
+    {
+        "@context": "https://schema.org/",
+        "@type": "JobPosting",
+        "title": "Event Organisation Unterstützung",
+        "description": "Bestätigung über die Unterstützung bei der Organisation eines Benefiz-Events.",
+        "occupationalCategory": "Eventmanagement",
+        "validThrough": "2026-12-31",
+        "datePosted": "2026-05-14",
+        "jobStartDate": "2026-06-01",
+        "industry": "Soziales Engagement",
+        "image": "imgPlaceholder.png",
+        "identifier": {
+            "@type": "PropertyValue",
+            "value": "NACH2026-002",
+            "name": "Gemeinde"
+        },
+        "hiringOrganization": {
+            "@type": "Organization",
+            "name": "FB-Klub Mentator",
+            "sameAs": "https://www.fbklub-mentator.at",
+            "logo": "/wienerLerndreieckLogo.png"
+        },
+        "jobLocation": {
+            "@type": "Place",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Eventstraße 5",
+                "addressLocality": "Österreich",
+                "postalCode": "1010",
+                "addressCountry": "Österreich",
+                "addressRegion": "Wien"
+            }
+        },
+        "applicationContact": {
+            "@type": "ContactPoint",
+            "email": "kontakt@fbklub-mentator.at",
+            "telephone": "+43-660-9876543",
+            "url": "https://www.fbklub-mentator.at/bewerbung",
+            "name": "Herbert Mayer"
+        },
+        "baseSalary": {
+            "@type": "MonetaryAmount",
+            "value": {
+                "@type": "QuantitativeValue",
+                "unitText": "HOUR",
+                "minValue": 10,
+                "maxValue": 15
+            },
+            "currency": "EUR"
+        },
+        "employmentType": [
+            "VOLUNTEER"
+        ],
+        "workHours": "flexibel",
+        "responsibilities": "Unterstützung bei der Planung und Organisation eines Benefiz-Events.",
+        "skills": "Organisationstalent, Kommunikation, Teamarbeit",
+        "qualifications": "Keine spezifischen Qualifikationen erforderlich.",
+        "educationRequirements": [
+            {
+                "@type": "EducationalOccupationalCredential",
+                "credentialCategory": "None"
+            }
+        ],
+        "experienceRequirements": {
+            "@type": "OccupationalExperienceRequirements",
+            "monthsOfExperience": "0"
+        },
+        "directApply": true,
+        "totalJobOpenings": 1
+    },
+    {
+        "@context": "https://schema.org/",
+        "@type": "JobPosting",
+        "title": "Fahrdienste und Krankentransporte",
+        "description": "Bestätigung über die Unterstützung bei Krankentransporten.",
+        "occupationalCategory": "Samariterbund",
+        "validThrough": "2026-12-31",
+        "datePosted": "2026-05-14",
+        "jobStartDate": "2026-06-01",
+        "industry": "Samariterbund",
+        "image": "imgPlaceholder.png",
+        "identifier": {
+            "@type": "PropertyValue",
+            "value": "NACH2026-007",
+            "name": "Gemeinde"
+        },
+        "hiringOrganization": {
+            "@type": "Organization",
+            "name": "Samariterbund Linz",
+            "sameAs": "https://www.fbklub-mentator.at",
+            "logo": "/imgPlaceholder.png"
+        },
+        "jobLocation": {
+            "@type": "Place",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Eventstraße 5",
+                "addressLocality": "Österreich",
+                "postalCode": "1010",
+                "addressCountry": "Österreich",
+                "addressRegion": "Wien"
+            }
+        },
+        "applicationContact": {
+            "@type": "ContactPoint",
+            "email": "kontakt@fbklub-mentator.at",
+            "telephone": "+43-660-9876543",
+            "url": "https://www.fbklub-mentator.at/bewerbung",
+            "name": "Herbert Mayer"
+        },
+        "baseSalary": {
+            "@type": "MonetaryAmount",
+            "value": {
+                "@type": "QuantitativeValue",
+                "unitText": "HOUR",
+                "minValue": 10,
+                "maxValue": 15
+            },
+            "currency": "EUR"
+        },
+        "employmentType": [
+            "VOLUNTEER"
+        ],
+        "workHours": "flexibel",
+        "responsibilities": "Unterstützung bei Krankentransporten.",
+        "skills": "Organisationstalent, Kommunikation, Teamarbeit, Zuverlässigkeit",
+        "qualifications": "Führerschein der Klasse B, Erfahrung in der medizinischen Versorgung.",
+        "educationRequirements": [
+            {
+                "@type": "EducationalOccupationalCredential",
+                "credentialCategory": "None"
+            }
+        ],
+        "experienceRequirements": {
+            "@type": "OccupationalExperienceRequirements",
+            "monthsOfExperience": "0"
+        },
+        "directApply": true,
+        "totalJobOpenings": 4
+    },
+    {
+        "@context": "https://schema.org/",
+        "@type": "JobPosting",
+        "title": "Event Organisation Unterstützung",
+        "description": "Bestätigung über die Unterstützung bei der Organisation eines Benefiz-Events.",
+        "occupationalCategory": "Eventmanagement",
+        "validThrough": "2026-12-31",
+        "datePosted": "2026-05-14",
+        "jobStartDate": "2026-06-01",
+        "industry": "Soziales Engagement",
+        "image": "imgPlaceholder.png",
+        "identifier": {
+            "@type": "PropertyValue",
+            "value": "NACH2026-001",
+            "name": "Gemeinde"
+        },
+        "hiringOrganization": {
+            "@type": "Organization",
+            "name": "FB-Klub Mentator",
+            "sameAs": "https://www.fbklub-mentator.at",
+            "logo": "/wienerLerndreieckLogo.png"
+        },
+        "jobLocation": {
+            "@type": "Place",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Eventstraße 5",
+                "addressLocality": "Österreich",
+                "postalCode": "1010",
+                "addressCountry": "Österreich",
+                "addressRegion": "Wien"
+            }
+        },
+        "applicationContact": {
+            "@type": "ContactPoint",
+            "email": "kontakt@fbklub-mentator.at",
+            "telephone": "+43-660-9876543",
+            "url": "https://www.fbklub-mentator.at/bewerbung",
+            "name": "Herbert Mayer"
+        },
+        "baseSalary": {
+            "@type": "MonetaryAmount",
+            "value": {
+                "@type": "QuantitativeValue",
+                "unitText": "HOUR",
+                "minValue": 10,
+                "maxValue": 15
+            },
+            "currency": "EUR"
+        },
+        "employmentType": [
+            "VOLUNTEER"
+        ],
+        "workHours": "flexibel",
+        "responsibilities": "Unterstützung bei der Planung und Organisation eines Benefiz-Events.",
+        "skills": "Organisationstalent, Kommunikation, Teamarbeit",
+        "qualifications": "Keine spezifischen Qualifikationen erforderlich.",
+        "educationRequirements": [
+            {
+                "@type": "EducationalOccupationalCredential",
+                "credentialCategory": "None"
+            }
+        ],
+        "experienceRequirements": {
+            "@type": "OccupationalExperienceRequirements",
+            "monthsOfExperience": "0"
+        },
+        "directApply": true,
+        "totalJobOpenings": 1
+    },
+    {
+        "@context": "https://schema.org/",
+        "@type": "JobPosting",
+        "title": "Event Organisation Unterstützung",
+        "description": "Bestätigung über die Unterstützung bei der Organisation eines Events.",
+        "occupationalCategory": "Eventmanagement",
+        "validThrough": "2026-12-31",
+        "datePosted": "2026-05-14",
+        "jobStartDate": "2026-06-01",
+        "industry": "Soziales Engagement",
+        "image": "imgPlaceholder.png",
+        "identifier": {
+            "@type": "PropertyValue",
+            "value": "NACH2026-006",
+            "name": "Gemeinde"
+        },
+        "hiringOrganization": {
+            "@type": "Organization",
+            "name": "FB-Klub Mentator",
+            "sameAs": "https://www.fbklub-mentator.at",
+            "logo": "/wienerLerndreieckLogo.png"
+        },
+        "jobLocation": {
+            "@type": "Place",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Eventstraße 5",
+                "addressLocality": "Österreich",
+                "postalCode": "1010",
+                "addressCountry": "Österreich",
+                "addressRegion": "Wien"
+            }
+        },
+        "applicationContact": {
+            "@type": "ContactPoint",
+            "email": "kontakt@fbklub-mentator.at",
+            "telephone": "+43-660-9876543",
+            "url": "https://www.fbklub-mentator.at/bewerbung",
+            "name": "Herbert Mayer"
+        },
+        "baseSalary": {
+            "@type": "MonetaryAmount",
+            "value": {
+                "@type": "QuantitativeValue",
+                "unitText": "HOUR",
+                "minValue": 10,
+                "maxValue": 15
+            },
+            "currency": "EUR"
+        },
+        "employmentType": [
+            "VOLUNTEER"
+        ],
+        "workHours": "flexibel",
+        "responsibilities": "Unterstützung bei der Planung und Organisation eines Events.",
+        "skills": "Organisationstalent, Kommunikation, Teamarbeit",
+        "qualifications": "Keine spezifischen Qualifikationen erforderlich.",
+        "educationRequirements": [
+            {
+                "@type": "EducationalOccupationalCredential",
+                "credentialCategory": "None"
+            }
+        ],
+        "experienceRequirements": {
+            "@type": "OccupationalExperienceRequirements",
+            "monthsOfExperience": "0"
+        },
+        "directApply": true,
+        "totalJobOpenings": 1
+    },
+    {
+        "@context": "https://schema.org/",
+        "@type": "JobPosting",
+        "title": "Nachweis für Soziale Unterstützung",
+        "description": "Bestätigung über die Unterstützung in der sozialen Betreuung für ältere Menschen.",
+        "occupationalCategory": "Samariterbund",
+        "validThrough": "2026-12-31",
+        "datePosted": "2026-05-15",
+        "jobStartDate": "2026-06-01",
+        "industry": "Samariterbund",
+        "image": "imgPlaceholder.png",
+        "identifier": {
+            "@type": "PropertyValue",
+            "value": "SPRACH2026-004",
+            "name": "Gemeinde"
+        },
+        "hiringOrganization": {
+            "@type": "Organization",
+            "name": "Samariterbund Wien",
+            "sameAs": "https://www.samariterbund.net",
+            "logo": "/imgPlaceholder.png"
+        },
+        "jobLocation": {
+            "@type": "Place",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Sozialstraße 10",
+                "addressLocality": "Wien",
+                "postalCode": "1010",
+                "addressCountry": "Österreich",
+                "addressRegion": "Wien"
+            }
+        },
+        "applicationContact": {
+            "@type": "ContactPoint",
+            "email": "info@samariterbund.net",
+            "telephone": "+43-1-234567",
+            "url": "https://www.samariterbund.net/apply",
+            "name": "Herbert Mayer"
+        },
+        "employmentType": [
+            "VOLUNTEER"
+        ],
+        "workHours": "nach Vereinbarung, 2-6 Stunden pro Woche",
+        "responsibilities": "Unterstützung in der sozialen Betreuung für ältere Menschen.",
+        "skills": "Kommunikationsfähigkeit, Geduld, Teamfähigkeit",
+        "qualifications": "Keine spezifischen Qualifikationen erforderlich.",
+        "directApply": true,
+        "totalJobOpenings": 1
+    },
+    {
+        "@type": "JobPosting",
+        "title": "Aushilfsfahrer",
+        "description": "Werde Teil unserer schlagkräftigen Truppe und hilf dabei, Fakehausen sicherer zu machen!",
+        "occupationalCategory": "Feuerwehr",
+        "validThrough": "2026-12-31",
+        "datePosted": "2026-10-24",
+        "jobStartDate": "2026-11-01",
+        "industry": "Rettungsdienst",
+        "identifier": {
+            "@type": "PropertyValue",
+            "value": "FF2024-001",
+            "name": "Fakehausen Feuerwehrwache"
+        },
+        "hiringOrganization": {
+            "@type": "Organization",
+            "name": "Fakehausen Feuerwehrwache",
+            "sameAs": "https://www.fakehausen-feuerwehr.at",
+            "logo": "feuerwehrLogo.png"
+        },
+        "jobLocation": {
+            "@type": "Place",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Fakehausen Feuerwache",
+                "addressLocality": "Fakehausen",
+                "postalCode": "12345",
+                "addressCountry": "Deutschland",
+                "addressRegion": "Fakehausen"
+            }
+        },
+        "applicationContact": {
+            "@type": "ContactPoint",
+            "email": "info@fakehausen-feuerwehr.at",
+            "telephone": "+49-123-456789",
+            "url": "https://www.fakehausen-feuerwehr.at/apply"
+        },
+        "employmentType": [
+            "VOLUNTEER"
+        ],
+        "workHours": "Flexible Einsatzzeiten",
+        "responsibilities": "Unterstützung der Einsatzleitung, Brandbekämpfung, Rettungsmaßnahmen.",
+        "skills": "Teamarbeit, Kommunikation, Feuerwehrkenntnisse",
+        "qualifications": "Keine besonderen Anforderungen, Schulungen werden bereitgestellt.",
+        "directApply": true,
+        "totalJobOpenings": 2
+    },
+    {
+        "@type": "JobPosting",
+        "title": "Jugendfeuerwehrbetreuer - Nachwuchs fördern!",
+        "description": "Du begeisterst Kinder und Jugendliche für die Feuerwehr, vermittelst Wissen rund um Brandschutz und Erste Hilfe.",
+        "occupationalCategory": "Feuerwehr",
+        "validThrough": "2026-12-31",
+        "datePosted": "2026-11-12",
+        "jobStartDate": "2026-11-12",
+        "industry": "Rettungsdienst",
+        "identifier": {
+            "@type": "PropertyValue",
+            "value": "FF2024-002",
+            "name": "Fakehausen Feuerwehrwache"
+        },
+        "hiringOrganization": {
+            "@type": "Organization",
+            "name": "Fakehausen Feuerwehrwache",
+            "sameAs": "https://www.fakehausen-feuerwehr.at",
+            "logo": "feuerwehrLogo.png"
+        },
+        "jobLocation": {
+            "@type": "Place",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Fakehausen Feuerwache",
+                "addressLocality": "Fakehausen",
+                "postalCode": "12345",
+                "addressCountry": "Deutschland",
+                "addressRegion": "Fakehausen"
+            }
+        },
+        "applicationContact": {
+            "@type": "ContactPoint",
+            "email": "info@fakehausen-feuerwehr.at",
+            "telephone": "+49-123-456789",
+            "url": "https://www.fakehausen-feuerwehr.at/apply"
+        },
+        "employmentType": [
+            "VOLUNTEER"
+        ],
+        "workHours": "Flexible Einsatzzeiten",
+        "responsibilities": "Leitung von Gruppen, Organisation von Aktivitäten und Ausbildungen.",
+        "skills": "Teamarbeit, pädagogische Fähigkeiten, Erste Hilfe",
+        "qualifications": "Erfahrung in der Arbeit mit Jugendlichen, Feuerwehrkenntnisse sind von Vorteil.",
+        "directApply": true,
+        "totalJobOpenings": 1
+    },
+    {
+        "@type": "JobPosting",
+        "title": "Technik-Profi gesucht! – Gerätewart",
+        "description": "Als Gerätewart sorgst du dafür, dass unsere Schläuche, Atemschutzgeräte und Fahrzeuge immer einsatzbereit sind.",
+        "occupationalCategory": "Feuerwehr",
+        "validThrough": "2026-12-31",
+        "datePosted": "2026-10-29",
+        "jobStartDate": "2026-10-29",
+        "industry": "Rettungsdienst",
+        "identifier": {
+            "@type": "PropertyValue",
+            "value": "FF2024-003",
+            "name": "Fakehausen Feuerwehrwache"
+        },
+        "hiringOrganization": {
+            "@type": "Organization",
+            "name": "Fakehausen Feuerwehrwache",
+            "sameAs": "https://www.fakehausen-feuerwehr.at",
+            "logo": "feuerwehrLogo.png"
+        },
+        "jobLocation": {
+            "@type": "Place",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Fakehausen Feuerwache",
+                "addressLocality": "Fakehausen",
+                "postalCode": "12345",
+                "addressCountry": "Deutschland",
+                "addressRegion": "Fakehausen"
+            }
+        },
+        "applicationContact": {
+            "@type": "ContactPoint",
+            "email": "info@fakehausen-feuerwehr.at",
+            "telephone": "+49-123-456789",
+            "url": "https://www.fakehausen-feuerwehr.at/apply"
+        },
+        "employmentType": [
+            "VOLUNTEER"
+        ],
+        "workHours": "Flexible Einsatzzeiten",
+        "responsibilities": "Wartung und Pflege von Geräten, Fahrzeugen und Ausrüstung.",
+        "skills": "Technikverständnis, Wartungskenntnisse, Teamarbeit",
+        "qualifications": "Erfahrung im Umgang mit feuerwehrtechnischen Geräten ist von Vorteil.",
+        "directApply": true,
+        "totalJobOpenings": 2
+    }
+]

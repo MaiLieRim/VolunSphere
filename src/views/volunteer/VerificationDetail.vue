@@ -1,12 +1,12 @@
 <template>
     <Navbar title="Details"></Navbar>
 
-    <div class="content-container pb-5" v-if="task">
+    <div class="content-container pb-5" v-if="detailTask">
         
         <div class="d-flex justify-content-between align-items-start mb-4">
             <div>
-                <h3 class="fw-bold mb-1">{{ task.name }}</h3>
-                <p class="text-muted mb-0">{{ task.organization.name }}</p>
+                <h3 class="fw-bold mb-1">{{ detailTask.name }}</h3>
+                <p class="text-muted mb-0">{{ detailTask.organization.name }}</p>
             </div>
             
             <span class="badge rounded-pill px-3 py-2" :class="statusBadge.class">
@@ -25,7 +25,7 @@
                         </div>
                         <div>
                             <span class="d-block small text-muted fw-bold mb-1">Datum</span>
-                            <span class="d-block text-dark">{{ formatDate(task.startDate) }}</span>
+                            <span class="d-block text-dark">{{ formatDate(detailTask.startDate) }}</span>
                         </div>
                     </div>
 
@@ -35,7 +35,7 @@
                         </div>
                         <div>
                             <span class="d-block small text-muted fw-bold mb-1">Einsatzort</span>
-                            <span class="d-block text-dark">{{ task.location?.name || 'Kein Ort angegeben' }}</span>
+                            <span class="d-block text-dark">{{ detailTask.location?.name || 'Kein Ort angegeben' }}</span>
                         </div>
                     </div>
 
@@ -45,7 +45,7 @@
                         </div>
                         <div>
                             <span class="d-block small text-muted fw-bold mb-1">Dauer</span>
-                            <span class="d-block text-dark fw-bold">{{ task.hours }} Stunden</span>
+                            <span class="d-block text-dark fw-bold">{{ detailTask.hours }} Stunden</span>
                         </div>
                     </div>
 
@@ -56,25 +56,42 @@
                             </div>
                             <div>
                                 <span class="d-block small text-muted fw-bold mb-0">Zuständig</span>
-                                <span class="d-block text-dark fw-medium">{{ task.organization.admin || 'Einsatzleitung' }}</span>
+                                <span class="d-block text-dark fw-medium">{{ detailTask.organization.admin || 'Einsatzleitung' }}</span>
                             </div>
                         </div>
-                        <router-link  :to="{ name: 'chat', params: { name: task.organization.admin } }" class="btn btn-outline-primary rounded-circle shadow-sm d-flex justify-content-center align-items-center" style="width: 40px; height: 40px;">
+                        <router-link v-if="detailTask.organization?.admin" :to="{ name: 'chat', params: { name: detailTask.organization.admin } }" class="btn btn-outline-primary rounded-circle shadow-sm d-flex justify-content-center align-items-center" style="width: 40px; height: 40px;">
                             <i class="bi bi-chat-dots-fill"></i>
                         </router-link>
+                        <button v-else class="btn btn-outline-secondary rounded-circle shadow-sm d-flex justify-content-center align-items-center" style="width: 40px; height: 40px;" disabled>
+                            <i class="bi bi-chat-dots-fill"></i>
+                        </button>
                     </div>
 
                 </div>
             </div>
         </div>
 
-        <div v-if="task.description" class="mb-5">
+        <div v-if="detailTask.description" class="mb-5">
             <h5 class="fw-bold mb-2">Beschreibung</h5>
-            <p class="text-muted">{{ task.description }}</p>
+            <p class="text-muted">{{ detailTask.description }}</p>
         </div>
 
-        <div class="d-grid gap-2">
-            <button v-if="isPending" class="btn btn-outline-danger py-2 rounded-pill">
+                    <div v-if="!hasVerification" class="d-flex align-items-start">
+                        <div class="bg-primary-subtle text-primary rounded-circle d-flex justify-content-center align-items-center me-3" style="width: 40px; height: 40px; min-width: 40px;">
+                            <i class="bi bi-clock-history fs-5"></i>
+                        </div>
+                        <div class="w-100">
+                            <span class="d-block small text-muted fw-bold mb-1">Getätigte Stunden</span>
+                            <input type="number" class="form-control form-control-sm w-50" v-model.number="hours" min="1" />
+                        </div>
+                    </div>
+
+        <div class="d-grid gap-2 mt-3">
+            <button v-if="!hasVerification" class="btn btn-primary py-2 rounded-pill" @click="requestVerification">
+                <i class="bi bi-send me-1"></i> Nachweis anfragen
+            </button>
+
+            <button v-if="isPending && hasVerification" class="btn btn-outline-danger py-2 rounded-pill">
                 <i class="bi bi-x-circle me-1"></i> Anfrage zurückziehen
             </button>
             
@@ -95,37 +112,93 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from 'vue';
+import { computed, defineProps, onMounted, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import Navbar from '@/components/navbars/Navbar.vue';
 import verificationsData from '@/assets/data/verifications.json';
+import { useTasks } from '@/composables/useTasks';
 
+const props = defineProps({
+    itemId: {
+        type: String,
+        required: false
+    }
+});
 const route = useRoute();
+const { allTasks } = useTasks();
 const task = ref(null);
+const hasVerification = ref(false);
+const hours = ref(0);
+const requestSent = ref(false);
 
-// Retrieve the item based on the ID passed in the URL
-onMounted(() => {
-    const itemId = route.params.itemId;
-    
-    // Look for the item in your JSON file. 
-    // Adjust 'job.identifier?.value' if your JSON stores the ID differently!
+const loadTask = () => {
+    const itemId = props.itemId || route.params.itemId;
     const foundItem = verificationsData.itemListElement.find(
         job => job.identifier?.value === itemId || job.id === itemId
     );
-    
-    task.value = foundItem || null;
-});
+
+    if (foundItem) {
+        task.value = { ...foundItem };
+        hasVerification.value = true;
+        hours.value = foundItem.hours || 0;
+        requestSent.value = false;
+        return;
+    }
+
+    const foundTask = allTasks.value.find(
+        job => job.id === itemId || job.identifier?.value === itemId
+    );
+
+    if (foundTask) {
+        task.value = {
+            ...foundTask,
+            name: foundTask.title,
+            organization: foundTask.hiringOrganization?.name
+                ? { ...foundTask.hiringOrganization }
+                : { name: foundTask.club || 'Organisation', admin: 'Einsatzleitung' },
+            identifier: foundTask.identifier || { value: itemId, name: foundTask.club },
+            startDate: foundTask.jobStartDate || foundTask.datePosted,
+            location: { name: foundTask.location || foundTask.address?.addressLocality || 'Kein Ort angegeben' },
+            hours: foundTask.hours || 4
+        };
+        hours.value = foundTask.hours || 4;
+        hasVerification.value = false;
+        requestSent.value = false;
+        return;
+    }
+
+    task.value = null;
+};
+
+onMounted(loadTask);
+watch([() => route.params.itemId, () => props.itemId], loadTask);
 
 // --- Computed Helpers ---
 
+const detailTask = computed(() => {
+    if (!task.value) return null;
+    return {
+        ...task.value,
+        name: task.value.name || task.value.title || 'Unbekannte Aufgabe',
+        organization: {
+            ...(task.value.organization || task.value.hiringOrganization || { name: task.value.club || 'Organisation' }),
+            admin: (task.value.organization?.admin || task.value.hiringOrganization?.admin || 'Einsatzleitung')
+        },
+        location: task.value.location || { name: task.value.address?.addressLocality || 'Kein Ort angegeben' },
+        startDate: task.value.startDate || task.value.jobStartDate || task.value.datePosted || '',
+        hours: hours.value,
+        description: task.value.description || ''
+    };
+});
+
 const isPending = computed(() => {
-    if (!task.value) return false;
-    return task.value.status === 'Pending' || task.value.status === 'Requested';
+    if (!detailTask.value) return false;
+    return detailTask.value.status === 'Pending' || detailTask.value.status === 'Requested' || requestSent.value;
 });
 
 const isConfirmed = computed(() => {
-    if (!task.value) return false;
-    return !isPending.value && task.value.status !== 'Deleted';
+    if (!detailTask.value) return false;
+    return !isPending.value && detailTask.value.status !== 'Deleted' && hasVerification.value;
 });
 
 // Dynamic styles for the badge based on status
@@ -142,21 +215,46 @@ const statusBadge = computed(() => {
             class: 'bg-success text-white',
             icon: 'bi-check-circle-fill'
         };
-    } else {
+    } else if (hasVerification.value) {
         return {
-            text: 'Gelöscht / Abgelehnt',
+            text: 'Abgelehnt',
             class: 'bg-danger text-white',
             icon: 'bi-x-circle-fill'
         };
     }
+    return {
+        text: 'Kein Nachweis',
+        class: 'bg-secondary text-white',
+        icon: 'bi-file-earmark-minus'
+    };
 });
+
+const requestVerification = () => {
+    if (!detailTask.value) return;
+
+    task.value = {
+        ...task.value,
+        status: 'Pending',
+        dateRequested: new Date().toISOString().split('T')[0],
+        hours: hours.value,
+        requester: { name: 'Du' },
+        organization: detailTask.value.organization,
+        identifier: detailTask.value.identifier || { value: route.params.itemId }
+    };
+
+    if (!hasVerification.value) {
+        verificationsData.itemListElement.push(task.value);
+        hasVerification.value = true;
+    }
+
+    requestSent.value = true;
+};
 
 // Simple date formatter (adjust based on how dates are stored in your JSON)
 const formatDate = (dateString) => {
     if (!dateString) return 'Kein Datum angegeben';
     const date = new Date(dateString);
-    // If invalid date string, just return the string itself
-    if (isNaN(date)) return dateString; 
+    if (isNaN(date)) return dateString;
     
     return new Intl.DateTimeFormat('de-AT', {
         day: '2-digit',

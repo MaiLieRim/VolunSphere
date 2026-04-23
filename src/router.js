@@ -36,7 +36,7 @@ const router = createRouter({
     { path: '/registry', name: 'registry', component: Registry },
     { path: '/onboarding', name: 'onboarding', component: Onboarding },
     { path: '/profile', name: 'profile', component: Profile, meta: { requiresAuth: true } },
-    { path: '/tasks', name: 'tasks', component: Tasks, meta: { requiresAuth: true } },
+    { path: '/tasks', name: 'tasks', component: Tasks, meta: { requiresAuth: true, role: 'volunteer' } },
     { path: '/task/:itemId', name: 'task', component: TaskDetails, meta: { requiresAuth: true }, props: true },
     { path: '/verification/:itemId', name: 'verification', component: VerificationDetail, meta: { requiresAuth: true }, props: true },
     { path: '/review-verification/:itemId', name: 'reviewverification', component: ReviewVerification, meta: { requiresAuth: true }, props: true },

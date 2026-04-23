@@ -110,7 +110,7 @@ const getBackgroundClass = (index) => getDirection(index) === 'left' ? 'bg-warni
             <div class="list-group-item-container" :class="getBackgroundClass(index)">
                 
                 <div class="action-background action-verify" :style="{ opacity: getDirection(index) === 'left' ? 1 : 0 }">
-                    <span class="text-dark fw-bold fs-6">Nachweis anfragen</span>
+                    <span class="text-dark fw-bold fs-5">Nachweis anfragen</span>
                 </div>
 
                 <div class="list-group-item list-group-item-action align-content-stretch d-flex swipe-item cursor-pointer"

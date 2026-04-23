@@ -6,7 +6,16 @@ import { useTasks } from '@/composables/useTasks';
 import ChatHistory from '@/components/chat/ChatHistory.vue';
 import MatchBar from '@/components/MatchBar.vue';
 
-defineProps({
+// --- DATEN REAKTIV MACHEN ---
+import verificationsData from '@/assets/data/verifications.json';
+import applicationsData from '@/assets/data/applications.json';
+import rawUser from "@/assets/data/volunteer";
+
+const verificationsList = ref(verificationsData.itemListElement);
+const applicationsList = ref(applicationsData.itemListElement);
+const user = ref(rawUser);
+
+const props = defineProps({
   itemId: String
 });
 
@@ -15,19 +24,49 @@ const { getTaskById } = useTasks();
 const jobPosting = computed(() => getTaskById(route.params.itemId));
 const backRoute = computed(() => route.query.backRoute);
 
-// --- State & Functions ---
 const isChatOpen = ref(false);
-const hasRequested = ref(false);
+
+// --- COMPUTED STATUS ---
+
+// Prüfen, ob Aufgabe bereits verifiziert/abgeschlossen ist
+const isTaskCompleted = computed(() => {
+  if (!jobPosting.value) return false;
+  return verificationsList.value.some(v => v.identifier?.value === jobPosting.value.id);
+});
+
+// Prüfen, ob bereits eine Bewerbung (Application) existiert
+const isTaskRequested = computed(() => {
+  if (!jobPosting.value) return false;
+  return applicationsList.value.some(a => 
+    a.taskId === jobPosting.value.id && a.volunteerName === user.value.name
+  );
+});
 
 const toggleChat = () => {
   isChatOpen.value = !isChatOpen.value;
 };
 
+// --- LOGIK: AUFGABE ÜBERNEHMEN ---
 const requestTask = () => {
-  hasRequested.value = true;
+  if (!jobPosting.value || isTaskCompleted.value || isTaskRequested.value) return;
+
+  // Neues Bewerbungs-Objekt erstellen
+  const newApplication = {
+    "@type": "Application",
+    "volunteerName": user.value.name,
+    "taskId": jobPosting.value.id,
+    "status": "PENDING",
+    "appliedDate": new Date().toISOString().split('T')[0],
+    "notes": "Automatisch über App übernommen"
+  };
+
+  // In die reaktive Liste pushen
+  applicationsList.value.push(newApplication);
+  
+  // Optional: Feedback für den User
+  console.log('Task application submitted for:', jobPosting.value.id);
 };
 </script>
-
 <template>
   <div class="d-flex flex-column min-vh-100">
     <Navbar title="Details" :backRoute="backRoute"></Navbar>
@@ -45,9 +84,14 @@ const requestTask = () => {
           </div>
           
           <button class="request-btn btn shadow-sm" 
-            :class="hasRequested ? 'btn-primary' : 'btn-outline-primary bg-white'"
+            :class="{
+              'btn-success': isTaskCompleted,
+              'btn-primary': isTaskRequested && !isTaskCompleted,
+              'btn-outline-primary bg-white': !isTaskCompleted && !isTaskRequested
+            }"
+            :disabled="isTaskCompleted"
             @click="requestTask">
-            {{ hasRequested ? 'Aufgabe angefragt' : 'Aufgabe übernehmen' }}
+            {{ isTaskCompleted ? 'Aufgabe abgeschlossen' : (isTaskRequested ? 'Aufgabe angefragt' : 'Aufgabe übernehmen') }}
           </button>
         </div>
 

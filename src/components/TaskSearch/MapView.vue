@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue'
 import L from 'leaflet'
 
-import data from '@/assets/data/tasklist.json'
+import data from '@/assets/data/tasks.json'
 const map = ref(null)
 const selectedTask = ref(null) // <-- controls bottom card
 
@@ -19,7 +19,9 @@ onMounted(() => {
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
         .addTo(map.value)
 
-    data.itemListElement.forEach((job) => {
+    const jobs = Array.isArray(data) ? data : data.itemListElement || []
+
+    jobs.forEach((job) => {
         const city = job.jobLocation.address.addressLocality
         const coords = cityCoordinates[city]
 

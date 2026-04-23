@@ -78,7 +78,7 @@
         {
             "@type": "RequestAction",
             "name": "Aushilfsfahrer",
-            "description": "Bestätigung über die Unterstützung in der sozialen Betreuung für ältere Menschen.",
+            "description": "Bestätigung über die Unterstützung bei Fahrdiensten und Krankentransporten.",
             "identifier": {
                 "@type": "PropertyValue",
                 "value": "FF2024-001",
@@ -86,7 +86,7 @@
             },
             "requester": {
                 "@type": "Person",
-                "name": "Traudi Huber"
+                "name": "Liselotte Pulver"
             },
             "organization": {
                 "@type": "Organization",

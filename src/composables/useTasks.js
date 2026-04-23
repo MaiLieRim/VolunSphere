@@ -1,8 +1,10 @@
 import { computed } from 'vue';
 import { useTaskApi } from '@/assets/js/taskApi';
-import tasklist from '@/assets/data/tasklist.json';
-import firedeptasks from '@/assets/data/firedeptasks.json';
+import tasks from '@/assets/data/tasks.json';
+
 import Logo from '@/components/Logo.vue';
+
+const tasksArray = Array.isArray(tasks) ? tasks : tasks.itemListElement || [];
 
 export function useTasks() {
     const { getTasks } = useTaskApi();
@@ -40,11 +42,10 @@ export function useTasks() {
 
     // Combine all tasks into a single array
     const allTasks = computed(() => {
-        const staticTasks = tasklist.itemListElement.map(mapTask);
-        const fireDeptTasks = firedeptasks.itemListElement.map(mapTask);
+        const staticTasks = tasksArray.map(mapTask);
         const customTasks = getTasks().map(mapTask);
 
-        return [...staticTasks, ...fireDeptTasks, ...customTasks];
+        return [...staticTasks, ...customTasks];
     });
 
     // Get task by ID
