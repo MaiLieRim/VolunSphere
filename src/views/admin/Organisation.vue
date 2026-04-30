@@ -143,8 +143,8 @@
     <div v-if="currentTab === 'Aufgaben'" class="content-container">
         <div class="m-4">
             <h2 class="mb-3">Aufgaben der Organisation</h2>
-            <div class="d-flex justify-content-end">
-                <RouterLink to="/addtask" class="btn btn-primary">Neue Aufgabe erstellen</RouterLink>
+            <div class="d-flex justify-content-end gap-2">
+                <RouterLink to="/organisation-tasks" class="btn btn-primary">Aufgaben verwalten</RouterLink>
             </div>
         </div>
 
@@ -153,7 +153,7 @@
         <CardBody :message="`Sie haben ${items.length} neue Nachweisanfragen, bitte geben Sie diese frei.`"
             class="mt-2">
         </CardBody>
-        <TaskList :items="items" :title="'Offene Aufgaben'" class="mt-4"></TaskList>
+        <TaskList :items="items" :title="'Laufende Aufgaben'" class="mt-4"></TaskList>
         <TaskList :items="items" :title="'Abgeschlossene Aufgaben'" class="mt-4"></TaskList>
     </div>
 
@@ -176,8 +176,8 @@
 import Navbar from "@/components/navbars/Navbar.vue";
 import organisations from "@/assets/data/organisations.json";
 import TableSearch from "@/components/TableSearch.vue";
-import CardBody from "@/components/CardBody.vue";
-import TaskList from "@/components/TaskList.vue";
+import VerificationRequestsCard from "@/components/verification/VerificationRequestsCard.vue";
+import TaskList from "@/components/tasks/TaskList.vue";
 import { ref, computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { useTasks } from "@/composables/useTasks";

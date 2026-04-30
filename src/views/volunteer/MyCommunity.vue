@@ -18,7 +18,7 @@
                                 <i class="bi bi-building"></i>
                             </div>
                             <div>
-                                <h6 class="mb-0 fw-bold">{{ post.organization }}</h6>
+                                <h5 class="mb-0 fw-bold">{{ post.organization }}</h5>
                                 <small class="text-muted">{{ post.time }}</small>
                             </div>
                         </div>
@@ -58,7 +58,7 @@
                                 style="width: 50px; height: 50px;">
                                 <i :class="['bi fs-4', group.icon]"></i>
                             </div>
-                            <h6 class="fw-bold mb-1">{{ group.name }}</h6>
+                            <h5 class="fw-bold mb-1">{{ group.name }}</h5>
                             <small class="text-muted d-block">{{ group.members }} Mitglieder</small>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
 
 <script setup>
 import Navbar from '@/components/navbars/Navbar.vue';
-import Footer from '@/components/Footer.vue';
+import Footer from '@/components/common/Footer.vue';
 import TabNavigation from '@/components/navbars/TabNavigation.vue';
 import { ref, computed } from 'vue';
 

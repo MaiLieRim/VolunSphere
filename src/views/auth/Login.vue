@@ -72,10 +72,10 @@
 
 
 <script setup>
-import RegisterCard from '@/components/RegisterCard.vue';
+import RegistrationCTACard from '@/components/auth/RegistrationCTACard.vue';
 import { ref } from 'vue';
 import { useAuth } from '@/assets/js/auth';
-import Logo from '@/components/Logo.vue';
+import Logo from '@/components/common/Logo.vue';
 
 const { loginForm, username, login } = useAuth();
 const password = ref('');

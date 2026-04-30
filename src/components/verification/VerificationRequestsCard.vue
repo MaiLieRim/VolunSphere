@@ -27,4 +27,3 @@ const highlightNumbers = (text) => {
    margin: 0.50rem;
 }
 </style>
-

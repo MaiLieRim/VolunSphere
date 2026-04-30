@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 
-import SwipeList from '../SwipeList.vue';
+import PaginatedSwipeList from '../lists/PaginatedSwipeList.vue';
 const props = defineProps({
     items: { type: Array, required: true }
 });
@@ -20,5 +20,5 @@ const handleDelete = (item) => {
 };
 </script>
 <template>
-    <SwipeList :items="currentList" :emptyMessage=" 'Keine ausstehenden Anfragen' " @swipeLeft="handleRequestCertificate" @swipeRight="handleDelete"></SwipeList>
+    <PaginatedSwipeList :items="currentList" :emptyMessage=" 'Keine ausstehenden Anfragen' " @swipeLeft="handleRequestCertificate" @swipeRight="handleDelete"></PaginatedSwipeList>
 </template>

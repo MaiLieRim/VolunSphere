@@ -14,7 +14,7 @@
           <div class="fs-4">Nachweise</div>
         </i>
       </router-link>
-      <router-link to="/tasks" class="navbar-brand text-center position-relative"  :class="{ 'active-link': isTaskRelated }">
+      <router-link :to="taskRoute" class="navbar-brand text-center position-relative"  :class="{ 'active-link': isTaskRelated }">
         <i class="bi bi-zoom-in">
           <div class="fs-4">Aufgaben</div>
         </i>
@@ -47,7 +47,7 @@ import {ref,computed} from 'vue';
 
 const route = useRoute();
 const isChatActive = computed(() => route.path.startsWith("/chat"));
-const isTaskRelated = computed(() => route.path.startsWith("/task") || route.path.startsWith("/tasks") || route.path.startsWith("/task-search"));
+const isTaskRelated = computed(() => route.path.startsWith("/task") || route.path.startsWith("/tasks") || route.path.startsWith("/organisation-tasks") || route.path.startsWith("/task-search"));
 // Fetch the logged-in user role safely (assuming you are still using localStorage)
 const userRole = ref(localStorage.getItem('userRole') || 'volunteer');
 
@@ -57,6 +57,9 @@ const verificationsRoute = computed(() => {
 });
 const communityRoute = computed(() => {
   return userRole.value === 'admin' ? '/org-community' : '/my-community';
+});
+const taskRoute = computed(() => {
+  return userRole.value === 'admin' ? '/organisation-tasks' : '/tasks';
 });
 </script>
 

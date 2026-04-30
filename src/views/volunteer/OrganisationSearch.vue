@@ -67,10 +67,10 @@
 <script setup>
 import { ref, computed } from 'vue';
 import Navbar from '@/components/navbars/Navbar.vue';
-import Footer from '@/components/Footer.vue';
+import Footer from '@/components/common/Footer.vue';
 
 // NEU: Importiere die OrganisationList Komponente
-import OrganisationList from '@/components/OrganisationList.vue';
+import OrganisationList from '@/components/organizations/OrganisationList.vue';
 
 import organizations from "@/assets/data/organisations.json";
 

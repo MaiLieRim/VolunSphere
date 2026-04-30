@@ -88,7 +88,7 @@
                 
                 <div class="p-4 border border-2 border-dashed rounded-4 text-center bg-light" style="cursor: pointer;">
                     <i class="bi bi-cloud-arrow-up text-primary fs-1 mb-2"></i>
-                    <h6 class="fw-bold">Dokument hochladen</h6>
+                    <h5 class="fw-bold">Dokument hochladen</h5>
                     <p class="small text-muted mb-0">PDF, JPG oder PNG (max. 5MB)</p>
                     <input class="form-control mt-3" type="file" id="formFile">
                 </div>
@@ -111,7 +111,7 @@
                 <p class="text-muted">Ihre Daten wurden erfolgreich übermittelt. Unser Team prüft Ihre Dokumente in Kürze.</p>
                 
                 <div class="bg-light rounded-4 p-3 mt-4 text-start">
-                    <h6 class="fw-bold mb-1">{{ orgData.name || 'Ihre Organisation' }}</h6>
+                    <h5 class="fw-bold mb-1">{{ orgData.name || 'Ihre Organisation' }}</h5>
                     <div class="small text-muted">
                         <i class="bi bi-envelope me-1"></i> Bestätigungslink wurde an <strong>{{ orgData.contact.email || 'Ihre E-Mail' }}</strong> gesendet.
                     </div>

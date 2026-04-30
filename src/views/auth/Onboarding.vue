@@ -183,7 +183,7 @@
 <script setup>
 import { ref } from "vue";
 import { useAuth } from '@/assets/js/auth';
-import ChatBot from "@/components/ChatBot.vue";
+import ChatBot from "@/components/common/ChatBot.vue";
 const { login } = useAuth();
 const tabOrder = ["interests-page", "competences-page", "availability-page"];
 const currentIndex = ref(0);

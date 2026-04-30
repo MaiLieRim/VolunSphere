@@ -10,7 +10,7 @@
                             <i class="bi bi-robot fs-5"></i>
                         </div>
                         <div>
-                            <h6 class="mb-0 fw-bold lh-1">Onboarding Assistant</h6>
+                            <h5 class="mb-0 fw-bold lh-1">Onboarding Assistant</h5>
                             <small class="opacity-75" style="font-size: 0.75rem;">Automatisierter Chat</small>
                         </div>
                     </div>

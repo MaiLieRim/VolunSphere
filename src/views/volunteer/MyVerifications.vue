@@ -1,9 +1,9 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import Navbar from '@/components/navbars/Navbar.vue';
-import Footer from '@/components/Footer.vue';
+import Footer from '@/components/common/Footer.vue';
 import verifications from '@/assets/data/verifications.json';
-import List from '@/components/List.vue';
+import VerificationList from '@/components/verification/VerificationList.vue';
 
 // --- 1. Constants & Configuration ---
 const STATUS = {
@@ -44,10 +44,10 @@ const verifiedItems = computed(() => {
   <div class="content-container">
 
     <h4 class="fw-bold mb-3">Offene Anfragen</h4>
-    <List :items="pendingRequests" />
+    <VerificationList :items="pendingRequests" />
 
     <h4 class="fw-bold mt-4 mb-3">Nachweise</h4>
-    <List :items="verifiedItems" />
+    <VerificationList :items="verifiedItems" />
   </div>
 
   <Footer></Footer>

@@ -37,7 +37,7 @@
                             </small>
                         </div>
                         <!-- Fortschrittsleiste -->
-                       <MatchBar :match="90-index*10"></MatchBar>
+                       <TaskRecommendationBar :match="90-index*10"></TaskRecommendationBar>
                     </div>
                 </RouterLink>
             </div>
@@ -58,7 +58,7 @@
 <script setup>
 import { Carousel } from "bootstrap";
 import { ref,onMounted } from "vue";
-import MatchBar from "@/components/MatchBar.vue"
+import TaskRecommendationBar from "@/components/tasks/TaskRecommendationBar.vue"
 
 defineProps({
     title: {

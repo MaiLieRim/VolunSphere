@@ -144,8 +144,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import Navbar from '@/components/navbars/Navbar.vue';
-import Footer from '@/components/Footer.vue';
-import Statistics from '@/components/Statistics.vue';
+import Footer from '@/components/common/Footer.vue';
 // --- UI State ---
 const isFilterOpen = ref(false);
 const timeframe = ref('Monat'); // Standardmäßig ist "Monat" ausgewählt

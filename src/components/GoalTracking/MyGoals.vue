@@ -20,7 +20,7 @@
                 <div v-for="goal in goals" :key="goal.id" class="mb-4 last-child-mb-0">
                     <div class="d-flex justify-content-between align-items-end mb-1">
                         <div>
-                            <h6 class="mb-0 fw-bold">{{ goal.title }}</h6>
+                            <h5 class="mb-0 fw-bold">{{ goal.title }}</h5>
                             <small class="text-muted">{{ goal.timeframe }}</small>
                         </div>
                         <span class="badge text-bg-light border text-dark">

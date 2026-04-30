@@ -6,22 +6,22 @@
   <div class="content-container">
 
     <template v-if="userRole === 'admin'">
-      <CardBody :message="`Sie haben ${requested.length} neue Nachweisanfragen, bitte geben Sie diese frei.`" />
+      <VerificationRequestsCard :message="`Sie haben ${requested.length} neue Nachweisanfragen, bitte geben Sie diese frei.`" />
       <h2 class="mt-4">Anfragen Nachweise</h2>
       <RequestsOverview :items="requested" />
     </template>
 
     <template v-if="userRole === 'volunteer'">
-      <CardBodyVolunteer />
+      <TaskCompletionCard />
       <div class="space">
         <h1>Du warst diese Woche top engagiert!</h1>
-        <router-link :to="{ path: '/profile', query: { tab: 'statistic' } }">
-          <img src="/src/assets/images/statistik.png" alt="statistic" class="mx-auto d-block img-fluid">
+        <router-link :to="{ path: '/profile', query: { tab: 'explorer' } }">
+          <img src="/src/assets/images/statistics.png" alt="explorer" class="mx-auto d-block img-fluid">
         </router-link>
 
       </div>
       <TaskList title="Deine aktuellen Aufgaben" />
-      <CardCarousell title="Deine aktuellen Aufgaben" :items="items" />
+      <TaskCarousel title="Deine aktuellen Aufgaben" :items="items" />
     </template>
   </div>
 
@@ -32,12 +32,12 @@
 import { ref, onMounted } from 'vue';
 import Navbar from '@/components/navbars/Navbar.vue';
 import StatisticNavbar from '@/components/navbars/StatisticNavbar.vue';
-import CardBody from '@/components/CardBody.vue';
-import CardBodyVolunteer from '@/components/CardBodyVolunteer.vue';
-import CardCarousell from '@/components/CardCarousell.vue';
-import TaskList from '@/components/TaskList.vue';
-import SwipeList from '@/components/SwipeList.vue';
-import Footer from '@/components/Footer.vue';
+import VerificationRequestsCard from '@/components/verification/VerificationRequestsCard.vue';
+import TaskCompletionCard from '@/components/tasks/TaskCompletionCard.vue';
+import TaskCarousel from '@/components/tasks/TaskCarousel.vue';
+import TaskList from '@/components/tasks/TaskList.vue';
+import PaginatedSwipeList from '@/components/lists/PaginatedSwipeList.vue';
+import Footer from '@/components/common/Footer.vue';
 import verifications from '@/assets/data/verifications.json';
 import { useTasks } from '@/composables/useTasks';
 import RequestsOverview from '@/components/admin/RequestsOverview.vue';

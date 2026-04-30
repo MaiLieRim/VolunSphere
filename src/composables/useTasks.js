@@ -1,13 +1,16 @@
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { useTaskApi } from '@/assets/js/taskApi';
 import tasks from '@/assets/data/tasks.json';
-
-import Logo from '@/components/Logo.vue';
 
 const tasksArray = Array.isArray(tasks) ? tasks : tasks.itemListElement || [];
 
 export function useTasks() {
     const { getTasks } = useTaskApi();
+    const customTasks = ref(getTasks());
+
+    const refreshTasks = () => {
+        customTasks.value = getTasks();
+    };
 
     // Generic mapper for task objects
     const mapTask = (job) => ({
@@ -43,9 +46,8 @@ export function useTasks() {
     // Combine all tasks into a single array
     const allTasks = computed(() => {
         const staticTasks = tasksArray.map(mapTask);
-        const customTasks = getTasks().map(mapTask);
-
-        return [...staticTasks, ...customTasks];
+        const customTasksMapped = customTasks.value.map(mapTask);
+        return [...staticTasks, ...customTasksMapped];
     });
 
     // Get task by ID
@@ -69,6 +71,7 @@ export function useTasks() {
 
     return {
         allTasks,
+        refreshTasks,
         getTaskById,
         getTasksByOrganization,
         getAllTasksByOrganizations

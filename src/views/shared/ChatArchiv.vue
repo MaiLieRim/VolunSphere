@@ -1,6 +1,6 @@
 <script setup>
 import { formatDate } from '@/assets/js/formatDate.js';
-import Footer from '@/components/Footer.vue';
+import Footer from '@/components/common/Footer.vue';
 import Navbar from '@/components/navbars/Navbar.vue';
 
 import { ref, computed } from 'vue';

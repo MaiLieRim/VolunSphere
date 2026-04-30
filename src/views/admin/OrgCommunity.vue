@@ -57,7 +57,7 @@
                             <i :class="['bi fs-4', group.icon]"></i>
                         </div>
                         <div class="flex-grow-1">
-                            <h6 class="fw-bold mb-0">{{ group.name }}</h6>
+                            <h5 class="fw-bold mb-0">{{ group.name }}</h5>
                             <small class="text-muted">{{ group.members }} Mitglieder</small>
                         </div>
                         <button class="btn btn-sm btn-outline-danger" title="Moderieren">
@@ -84,7 +84,7 @@
 <script setup>
 import { ref } from 'vue';
 import Navbar from '@/components/navbars/Navbar.vue';
-import Footer from '@/components/Footer.vue';
+import Footer from '@/components/common/Footer.vue';
 import TabNavigation from '@/components/navbars/TabNavigation.vue';
 
 const activeTab = ref('posts');
@@ -97,7 +97,7 @@ const posts = ref([
         content: 'Wir suchen noch dringend Unterstützung für den Sanitätsdienst beim Stadtlauf am Wochenende! Meldet euch gerne direkt hier.',
         likes: 12,
         comments: 3,
-        views: 245, // Statistik
+        views: 245, // Explorer
         commentsAllowed: true // Kommentare zulassen
     },
     {

@@ -10,7 +10,7 @@
     <TabNavigation :tabs="[
         { name: 'overview', label: 'Übersicht' },
         { name: 'goals', label: 'Ziele' },
-        { name: 'statistic', label: 'Statistik' },
+        { name: 'explorer', label: 'Explorer' },
         { name: 'org', label: 'Organisation' },
         { name: 'community', label: 'Community' }
     ]" :currentTab="currentTab" :showSearch="false" :activitySearch="false" @update:tab="currentTab = $event" />
@@ -123,8 +123,8 @@
         <div v-if="currentTab === 'goals'">
             <MyGoals></MyGoals>
         </div>
-        <div v-if="currentTab === 'statistic'">
-            <Statistics></Statistics>
+        <div v-if="currentTab === 'explorer'">
+            <TaskFilterPanel></TaskFilterPanel>
         </div>
         <div v-if="currentTab === 'org'" class=" px-2">
             <OrganisationList :items="myOrganizations" title="Meine Organisationen"></OrganisationList>
@@ -140,17 +140,17 @@
 
 <script setup>
 import Navbar from "@/components/navbars/Navbar.vue";
-import Accordion from "@/components/Accordion.vue";
-import MyGoals from "@/components/Goalification/MyGoals.vue";
+import Accordion from "@/components/common/Accordion.vue";
+import MyGoals from "@/components/GoalTracking/MyGoals.vue";
 import { ref, nextTick, computed, watch } from 'vue'; 
 import { useRoute, useRouter } from "vue-router";     
 
 // Import raw data
 import rawUser from "@/assets/data/volunteer"
 import organizations from "@/assets/data/organisations.json";
-import OrganisationList from "@/components/OrganisationList.vue";
+import OrganisationList from "@/components/organizations/OrganisationList.vue";
 import TabNavigation from "@/components/navbars/TabNavigation.vue";
-import Statistics from "@/components/Statistics.vue";
+import TaskFilterPanel from "@/components/tasks/TaskFilterPanel.vue";
 
 
 // Deep clone the object so nested arrays become fully reactive!

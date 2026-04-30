@@ -9,7 +9,7 @@
                         <i class="bi bi-people text-white fs-5"></i>
                     </div>
                     <div>
-                        <h3 class="mb-0">Neue Aufgabe</h3>
+                        <h3 class="mb-0">{{ isEditMode ? 'Aufgabe bearbeiten' : 'Neue Aufgabe' }}</h3>
                         <small class="text-muted">Soccer Club Linz United</small>
                     </div>
                 </div>
@@ -103,23 +103,31 @@
                     </li>
                 </ul>
                 <button class="btn btn-primary" @click="nextStep" :disabled="currentStep === 3 && !isFormComplete">
-                    {{ currentStep === 3 ? 'Erstellen' : 'Weiter' }}
+                    {{ currentStep === 3 ? (isEditMode ? 'Speichern' : 'Erstellen') : 'Weiter' }}
                 </button>
             </div>
         </div>
     </div>
 </template>
 <script setup>
-import { ref, computed } from "vue";
-import { useRouter } from "vue-router";
+import { ref, computed, onMounted } from "vue";
+import { useRouter, useRoute } from "vue-router";
 import { useTaskApi } from "@/assets/js/taskApi";
+import { useTasks } from '@/composables/useTasks';
 
 const router = useRouter();
-const { createTask } = useTaskApi();
+const route = useRoute();
+const { createTask, updateTask } = useTaskApi();
+const { refreshTasks, getTaskById } = useTasks();
+
+const taskId = computed(() => route.query.taskId ? String(route.query.taskId) : '');
+const returnPath = computed(() => route.query.returnTo ? String(route.query.returnTo) : '/organisation?tab=Aufgaben');
+const isEditMode = computed(() => taskId.value !== '');
 
 const currentStep = ref(1);
 
 const form = ref({
+    id: "",
     title: "",
     category: "Bildung und Soziales",
     description: "",
@@ -130,7 +138,8 @@ const form = ref({
     recurring: false,
     address: "",
     postalCode: "",
-    city: ""
+    city: "",
+    club: ""
 });
 
 const isFormComplete = computed(() => {
@@ -148,8 +157,36 @@ const isFormComplete = computed(() => {
 });
 
 const closeForm = () => {
-    router.push('/organisation?tab=Aufgaben');
+    router.push(returnPath.value);
 };
+
+const loadTask = () => {
+    if (!isEditMode.value) return;
+    const existingTask = getTaskById(taskId.value);
+    if (!existingTask) return;
+
+    form.value = {
+        id: existingTask.id,
+        title: existingTask.title || "",
+        category: existingTask.category || "Bildung und Soziales",
+        description: existingTask.description || "",
+        skills: Array.isArray(existingTask.skills) ? existingTask.skills.join(', ') : existingTask.skills || "",
+        requirements: Array.isArray(existingTask.requirements) ? existingTask.requirements.join(', ') : existingTask.requirements || "",
+        startDate: existingTask.jobStartDate || existingTask.datePosted || "",
+        startTime: existingTask.startTime || "",
+        recurring: existingTask.isFullDay || false,
+        address: existingTask.address?.streetAddress || existingTask.address || "",
+        postalCode: existingTask.address?.postalCode || "",
+        city: existingTask.address?.addressLocality || "",
+        club: existingTask.club || ""
+    };
+};
+
+onMounted(() => {
+    if (isEditMode.value) {
+        loadTask();
+    }
+});
 
 const nextStep = () => {
     if (currentStep.value < 3) {
@@ -160,12 +197,19 @@ const nextStep = () => {
 };
 
 const submitForm = async () => {
-    const result = await createTask(form.value);
+    let result;
+    if (isEditMode.value) {
+        result = await updateTask(form.value);
+    } else {
+        result = await createTask(form.value);
+    }
+
     if (result.success) {
+        refreshTasks();
         console.log("Task saved:", result.task);
     } else {
         console.error("Failed to save task:", result.message);
     }
-    router.push('/organisation?tab=Aufgaben');
+    router.push(returnPath.value);
 };
 </script>

@@ -141,7 +141,7 @@
 <script setup>
 import { ref } from "vue";
 import rawVolunteer from "@/assets/data/volunteer.json";
-import QualificationList from "@/components/ListWithImage.vue";
+import QualificationList from "@/components/lists/ListWithImage.vue";
 import qualifications from "@/assets/data/qualifications.json";
 // According to best practices (agent.md), imported data should be wrapped in a ref for reactivity
 const volunteer = ref(rawVolunteer);

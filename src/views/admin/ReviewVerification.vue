@@ -23,7 +23,7 @@
                             <i class="bi bi-person-fill fs-4"></i>
                         </div>
                         <div>
-                            <h6 class="fw-bold mb-0">{{ task.requester?.name || 'Freiwilliger' }}</h6>
+                            <h5 class="fw-bold mb-0">{{ task.requester?.name || 'Freiwilliger' }}</h5>
                             <small class="text-muted">ID: {{ task.requester?.id || 'Unbekannt' }}</small>
                         </div>
                     </div>

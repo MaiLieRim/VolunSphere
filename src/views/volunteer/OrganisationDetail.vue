@@ -60,7 +60,7 @@
     </div>
     <!-- Open Tasks of this Organisation -->
     <div v-if="orgTasks.length > 0" class="my-4">
-      <CardCarousell title="Offene Aufgaben" :items="orgTasks" />
+      <TaskCarousel title="Offene Aufgaben" :items="orgTasks" />
     </div <!-- Organisation Info -->
     <div class="accordion m-3">
       <div class="accordion-item">
@@ -130,7 +130,7 @@ import organisations from "@/assets/data/organisations.json"
 import Navbar from "@/components/navbars/Navbar.vue"
 import TableSearch from "@/components/TableSearch.vue"
 import { useTasks } from "@/composables/useTasks"
-import CardCarousell from "@/components/CardCarousell.vue"
+import TaskCarousel from "@/components/tasks/TaskCarousel.vue"
 import { computed } from "vue"
 import { useRoute } from "vue-router"
 import { defineQueryParamParser } from "vue-router/dist/experimental/index.mjs"

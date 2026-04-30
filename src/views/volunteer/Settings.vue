@@ -174,7 +174,7 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import Navbar from '@/components/navbars/Navbar.vue';
 import TabNavigation from '@/components/navbars/TabNavigation.vue';
-import ChangeTheme from '@/components/ChangeTheme.vue';
+import ChangeTheme from '@/components/common/ChangeTheme.vue';
 
 // Import raw data
 import rawUser from "@/assets/data/volunteer.json";

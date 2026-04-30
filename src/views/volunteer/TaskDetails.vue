@@ -4,7 +4,7 @@ import { useRoute } from 'vue-router';
 import Navbar from '@/components/navbars/Navbar.vue';
 import { useTasks } from '@/composables/useTasks';
 import ChatHistory from '@/components/chat/ChatHistory.vue';
-import MatchBar from '@/components/MatchBar.vue';
+import TaskRecommendationBar from '@/components/tasks/TaskRecommendationBar.vue';
 
 // --- DATEN REAKTIV MACHEN ---
 import verificationsData from '@/assets/data/verifications.json';
@@ -125,7 +125,7 @@ const requestTask = () => {
               </div>
             </div>
             
-            <MatchBar :match="90"></MatchBar>
+            <TaskRecommendationBar :match="90"></TaskRecommendationBar>
           </div>
 
           <button class="fab-chat btn btn-primary rounded-circle shadow" @click="toggleChat">
@@ -175,8 +175,8 @@ const requestTask = () => {
 
 .fab-chat {
   position: absolute;
-  right: 20px;
-  bottom: 20px;
+  right: 10px;
+  bottom: 0px;
   width: 56px;
   height: 56px;
   z-index: 10;

@@ -4,9 +4,9 @@ import { ref, computed, onMounted } from 'vue'
 import { useRoute, useRouter } from "vue-router"
 
 // --- Component Imports ---
-import Footer from '@/components/Footer.vue'
+import Footer from '@/components/common/Footer.vue'
 import Navbar from '@/components/navbars/Navbar.vue'
-import TaskList from '@/components/TaskList.vue'
+import TaskList from '@/components/tasks/TaskList.vue'
 import FilterModal from '@/components/popup/Filter.vue'
 import MapView from '@/components/TaskSearch/MapView.vue'
 import CalendarView from '@/components/TaskSearch/CalendarView.vue'

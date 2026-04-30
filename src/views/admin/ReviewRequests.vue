@@ -13,11 +13,11 @@
     />
     
     <div class="pt-0 content-container pb-5">
-        <SwipeList :key="activeTab" :items="currentList" :allowSwipe="activeTab === 'open'"
+        <PaginatedSwipeList :key="activeTab" :items="currentList" :allowSwipe="activeTab === 'open'"
             :emptyMessage="activeTab === 'open' ? 'Keine offenen Anfragen vorhanden.' : 'Das Archiv ist leer.'"
             @swipeLeft="handleApprove" @swipeRight="handleReject" />
 
-        <RequestModal ref="modalRef" />
+        <VerificationRequestModal ref="modalRef" />
     </div>
 
     <Footer></Footer>
@@ -26,9 +26,9 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import Navbar from '@/components/navbars/Navbar.vue';
-import Footer from '@/components/Footer.vue';
-import SwipeList from '@/components/SwipeList.vue';
-import RequestModal from '@/components/RequestModal.vue';
+import Footer from '@/components/common/Footer.vue';
+import PaginatedSwipeList from '@/components/lists/PaginatedSwipeList.vue';
+import VerificationRequestModal from '@/components/verification/VerificationRequestModal.vue';
 import verifications from '@/assets/data/verifications.json';
 import TabNavigation from '@/components/navbars/TabNavigation.vue';
 

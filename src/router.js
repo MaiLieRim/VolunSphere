@@ -6,6 +6,7 @@ import Registry from '@/views/auth/Registry.vue';
 import QRcode from '@/views/shared/QRcode.vue';
 import Organisation from '@/views/admin/Organisation.vue';
 import AddTask from '@/views/admin/AddTask.vue';
+import OrganisationTasks from '@/views/admin/OrganisationTasks.vue';
 import Tasks from '@/views/volunteer/Tasks.vue';
 import MyCommunity from './views/volunteer/MyCommunity.vue';
 import OrgCommunity from './views/admin/OrgCommunity.vue';
@@ -44,6 +45,7 @@ const router = createRouter({
     { path: '/my-verifications', name: 'myverifications', component: MyVerifications, meta: { requiresAuth: true } },
     { path: '/review-requests', name: 'reviewrequests', component: ReviewRequests, meta: { requiresAuth: true } },
     { path: '/organisation', name: 'organisation', component: Organisation, meta: { requiresAuth: true } },
+    { path: '/organisation-tasks', name: 'organisationtasks', component: OrganisationTasks, meta: { requiresAuth: true, role: 'admin' } },
     { path: '/addtask', name: 'addtask', component: AddTask, meta: { requiresAuth: true } },
     { path: '/my-community', name: 'mycommunity', component: MyCommunity, meta: { requiresAuth: true, role: 'volunteer' } },
     { path: '/org-community', name: 'orgcommunity', component: OrgCommunity, meta: { requiresAuth: true, role: 'admin' } },
