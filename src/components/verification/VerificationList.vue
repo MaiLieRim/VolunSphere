@@ -84,17 +84,20 @@ const props = defineProps({
     }
 });
 
+const STATUS = {
+    PENDING: 'Pending'
+};
 
 const displayedItems = ref([]);
 const loadedItemsCount = ref(0);
 
 const allItems = computed(() => {
-    return props.items  .map(job => ({
-            id: job.identifier.value,
-            title: job.name,
-            club: job.organization.name,
-            hours: job.hours,
-            requester: job.requester.name,
+    return props.items.map(job => ({
+            id: job.identifier?.value || job.id || '',
+            title: job.name || job.title || '',
+            club: job.organization?.name || job.club || '',
+            hours: job.hours || 0,
+            requester: job.requester?.name || '',
             status: job.status || STATUS.PENDING, // Fallback safely to pending
             swiped: false,
         }));

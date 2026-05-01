@@ -76,15 +76,55 @@
             <p class="text-muted">{{ detailTask.description }}</p>
         </div>
 
-                    <div v-if="!hasVerification" class="d-flex align-items-start">
-                        <div class="bg-primary-subtle text-primary rounded-circle d-flex justify-content-center align-items-center me-3" style="width: 40px; height: 40px; min-width: 40px;">
-                            <i class="bi bi-clock-history fs-5"></i>
-                        </div>
-                        <div class="w-100">
-                            <span class="d-block small text-muted fw-bold mb-1">Getätigte Stunden</span>
-                            <input type="number" class="form-control form-control-sm w-50" v-model.number="hours" min="1" />
+        <div v-if="isSkillVerification" class="mb-4">
+            <h5 class="fw-bold mb-3">Verknüpfte Einsätze</h5>
+            <div class="row row-cols-1 g-3">
+                <div v-for="task in skillTasks" :key="task.id" class="col">
+                    <div class="card border-light shadow-sm">
+                        <div class="card-body p-3">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <div>
+                                    <h5 class="mb-1 fw-bold">{{ task.title }}</h5>
+                                    <small class="text-muted">{{ task.club || 'Organisation' }}</small>
+                                </div>
+                                <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill">{{ task.hours || 4 }}h</span>
+                            </div>
+                            <div class="d-flex flex-wrap gap-2 text-muted small">
+                                <span><i class="bi bi-calendar-event me-1"></i>{{ formatDate(task.jobStartDate || task.datePosted || task.startDate) }}</span>
+                                <span><i class="bi bi-geo-alt me-1"></i>{{ task.location || task.address?.addressLocality || task.jobLocation?.address?.addressLocality || 'Kein Ort angegeben' }}</span>
+                            </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div v-if="skillNames.length > 0" class="mt-3">
+                <h5 class="fw-bold mb-2">Angefragte Kompetenzen</h5>
+                <div class="d-flex flex-wrap gap-2">
+                    <span v-for="skill in skillNames" :key="skill" class="badge rounded-pill bg-secondary bg-opacity-10 text-secondary">
+                        {{ skill }}
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div v-else-if="qualificationList.length > 0" class="mb-4">
+            <h5 class="fw-bold mb-3">Mögliche Qualifikationen</h5>
+            <div class="d-flex flex-wrap gap-2">
+                <span v-for="qualification in qualificationList" :key="qualification" class="badge rounded-pill bg-success bg-opacity-10 text-success">
+                    {{ qualification }}
+                </span>
+            </div>
+        </div>
+
+        <div v-else-if="!hasVerification" class="d-flex align-items-start">
+            <div class="bg-primary-subtle text-primary rounded-circle d-flex justify-content-center align-items-center me-3" style="width: 40px; height: 40px; min-width: 40px;">
+                <i class="bi bi-clock-history fs-5"></i>
+            </div>
+            <div class="w-100">
+                <span class="d-block small text-muted fw-bold mb-1">Getätigte Stunden</span>
+                <input type="number" class="form-control form-control-sm w-50" v-model.number="hours" min="1" />
+            </div>
+        </div>
 
         <div class="d-grid gap-2 mt-3">
             <button v-if="!hasVerification" class="btn btn-primary py-2 rounded-pill" @click="requestVerification">
@@ -187,8 +227,51 @@ const detailTask = computed(() => {
         location: task.value.location || { name: task.value.address?.addressLocality || 'Kein Ort angegeben' },
         startDate: task.value.startDate || task.value.jobStartDate || task.value.datePosted || '',
         hours: hours.value,
-        description: task.value.description || ''
+        description: task.value.description || '',
+        qualifications: task.value.qualifications || task.value.qualification || task.value.skills || []
     };
+});
+
+const evidenceTaskIds = computed(() => {
+    if (!detailTask.value) return [];
+    return Array.isArray(detailTask.value.evidenceIds)
+        ? detailTask.value.evidenceIds
+        : Array.isArray(detailTask.value.evidenceTaskIds)
+            ? detailTask.value.evidenceTaskIds
+            : [];
+});
+
+const isSkillVerification = computed(() => {
+    return !!detailTask.value && (
+        detailTask.value.type?.toString().toLowerCase().includes('skill') ||
+        evidenceTaskIds.value.length > 0
+    );
+});
+
+const skillTasks = computed(() => {
+    if (!detailTask.value || evidenceTaskIds.value.length === 0) return [];
+    return evidenceTaskIds.value
+        .map(id => allTasks.value.find(task => task.id === id || task.identifier?.value === id))
+        .filter(Boolean);
+});
+
+const skillNames = computed(() => {
+    if (!detailTask.value) return [];
+    if (Array.isArray(detailTask.value.skills)) return detailTask.value.skills;
+    if (typeof detailTask.value.skills === 'string') {
+        return detailTask.value.skills.split(',').map(skill => skill.trim()).filter(Boolean);
+    }
+    return [];
+});
+
+const qualificationList = computed(() => {
+    if (isSkillVerification.value || !detailTask.value) return [];
+    const qualifications = detailTask.value.qualifications;
+    if (Array.isArray(qualifications)) return qualifications.filter(Boolean);
+    if (typeof qualifications === 'string') {
+        return qualifications.split(/,|;/).map(item => item.trim()).filter(Boolean);
+    }
+    return [];
 });
 
 const isPending = computed(() => {
