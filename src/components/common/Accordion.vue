@@ -11,7 +11,6 @@
             <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionInfo">
                 <div class="accordion-body pt-4">
                     <div class="d-flex flex-column gap-4">
-
                         <div class="d-flex align-items-start">
                             <div class="bg-primary-subtle text-primary rounded-circle d-flex justify-content-center align-items-center me-3"
                                 style="width: 40px; height: 40px; min-width: 40px;">
@@ -38,7 +37,6 @@
                             </div>
                         </div>
 
-
                         <div class="d-flex align-items-center">
                             <div class="bg-primary-subtle text-primary rounded-circle d-flex justify-content-center align-items-center me-3"
                                 style="width: 40px; height: 40px; min-width: 40px;">
@@ -60,7 +58,6 @@
                                 <span class="d-block text-dark">{{ volunteer.pronouns || 'Keine Angabe' }}</span>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -120,6 +117,7 @@
                 </div>
             </div>
         </div>
+        
         <div class="accordion-item border-0 shadow-sm mb-3 rounded overflow-hidden">
             <h2 class="accordion-header" id="headingFour">
                 <button class="accordion-button collapsed bg-light text-dark fw-bold" type="button"
@@ -129,8 +127,41 @@
                 </button>
             </h2>
             <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionInfo">
-                <div class="accordion-body">
-                    <QualificationList :items="qualifications.qualifications" />
+                <div class="accordion-body p-0">
+                    
+                    <QualificationList :items="activeQualifications" />
+
+                    <div class="p-3 border-top bg-light bg-opacity-50">
+                        
+                        <div v-if="!isAddingQualification" class="text-center">
+                            <button class="btn btn-sm btn-primary rounded-pill fw-bold shadow-sm d-inline-flex align-items-center px-3" 
+                                    @click="isAddingQualification = true">
+                                <i class="bi bi-plus-circle me-2"></i> Qualifikation hinterlegen
+                            </button>
+                        </div>
+
+                        <div v-else class=" fade-in">
+                            <h4 class="fw-bold mb-3 text-dark">Neue Qualifikation hinzufügen</h4>
+                            
+                            <div class="mb-2">
+                                <label class="small text-muted mb-1">Titel</label>
+                                <input type="text" v-model="newQualification.title" class="form-control form-control-sm rounded-3" placeholder="z.B. Führerschein Klasse B">
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="small text-muted mb-1">Details / Gültigkeit</label>
+                                <input type="text" v-model="newQualification.description" class="form-control form-control-sm rounded-3" placeholder="z.B. Erworben 2018">
+                            </div>
+
+                            <div class="d-flex justify-content-end gap-2">
+                                <button class="btn btn-sm btn-light text-secondary rounded-pill px-3" @click="cancelAdd">Abbrechen</button>
+                                <button class="btn btn-sm btn-primary rounded-pill px-3 fw-bold" :disabled="!isFormValid" @click="saveQualification">
+                                    <i class="bi bi-cloud-arrow-up me-1"></i> Speichern
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -139,18 +170,60 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import rawVolunteer from "@/assets/data/volunteer.json";
 import QualificationList from "@/components/lists/ListWithImage.vue";
-import qualifications from "@/assets/data/qualifications.json";
-// According to best practices (agent.md), imported data should be wrapped in a ref for reactivity
+import qualificationsData from "@/assets/data/qualifications.json";
+
 const volunteer = ref(rawVolunteer);
 
+// Initialize the active qualifications array with the data from JSON
+const activeQualifications = ref([...qualificationsData.qualifications]);
+
+// State for the "Add Qualification" UI
+const isAddingQualification = ref(false);
+const newQualification = ref({
+    title: '',
+    description: ''
+});
+
+// Computed property to check if the user has entered at least a title
+const isFormValid = computed(() => {
+    return newQualification.value.title.trim().length > 0;
+});
+
+const saveQualification = () => {
+    if (isFormValid.value) {
+        // Push the new item into the reactive array. 
+        // QualificationList will automatically update because it's bound to activeQualifications.
+        activeQualifications.value.push({
+            title: newQualification.value.title.trim(),
+            description: newQualification.value.description.trim()
+        });
+        
+        // Reset and close form
+        cancelAdd();
+    }
+};
+
+const cancelAdd = () => {
+    isAddingQualification.value = false;
+    newQualification.value = { title: '', description: '' };
+};
 </script>
 
 <style scoped>
 /* Removes default bootstrap accordion borders for a cleaner card-like look */
 .accordion-item {
     border: none !important;
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 </style>
