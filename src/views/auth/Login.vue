@@ -1,32 +1,47 @@
 <template>
     <div class="container d-flex flex-column min-vh-100 bg-white px-3 py-2" style="max-width: 500px; margin: 0 auto;">
         
-        <div class="mb-5 mt-3">
-            <Logo style="max-width: 120px;" />
-            <h1 class="mt-5 fw-bolder text-dark" style="letter-spacing: -0.5px;">Freiwilligenpass</h1>
+        <div class="d-flex justify-content-between align-items-start mt-3 mb-4 w-100">
+            <router-link to="/" title="Zurück zur Startseite" class="text-decoration-none">
+                <Logo style="max-width: 120px;" />
+            </router-link>
+            
+            <router-link to="/" class="btn btn-link text-muted p-1 text-decoration-none" title="Login abbrechen">
+                <i class="bi bi-x-lg fs-4"></i>
+            </router-link>
+        </div>
+
+        <div class="mb-5">
+            <h1 class="fw-bolder text-dark" style="letter-spacing: -0.5px;">Freiwilligenpass</h1>
             <p class="text-muted fs-5 mt-2">Bereit für den nächsten Einsatz?</p>
         </div>
         
-        <form ref="loginForm" class="needs-validation" novalidate @submit.prevent="login">
+       <form ref="loginForm" class="needs-validation" novalidate @submit.prevent="login">
             
             <div class="form-floating mb-3">
                 <input type="text" class="form-control bg-light border-0 rounded-3" id="inputUsername" placeholder="Benutzername / E-Mail" required v-model="username">
                 <label for="inputUsername" class="text-muted">Benutzer / E-Mail</label>
-                <div class="invalid-feedback">Dieser Username existiert nicht!</div>
+                <div class="invalid-feedback">Bitte gib deinen Benutzernamen oder deine E-Mail ein.</div>
             </div>
 
-            <div class="form-floating mb-2">
+            <div class="form-floating mb-3">
                 <input type="password" class="form-control bg-light border-0 rounded-3" id="floatingPassword" placeholder="Passwort" required v-model="password">
                 <label for="floatingPassword" class="text-muted">Passwort</label>
+                <div class="invalid-feedback">Bitte gib dein Passwort ein.</div>
+            </div>
+
+            <div v-if="loginError" class="alert alert-danger py-2 small d-flex align-items-center rounded-3">
+                <i class="bi bi-shield-exclamation fs-5 me-2"></i>
+                Benutzername oder Passwort ist falsch.
             </div>
 
             <div class="d-flex justify-content-end mb-4">
                 <a class="small text-decoration-none fw-medium text-primary" href="#">Passwort vergessen?</a>
             </div>
 
-              <router-link to="/"  class="btn btn-primary w-100 rounded-pill py-3 mb-2" v-on:click="login" type="submit">
+            <button class="btn btn-primary w-100 rounded-pill py-3 mb-2" type="submit">
                 Anmelden
-              </router-link>
+            </button>
         </form>
 
         <div class="d-flex flex-column gap-3 mt-2">
@@ -72,17 +87,13 @@
 
 
 <script setup>
-import RegistrationCTACard from '@/components/auth/RegistrationCTACard.vue';
-import { ref } from 'vue';
 import { useAuth } from '@/assets/js/auth';
 import Logo from '@/components/common/Logo.vue';
 
-const { loginForm, username, login } = useAuth();
-const password = ref('');
+const { loginForm, username, password, loginError, login } = useAuth();
 </script>
 
 <style scoped>
-/* Minor tweak to ensure the autofill background matches our light gray fields */
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 30px var(--bs-light) inset !important;
 }

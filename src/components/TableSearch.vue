@@ -4,7 +4,7 @@
       v-model="searchQuery"
       type="text"
       class="form-control"
-      placeholder="Wonach suchst du?"
+      placeholder="Suchen..."
     />
   </div>
 

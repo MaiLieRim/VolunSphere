@@ -83,9 +83,9 @@
 
         <div class="accordion p-2" id="accordionExample">
             <h3 class="m-1">Informationen</h3>
-            <div class="accordion-item">
+            <div class="accordion-item border-0 shadow-sm mb-3 rounded overflow-hidden">
                 <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                    <button class="accordion-button bg-light text-dark fw-bold" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                         Allgemeine Angaben
                     </button>
@@ -124,9 +124,9 @@
                     </div>
                 </div>
             </div>
-            <div class="accordion-item">
+            <div class="accordion-item border-0 shadow-sm mb-3 rounded overflow-hidden">
                 <h2 class="accordion-header" id="headingThree">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    <button class="accordion-button bg-light text-dark fw-bold" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                         Zusatzinfo
                     </button>

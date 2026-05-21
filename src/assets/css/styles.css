@@ -192,3 +192,14 @@ small {
   border-top-left-radius: 0 !important;
   border-top-right-radius: 0 !important;
 }
+@media (max-width: 425px) {
+  .navbar-brand {
+    font-size: 1.3rem; /* Verkleinert den Titel auf kleinen Screens */
+  }
+}
+
+@media (max-width: 375px) {
+  .navbar-brand {
+    font-size: 1.1rem; /* Verkleinert den Titel auf kleinen Screens */
+  }
+}

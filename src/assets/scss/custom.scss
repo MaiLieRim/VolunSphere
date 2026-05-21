@@ -53,6 +53,7 @@ $font-sizes: (
   --dark-mint: $dark-mint;
   --bs-primary: #6eb19e !important;
   --bs-accordion-active-bg: lighten($mint, 30%)!important;
+
   .card {
     background-color: lighten($mint, 30%)!important;
   }
@@ -75,7 +76,10 @@ $font-sizes: (
   .btn-outline-primary:hover {
     border-color: $mint !important;
   }
-
+button.nav-link.fw-bold.rounded-pill.active {
+    background-color: $mint !important;
+    color: $white !important;
+  }
   .text-primary,
   .nav-link:not(.disabled),
   .btn-outline-primary {

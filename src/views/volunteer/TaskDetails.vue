@@ -2,6 +2,7 @@
 import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import Navbar from '@/components/navbars/Navbar.vue';
+import LoginModal from '@/components/auth/LoginModal.vue';
 import { useTasks } from '@/composables/useTasks';
 import ChatHistory from '@/components/chat/ChatHistory.vue';
 import TaskRecommendationBar from '@/components/tasks/TaskRecommendationBar.vue';
@@ -14,6 +15,7 @@ import rawUser from "@/assets/data/volunteer";
 const verificationsList = ref(verificationsData.itemListElement);
 const applicationsList = ref(applicationsData.itemListElement);
 const user = ref(rawUser);
+const loginModalRef = ref(null);
 
 const props = defineProps({
   itemId: String
@@ -25,6 +27,7 @@ const jobPosting = computed(() => getTaskById(route.params.itemId));
 const backRoute = computed(() => route.query.backRoute);
 
 const isChatOpen = ref(false);
+const isAuthenticated = computed(() => !!localStorage.getItem('authToken'));
 
 // --- COMPUTED STATUS ---
 
@@ -48,6 +51,11 @@ const toggleChat = () => {
 
 // --- LOGIK: AUFGABE ÜBERNEHMEN ---
 const requestTask = () => {
+  if (!isAuthenticated.value) {
+    loginModalRef.value.open();
+    return;
+  }
+
   if (!jobPosting.value || isTaskCompleted.value || isTaskRequested.value) return;
 
   // Neues Bewerbungs-Objekt erstellen
@@ -70,7 +78,7 @@ const requestTask = () => {
 <template>
   <div class="d-flex flex-column min-vh-100">
     <Navbar title="Details" :backRoute="backRoute"></Navbar>
-    
+    <LoginModal ref="loginModalRef" />
     <div class="content-container flex-grow-1">
       <div v-if="jobPosting">
         

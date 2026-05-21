@@ -36,9 +36,17 @@ const filters = ref({
 
 // --- Lifecycle ---
 onMounted(() => {
+    // 1. View Tab prüfen
     const validViews = ['MapView', 'ListView', 'CalendarView']
     if (validViews.includes(route.query.tab)) {
         currentView.value = route.query.tab
+    }
+
+    // 2. Suche/Organisation initialisieren
+    // Wenn ein Organisationsname in der URL steht, setzen wir ihn in die Filter
+    if (route.query.org) {
+        filters.value.organization = route.query.org
+        console.log("Filtere nach Organisation:", route.query.org)
     }
 })
 
@@ -50,7 +58,7 @@ const setView = (view) => {
     router.replace({ query: { ...route.query, tab: view } })
 }
 
-const buttonClass = (view) => 
+const buttonClass = (view) =>
     currentView.value === view ? 'text-light fw-bold' : 'text-white-50'
 
 // Filter Management
@@ -67,13 +75,17 @@ const removeFilter = (key) => {
     } else {
         filters.value[key] = ''
     }
+    
+    const newQuery = { ...route.query }
+    if (key === 'organization') delete newQuery.org
+    router.replace({ query: newQuery })
 }
 
 
 // --- Computed ---
 const activeFilters = computed(() => {
     const result = []
-    
+
     // Simple key-value mapping for standard filters
     const keysToCheck = ['area', 'organization', 'distance', 'duration']
     keysToCheck.forEach(key => {
@@ -84,12 +96,12 @@ const activeFilters = computed(() => {
 
     // Special logic for dates
     if (filters.value.from !== today || filters.value.to !== '') {
-        result.push({ 
-            key: 'date', 
-            label: `${filters.value.from || '-'} - ${filters.value.to || '-'}` 
+        result.push({
+            key: 'date',
+            label: `${filters.value.from || '-'} - ${filters.value.to || '-'}`
         })
     }
-    
+
     return result
 })
 </script>
@@ -97,11 +109,14 @@ const activeFilters = computed(() => {
 <template>
     <Navbar title="Aufgaben Suche" />
 
-    <nav class="navbar bg-primary position-relative z-3 shadow">
-        <div class="container py-1">
-            <form class="d-flex w-100" role="search">
-                <input class="form-control" type="search" placeholder="Aufgabe suchen ..." aria-label="Search" />
-                <button type="submit" class="btn"><i class="bi bi-search text-light"></i></button>
+    <nav class="navbar bg-primary position-relative z-3 shadow-sm">
+        <div class="container">
+            <form class="d-flex mb-1 w-100" role="search" @submit.prevent="handleSearch">
+                <div class="input-group shadow-sm">
+                    <input class="form-control border-0" type="search" placeholder="Aufgabe suchen ..."
+                        aria-label="Search" v-model="searchQuery" />
+                    <button type="submit" class="btn btn-light"><i class="bi bi-search text-primary"></i></button>
+                </div>
             </form>
         </div>
     </nav>
@@ -109,7 +124,7 @@ const activeFilters = computed(() => {
     <nav class="navbar bg-primary border-bottom">
         <div class="container d-flex justify-content-between align-items-center">
             <!-- Filter button -->
-            <button class="btn btn-link text-light d-flex align-items-center p-0" @click="openFilter">
+            <button class="text-decoration-none btn btn-link text-light d-flex align-items-center p-0" @click="openFilter">
                 <i class="bi bi-funnel me-2"></i>
                 <span>Filter</span>
             </button>
@@ -136,7 +151,7 @@ const activeFilters = computed(() => {
     <div class="content-container" v-if="currentView === 'ListView'">
         <div class="d-flex justify-content-between align-items-center">
             <h2>Suchergebnisse</h2>
-            <ul class="mb-3 tags gap-2 d-flex flex-wrap">
+            <ul class="mb-3 tags gap-2 d-flex flex-wrap ">
                 <li v-for="filter in activeFilters" :key="filter.key"
                     class="btn badge bg-light text-dark shadow-sm border" @click="removeFilter(filter.key)">
                     {{ filter.label }} &times;
@@ -151,13 +166,13 @@ const activeFilters = computed(() => {
         <div class="d-flex justify-content-end  ">
             <ul class=" tags gap-2 d-flex flex-wrap">
                 <li v-for="filter in activeFilters" :key="filter.key"
-                    class="btn badge bg-light text-dark shadow-sm border"  @click="removeFilter(filter.key)">
+                    class="btn badge bg-light text-dark shadow-sm border" @click="removeFilter(filter.key)">
                     {{ filter.label }} &times;
                 </li>
             </ul>
         </div>
 
-        <CalendarView :tasks="allTasks"/>
+        <CalendarView :tasks="allTasks" />
     </div>
 
     <div v-else class="position-relative w-100 h-100">
