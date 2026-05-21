@@ -115,7 +115,7 @@ const activeFilters = computed(() => {
                 <div class="input-group shadow-sm">
                     <input class="form-control border-0" type="search" placeholder="Aufgabe suchen ..."
                         aria-label="Search" v-model="searchQuery" />
-                    <button type="submit" class="btn btn-light"><i class="bi bi-search text-primary"></i></button>
+                    <button type="submit" class="btn btn-light"><i class="bi bi-magic text-primary"></i></button>
                 </div>
             </form>
         </div>
