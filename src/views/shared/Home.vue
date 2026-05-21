@@ -23,7 +23,7 @@
 
         </div>
         <TaskList title="Deine aktuellen Aufgaben" />
-        <TaskCarousel title="Deine aktuellen Aufgaben" :items="items" />
+        <TaskCarousel title="Empfohlene Aufgaben" :items="items" />
       </template>
     </div>
     <Footer />
