@@ -273,7 +273,7 @@
     </div>
 
     <div v-if="currentTab === 'Mitglieder'" class="content-container px-3 ">
-        <h2 class="fw-bold mb-4">Mitglieder</h2>
+     
         <TableSearch :items="org.member" />
     </div>
 </template>

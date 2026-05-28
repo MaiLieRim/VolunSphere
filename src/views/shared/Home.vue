@@ -18,7 +18,7 @@
         <div class="space">
           <h1>Du warst diese Woche top engagiert!</h1>
           <router-link :to="{ path: '/profile', query: { tab: 'explorer' } }">
-            <img src="/src/assets/images/statistics.png" alt="explorer" class="mx-auto d-block img-fluid">
+            <img src="/assets/images/statistics.png" alt="explorer" class="mx-auto d-block img-fluid">
           </router-link>
 
         </div>

@@ -5,7 +5,7 @@
       "id": 1,
       "title": "Führerschein",
       "description": "Klasse B, seit 2018",
-      "qrCode": "/src/assets/images/qrCode.png",
+      "qrCode": "/assets/images/qrCode.png",
       "issued": "2018",
       "validUntil": null
     },
@@ -13,7 +13,7 @@
       "id": 2,
       "title": "Erste Hilfe",
       "description": "Zertifikat gültig bis 2026",
-      "qrCode": "/src/assets/images/qrCode.png",
+      "qrCode": "/assets/images/qrCode.png",
       "issued": "2023",
       "validUntil": "2026"
     },
@@ -21,7 +21,7 @@
       "id": 3,
       "title": "Staplerschein",
       "description": "Industrie Stapler Lizenz",
-      "qrCode": "/src/assets/images/qrCode.png",
+      "qrCode": "/assets/images/qrCode.png",
       "issued": "2022",
       "validUntil": null
     }

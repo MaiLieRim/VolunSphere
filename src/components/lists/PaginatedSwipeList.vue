@@ -128,7 +128,7 @@ const getBackgroundClass = (index) => getDirection(index) === 'right' ? 'bg-dang
                         </div>
                         <div class="action d-flex align-items-center pt-2 pb-2 text-muted gap-6">
                             <small class="col-8 d-flex align-items-center">
-                                <img src="/src/assets/images/profile-pictures/liselotte.png" alt="Profile" width="20" height="20" class="rounded-circle flex-shrink-0 me-2">
+                                <img src="/assets/images/profile-pictures/liselotte.png" alt="Profile" width="20" height="20" class="rounded-circle flex-shrink-0 me-2">
                                 {{ item.requester }}
                             </small>
                         </div>
