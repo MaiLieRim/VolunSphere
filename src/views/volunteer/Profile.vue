@@ -12,7 +12,7 @@
         { name: 'goals', label: 'Ziele' },
         { name: 'explorer', label: 'Explorer' },
         { name: 'org', label: 'Organisation' },
-        { name: 'community', label: 'Community' }
+        { name: 'community', label: 'Verbindungen' }
     ]" :currentTab="currentTab" :showSearch="false" :activitySearch="false" @update:tab="currentTab = $event" />
 
     <div class="content-container">
@@ -128,12 +128,11 @@
         </div>
         <div v-if="currentTab === 'org'" class=" px-2">
             <OrganisationList :items="myOrganizations" title="Meine Organisationen"></OrganisationList>
-           <OrganisationList 
-                class="mt-4" 
-                :items="organizations.filter(org => !myOrganizations.includes(org))"
-                title="Empfehlungen" 
-                :showSearchButton="true" 
-            />
+            <OrganisationList class="mt-4" :items="organizations.filter(org => !myOrganizations.includes(org))"
+                title="Empfehlungen" :showSearchButton="true" />
+        </div>
+        <div v-if="currentTab === 'community'">
+            <RelationshipTab/>
         </div>
     </div>
 </template>
@@ -142,9 +141,9 @@
 import Navbar from "@/components/navbars/Navbar.vue";
 import Accordion from "@/components/common/Accordion.vue";
 import MyGoals from "@/components/GoalTracking/MyGoals.vue";
-import { ref, nextTick, computed, watch } from 'vue'; 
-import { useRoute, useRouter } from "vue-router";     
-
+import { ref, nextTick, computed, watch } from 'vue';
+import { useRoute, useRouter } from "vue-router";
+import RelationshipTab from "@/components/community/RelationshipTab.vue";
 // Import raw data
 import rawUser from "@/assets/data/volunteer"
 import organizations from "@/assets/data/organisations.json";
@@ -190,8 +189,8 @@ const router = useRouter(); // Initialize the router
 
 // WATCHER: Automatically update the URL when currentTab changes
 watch(currentTab, (newTab) => {
-    router.replace({ 
-        query: { ...route.query, tab: newTab } 
+    router.replace({
+        query: { ...route.query, tab: newTab }
     });
 });
 const myOrganizations = computed(() => {
