@@ -1,5 +1,5 @@
 <template>
-  <div class="content-container pt-0">
+  <div class="content-container p-0">
     <div class="d-flex justify-content-between align-items-center p-2 bg-light">
       <h3 class="fw-bold mb-0">Kompetenz-Details</h3>
       <button class="btn text-dark p-0" @click="$router.back()">
@@ -7,7 +7,7 @@
       </button>
     </div>
     <div class="card border-0 shadow-sm rounded-4 mb-4 p-3">
-      <img src="/assets/images/competences.png" alt="Radar Chart" style="width: 80%;" class="mx-auto img-fluid">
+      <img src="/assets/images/competences.png" alt="Radar Chart" style="max-width: 300px; width: 80%;" class="mx-auto img-fluid">
       <div class="mb-4 p-4">
         <h5 class="fw-bold mb-3">Fortschritt nach Kompetenz</h5>
         <div v-for="c in competences" :key="c.name" class="mb-3">
