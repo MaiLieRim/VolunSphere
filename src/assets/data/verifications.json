@@ -27,7 +27,8 @@
             },
             "dateRequested": "2024-05-14",
             "status": "Pending",
-            "hours": 330
+            "hours": 330,
+            "skills": ["Erste Hilfe", "Fahrsicherheit", "Patientenbetreuung"]
         },
         {
             "@type": "RequestAction",

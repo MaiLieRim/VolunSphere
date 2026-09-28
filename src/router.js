@@ -23,6 +23,7 @@ import OrganisationDetail from './views/volunteer/OrganisationDetail.vue';
 import VerificationDetail from './views/volunteer/VerificationDetail.vue';
 import ReviewVerification from './views/admin/ReviewVerification.vue';
 import OrganisationSearch from './views/volunteer/OrganisationSearch.vue';
+import CompetenceDetails from './views/volunteer/CompetenceDetails.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.VITE_BASE_URL || '/'),
@@ -59,7 +60,13 @@ const router = createRouter({
         path: '/organisation-search',
         name: 'OrganisationSearch',
         component: OrganisationSearch
-    }
+    },
+    {
+    path: '/kompetenzen/details',
+    name: 'competence-details',
+    component: CompetenceDetails,
+    meta: { requiresAuth: true, role: 'volunteer' }
+  }
 
   ],
   scrollBehavior() {

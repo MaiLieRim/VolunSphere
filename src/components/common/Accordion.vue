@@ -88,7 +88,8 @@
                         </div>
                     </div>
                     <div class="text-center mt-3">
-                        <button class="btn btn-outline-secondary btn-sm fw-medium text-primary border-secondary-subtle">
+                        <button class="btn btn-outline-secondary btn-sm fw-medium text-primary border-secondary-subtle"
+                            @click="$router.push({ name: 'competence-details' })">
                             <i class="bi bi-bar-chart-fill me-1 text-dark"></i> Details
                         </button>
                     </div>
@@ -117,7 +118,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="accordion-item border-0 shadow-sm mb-3 rounded overflow-hidden">
             <h2 class="accordion-header" id="headingFour">
                 <button class="accordion-button collapsed bg-light text-dark fw-bold" type="button"
@@ -128,34 +129,40 @@
             </h2>
             <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionInfo">
                 <div class="accordion-body p-0">
-                    
+
                     <QualificationList :items="activeQualifications" />
 
                     <div class="p-3 border-top bg-light bg-opacity-50">
-                        
+
                         <div v-if="!isAddingQualification" class="text-center">
-                            <button class="btn btn-sm btn-primary rounded-pill fw-bold shadow-sm d-inline-flex align-items-center px-3" 
-                                    @click="isAddingQualification = true">
+                            <button
+                                class="btn btn-sm btn-primary rounded-pill fw-bold shadow-sm d-inline-flex align-items-center px-3"
+                                @click="isAddingQualification = true">
                                 <i class="bi bi-plus-circle me-2"></i> Qualifikation hinterlegen
                             </button>
                         </div>
 
                         <div v-else class=" fade-in">
                             <h4 class="fw-bold mb-3 text-dark">Neue Qualifikation hinzufügen</h4>
-                            
+
                             <div class="mb-2">
                                 <label class="small text-muted mb-1">Titel</label>
-                                <input type="text" v-model="newQualification.title" class="form-control form-control-sm rounded-3" placeholder="z.B. Führerschein Klasse B">
+                                <input type="text" v-model="newQualification.title"
+                                    class="form-control form-control-sm rounded-3"
+                                    placeholder="z.B. Führerschein Klasse B">
                             </div>
-                            
+
                             <div class="mb-3">
                                 <label class="small text-muted mb-1">Details / Gültigkeit</label>
-                                <input type="text" v-model="newQualification.description" class="form-control form-control-sm rounded-3" placeholder="z.B. Erworben 2018">
+                                <input type="text" v-model="newQualification.description"
+                                    class="form-control form-control-sm rounded-3" placeholder="z.B. Erworben 2018">
                             </div>
 
                             <div class="d-flex justify-content-end gap-2">
-                                <button class="btn btn-sm btn-light text-secondary rounded-pill px-3" @click="cancelAdd">Abbrechen</button>
-                                <button class="btn btn-sm btn-primary rounded-pill px-3 fw-bold" :disabled="!isFormValid" @click="saveQualification">
+                                <button class="btn btn-sm btn-light text-secondary rounded-pill px-3"
+                                    @click="cancelAdd">Abbrechen</button>
+                                <button class="btn btn-sm btn-primary rounded-pill px-3 fw-bold"
+                                    :disabled="!isFormValid" @click="saveQualification">
                                     <i class="bi bi-cloud-arrow-up me-1"></i> Speichern
                                 </button>
                             </div>
@@ -200,7 +207,7 @@ const saveQualification = () => {
             title: newQualification.value.title.trim(),
             description: newQualification.value.description.trim()
         });
-        
+
         // Reset and close form
         cancelAdd();
     }
@@ -223,7 +230,14 @@ const cancelAdd = () => {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-5px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 </style>

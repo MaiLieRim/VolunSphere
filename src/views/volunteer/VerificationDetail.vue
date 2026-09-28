@@ -2,15 +2,15 @@
     <Navbar title="Details"></Navbar>
 
     <div class="content-container pb-5" v-if="detailTask">
-        
+
         <div class="d-flex justify-content-between align-items-start mb-4">
             <div>
                 <h3 class="fw-bold mb-1">{{ detailTask.name }}</h3>
                 <p class="text-muted mb-0">{{ detailTask.organization.name }}</p>
             </div>
-            
+
             <span class="badge rounded-pill px-3 py-2" :class="statusBadge.class">
-                <i :class="statusBadge.icon" class="me-1"></i> 
+                <i :class="statusBadge.icon" class="me-1"></i>
                 {{ statusBadge.text }}
             </span>
         </div>
@@ -18,9 +18,10 @@
         <div class="card border shadow-sm rounded-4 mb-4">
             <div class="card-body p-4">
                 <div class="d-flex flex-column gap-4">
-                    
+
                     <div class="d-flex align-items-start">
-                        <div class="bg-primary-subtle text-primary rounded-circle d-flex justify-content-center align-items-center me-3" style="width: 40px; height: 40px; min-width: 40px;">
+                        <div class="bg-primary-subtle text-primary rounded-circle d-flex justify-content-center align-items-center me-3"
+                            style="width: 40px; height: 40px; min-width: 40px;">
                             <i class="bi bi-calendar-event fs-5"></i>
                         </div>
                         <div>
@@ -30,17 +31,20 @@
                     </div>
 
                     <div class="d-flex align-items-start">
-                        <div class="bg-primary-subtle text-primary rounded-circle d-flex justify-content-center align-items-center me-3" style="width: 40px; height: 40px; min-width: 40px;">
+                        <div class="bg-primary-subtle text-primary rounded-circle d-flex justify-content-center align-items-center me-3"
+                            style="width: 40px; height: 40px; min-width: 40px;">
                             <i class="bi bi-geo-alt fs-5"></i>
                         </div>
                         <div>
                             <span class="d-block small text-muted fw-bold mb-1">Einsatzort</span>
-                            <span class="d-block text-dark">{{ detailTask.location?.name || 'Kein Ort angegeben' }}</span>
+                            <span class="d-block text-dark">{{ detailTask.location?.name || 'Kein Ort angegeben'
+                            }}</span>
                         </div>
                     </div>
 
                     <div class="d-flex align-items-start">
-                        <div class="bg-primary-subtle text-primary rounded-circle d-flex justify-content-center align-items-center me-3" style="width: 40px; height: 40px; min-width: 40px;">
+                        <div class="bg-primary-subtle text-primary rounded-circle d-flex justify-content-center align-items-center me-3"
+                            style="width: 40px; height: 40px; min-width: 40px;">
                             <i class="bi bi-clock-history fs-5"></i>
                         </div>
                         <div>
@@ -51,18 +55,25 @@
 
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="d-flex align-items-center">
-                            <div class="bg-primary-subtle text-primary rounded-circle d-flex justify-content-center align-items-center me-3" style="width: 40px; height: 40px; min-width: 40px;">
+                            <div class="bg-primary-subtle text-primary rounded-circle d-flex justify-content-center align-items-center me-3"
+                                style="width: 40px; height: 40px; min-width: 40px;">
                                 <i class="bi bi-person-badge fs-5"></i>
                             </div>
                             <div>
                                 <span class="d-block small text-muted fw-bold mb-0">Zuständig</span>
-                                <span class="d-block text-dark fw-medium">{{ detailTask.organization.admin || 'Einsatzleitung' }}</span>
+                                <span class="d-block text-dark fw-medium">{{ detailTask.organization.admin ||
+                                    'Einsatzleitung' }}</span>
                             </div>
                         </div>
-                        <router-link v-if="detailTask.organization?.admin" :to="{ name: 'chat', params: { name: detailTask.organization.admin } }" class="btn btn-outline-primary rounded-circle shadow-sm d-flex justify-content-center align-items-center" style="width: 40px; height: 40px;">
+                        <router-link v-if="detailTask.organization?.admin"
+                            :to="{ name: 'chat', params: { name: detailTask.organization.admin } }"
+                            class="btn btn-outline-primary rounded-circle shadow-sm d-flex justify-content-center align-items-center"
+                            style="width: 40px; height: 40px;">
                             <i class="bi bi-chat-dots-fill"></i>
                         </router-link>
-                        <button v-else class="btn btn-outline-secondary rounded-circle shadow-sm d-flex justify-content-center align-items-center" style="width: 40px; height: 40px;" disabled>
+                        <button v-else
+                            class="btn btn-outline-secondary rounded-circle shadow-sm d-flex justify-content-center align-items-center"
+                            style="width: 40px; height: 40px;" disabled>
                             <i class="bi bi-chat-dots-fill"></i>
                         </button>
                     </div>
@@ -75,7 +86,29 @@
             <h5 class="fw-bold mb-2">Beschreibung</h5>
             <p class="text-muted">{{ detailTask.description }}</p>
         </div>
+        <div class="mb-4">
+            <h5 class="fw-bold mb-3">Erreichte Kompetenzen</h5>
+            <span class="badge rounded-pill bg-primary text-primary border border-primary border-opacity-25 px-3 py-2">
+                <i class="bi bi-star-fill me-1"></i> Hilfsbereit
+            </span>
+            <div v-if="skillNames.length > 0" class="d-flex flex-wrap gap-2">
+                <span v-for="skill in skillNames" :key="skill"
+                    class="badge rounded-pill bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-3 py-2">
+                    <i class="bi bi-star-fill me-1"></i> {{ skill }}
+                </span>
+            </div>
 
+            <div v-else class="card border-0 bg-light p-3 rounded-4">
+                <div class="d-flex align-items-center text-muted">
+                    <i class="bi bi-info-circle-fill me-3 fs-4"></i>
+                    <div>
+                        <p class="mb-0 small fw-bold">Keine spezifischen Kompetenzen erfasst</p>
+                        <small class="small">Für diesen Einsatz wurden noch keine persönlichen Kompetenzen
+                            hinterlegt.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div v-if="isSkillVerification" class="mb-4">
             <h5 class="fw-bold mb-3">Verknüpfte Einsätze</h5>
             <div class="row row-cols-1 g-3">
@@ -87,11 +120,14 @@
                                     <h5 class="mb-1 fw-bold">{{ task.title }}</h5>
                                     <small class="text-muted">{{ task.club || 'Organisation' }}</small>
                                 </div>
-                                <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill">{{ task.hours || 4 }}h</span>
+                                <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill">{{ task.hours ||
+                                    4 }}h</span>
                             </div>
                             <div class="d-flex flex-wrap gap-2 text-muted small">
-                                <span><i class="bi bi-calendar-event me-1"></i>{{ formatDate(task.jobStartDate || task.datePosted || task.startDate) }}</span>
-                                <span><i class="bi bi-geo-alt me-1"></i>{{ task.location || task.address?.addressLocality || task.jobLocation?.address?.addressLocality || 'Kein Ort angegeben' }}</span>
+                                <span><i class="bi bi-calendar-event me-1"></i>{{ formatDate(task.jobStartDate ||
+                                    task.datePosted || task.startDate) }}</span>
+                                <span><i class="bi bi-geo-alt me-1"></i>{{ task.location ||
+                                    task.address?.addressLocality || task.jobLocation?.address?.addressLocality || 'Kein Ort angegeben' }}</span>
                             </div>
                         </div>
                     </div>
@@ -100,7 +136,8 @@
             <div v-if="skillNames.length > 0" class="mt-3">
                 <h5 class="fw-bold mb-2">Angefragte Kompetenzen</h5>
                 <div class="d-flex flex-wrap gap-2">
-                    <span v-for="skill in skillNames" :key="skill" class="badge rounded-pill bg-secondary bg-opacity-10 text-secondary">
+                    <span v-for="skill in skillNames" :key="skill"
+                        class="badge rounded-pill bg-secondary bg-opacity-10 text-secondary">
                         {{ skill }}
                     </span>
                 </div>
@@ -110,14 +147,16 @@
         <div v-else-if="qualificationList.length > 0" class="mb-4">
             <h5 class="fw-bold mb-3">Mögliche Qualifikationen</h5>
             <div class="d-flex flex-wrap gap-2">
-                <span v-for="qualification in qualificationList" :key="qualification" class="badge rounded-pill bg-success bg-opacity-10 text-success">
+                <span v-for="qualification in qualificationList" :key="qualification"
+                    class="badge rounded-pill bg-success bg-opacity-10 text-success">
                     {{ qualification }}
                 </span>
             </div>
         </div>
 
         <div v-else-if="!hasVerification" class="d-flex align-items-start">
-            <div class="bg-primary-subtle text-primary rounded-circle d-flex justify-content-center align-items-center me-3" style="width: 40px; height: 40px; min-width: 40px;">
+            <div class="bg-primary-subtle text-primary rounded-circle d-flex justify-content-center align-items-center me-3"
+                style="width: 40px; height: 40px; min-width: 40px;">
                 <i class="bi bi-clock-history fs-5"></i>
             </div>
             <div class="w-100">
@@ -134,7 +173,7 @@
             <button v-if="isPending && hasVerification" class="btn btn-outline-danger py-2 rounded-pill">
                 <i class="bi bi-x-circle me-1"></i> Anfrage zurückziehen
             </button>
-            
+
             <button v-if="isConfirmed" class="btn btn-primary py-2 rounded-pill">
                 <i class="bi bi-file-earmark-pdf me-1"></i> Zertifikat herunterladen
             </button>
@@ -204,10 +243,12 @@ const loadTask = () => {
         hours.value = foundTask.hours || 4;
         hasVerification.value = false;
         requestSent.value = false;
+
         return;
     }
 
     task.value = null;
+
 };
 
 onMounted(loadTask);
@@ -257,9 +298,9 @@ const skillTasks = computed(() => {
 
 const skillNames = computed(() => {
     if (!detailTask.value) return [];
-    if (Array.isArray(detailTask.value.skills)) return detailTask.value.skills;
-    if (typeof detailTask.value.skills === 'string') {
-        return detailTask.value.skills.split(',').map(skill => skill.trim()).filter(Boolean);
+    if (Array.isArray(detailTask.value.skills)) return detailTask.value.qualifications.filter(Boolean);
+    if (typeof detailTask.value.qualifications === 'string') {
+        return detailTask.value.qualifications.split(',').map(qualification => qualification.trim()).filter(Boolean);
     }
     return [];
 });
@@ -338,7 +379,7 @@ const formatDate = (dateString) => {
     if (!dateString) return 'Kein Datum angegeben';
     const date = new Date(dateString);
     if (isNaN(date)) return dateString;
-    
+
     return new Intl.DateTimeFormat('de-AT', {
         day: '2-digit',
         month: '2-digit',
