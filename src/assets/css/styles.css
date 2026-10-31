@@ -2,9 +2,10 @@
   --llblue: #EEF9FF;
 }
 
-.body {
+body {
   line-height: 125% !important;
-  height: 100vh !important;
+  min-height: 100vh;
+  margin: 0;
 }
 
 .content-container {
@@ -15,7 +16,6 @@
   padding-left: calc(var(--bs-gutter-x) * 0.5);
   margin-right: auto;
   margin-left: auto;
-  padding-bottom: 6rem;
   padding-top: 1.25rem;
 }
 
